@@ -1,0 +1,862 @@
+/* =========================================================
+   GROUP MEMBERS
+   ========================================================= */
+
+.group-members {
+    width: 100%;
+    min-width: 0;
+
+    padding: 16px;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.06);
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.045),
+            rgba(255, 255, 255, 0.018)
+        );
+
+    box-shadow:
+        0 14px 40px
+        rgba(0, 0, 0, 0.18);
+
+    color: #ffffff;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.group-members__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 14px;
+
+    margin-bottom: 14px;
+}
+
+
+.group-members__heading {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.group-members__title-icon {
+    width: 34px;
+    height: 34px;
+
+    flex: 0 0 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(139, 92, 246, 0.10);
+
+    border: 1px solid
+        rgba(139, 92, 246, 0.14);
+
+    color:
+        rgba(192, 132, 252, 0.85);
+}
+
+
+.group-members__heading-text {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.group-members__title-row {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+.group-members__title-row h3 {
+    margin: 0;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    color: rgba(255, 255, 255, 0.88);
+}
+
+
+.group-members__heading-text > span {
+    font-size: 9px;
+
+    color:
+        rgba(255, 255, 255, 0.30);
+}
+
+
+.group-members__count {
+    min-width: 19px;
+    height: 18px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 6px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(139, 92, 246, 0.10);
+
+    border: 1px solid
+        rgba(139, 92, 246, 0.14);
+
+    color:
+        rgba(192, 132, 252, 0.82);
+
+    font-size: 8px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.group-members__search {
+    width: 210px;
+    height: 35px;
+
+    flex: 0 1 210px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 0 10px;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.065);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255, 255, 255, 0.03);
+
+    color:
+        rgba(255, 255, 255, 0.36);
+
+    transition:
+        border-color 180ms ease,
+        background 180ms ease,
+        box-shadow 180ms ease;
+}
+
+
+.group-members__search:focus-within {
+    border-color:
+        rgba(139, 92, 246, 0.30);
+
+    background:
+        rgba(255, 255, 255, 0.045);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(139, 92, 246, 0.055);
+}
+
+
+.group-members__search input {
+    min-width: 0;
+    flex: 1;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+
+    color:
+        rgba(255, 255, 255, 0.82);
+
+    font-family: inherit;
+
+    font-size: 10px;
+}
+
+
+.group-members__search input::placeholder {
+    color:
+        rgba(255, 255, 255, 0.25);
+}
+
+
+.group-members__search-clear {
+    width: 24px;
+    height: 24px;
+
+    flex: 0 0 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 7px;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    color:
+        rgba(255, 255, 255, 0.42);
+
+    cursor: pointer;
+
+    transition:
+        background 160ms ease,
+        color 160ms ease;
+}
+
+
+.group-members__search-clear:hover {
+    background:
+        rgba(255, 255, 255, 0.09);
+
+    color: #ffffff;
+}
+
+
+.group-members__search-clear:focus-visible {
+    outline: 2px solid
+        rgba(139, 92, 246, 0.75);
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   RESULT INFO
+   ========================================================= */
+
+.group-members__result-info {
+    margin-bottom: 8px;
+
+    padding: 7px 9px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(139, 92, 246, 0.045);
+
+    border: 1px solid
+        rgba(139, 92, 246, 0.07);
+
+    font-size: 8px;
+
+    color:
+        rgba(255, 255, 255, 0.35);
+}
+
+
+/* =========================================================
+   MEMBERS LIST
+   ========================================================= */
+
+.group-members__list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+/* =========================================================
+   MEMBER
+   ========================================================= */
+
+.group-member {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 8px;
+
+    border: 1px solid
+        transparent;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 255, 255, 0.018);
+
+    transition:
+        background 180ms ease,
+        border-color 180ms ease,
+        transform 180ms ease;
+}
+
+
+.group-member:hover {
+    background:
+        rgba(255, 255, 255, 0.042);
+
+    border-color:
+        rgba(255, 255, 255, 0.055);
+
+    transform: translateX(2px);
+}
+
+
+/* =========================================================
+   PROFILE
+   ========================================================= */
+
+.group-member__profile {
+    flex: 0 0 auto;
+
+    width: 39px;
+    height: 39px;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+
+.group-member__avatar {
+    position: relative;
+
+    width: 39px;
+    height: 39px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: visible;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(139, 92, 246, 0.22),
+            rgba(59, 130, 246, 0.15)
+        );
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.08);
+
+    color:
+        rgba(255, 255, 255, 0.78);
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+.group-member__avatar img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   STATUS DOT
+   ========================================================= */
+
+.group-member__status {
+    position: absolute;
+
+    right: -1px;
+    bottom: 0;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    border: 2px solid
+        #11131c;
+
+    background:
+        rgba(255, 255, 255, 0.25);
+
+    box-sizing: border-box;
+}
+
+
+.group-member__status--online {
+    background:
+        #34d399;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(52, 211, 153, 0.08);
+}
+
+
+.group-member__status--offline {
+    background:
+        rgba(255, 255, 255, 0.20);
+}
+
+
+/* =========================================================
+   INFO
+   ========================================================= */
+
+.group-member__info {
+    min-width: 0;
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 3px;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+
+.group-member__name-row {
+    min-width: 0;
+    max-width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+
+.group-member__name {
+    max-width: 170px;
+
+    overflow: hidden;
+
+    font-size: 11px;
+    font-weight: 650;
+
+    line-height: 1.3;
+
+    color:
+        rgba(255, 255, 255, 0.82);
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.group-member__you {
+    flex: 0 0 auto;
+
+    padding: 2px 5px;
+
+    border-radius: 5px;
+
+    background:
+        rgba(59, 130, 246, 0.10);
+
+    color:
+        rgba(96, 165, 250, 0.82);
+
+    font-size: 7px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.03em;
+}
+
+
+.group-member__admin {
+    flex: 0 0 auto;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 3px;
+
+    padding: 2px 5px;
+
+    border-radius: 5px;
+
+    background:
+        rgba(139, 92, 246, 0.09);
+
+    color:
+        rgba(192, 132, 252, 0.78);
+
+    font-size: 7px;
+    font-weight: 650;
+}
+
+
+.group-member__username {
+    max-width: 200px;
+
+    overflow: hidden;
+
+    color:
+        rgba(255, 255, 255, 0.28);
+
+    font-size: 8px;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   PRESENCE
+   ========================================================= */
+
+.group-member__presence {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    color:
+        rgba(255, 255, 255, 0.24);
+
+    font-size: 8px;
+    font-weight: 550;
+}
+
+
+.group-member__presence--online {
+    color:
+        rgba(52, 211, 153, 0.76);
+}
+
+
+/* =========================================================
+   MORE BUTTON
+   ========================================================= */
+
+.group-member__more {
+    width: 30px;
+    height: 30px;
+
+    flex: 0 0 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: transparent;
+
+    color:
+        rgba(255, 255, 255, 0.25);
+
+    cursor: pointer;
+
+    transition:
+        background 160ms ease,
+        color 160ms ease;
+}
+
+
+.group-member__more:hover {
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    color:
+        rgba(255, 255, 255, 0.75);
+}
+
+
+.group-member__more:focus-visible,
+.group-member__profile:focus-visible,
+.group-member__info:focus-visible {
+    outline: 2px solid
+        rgba(139, 92, 246, 0.75);
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.group-members__empty {
+    min-height: 220px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 28px 18px;
+
+    text-align: center;
+}
+
+
+.group-members__empty-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 12px;
+
+    border-radius: 16px;
+
+    background:
+        rgba(139, 92, 246, 0.08);
+
+    border: 1px solid
+        rgba(139, 92, 246, 0.11);
+
+    color:
+        rgba(192, 132, 252, 0.60);
+}
+
+
+.group-members__empty h4 {
+    margin: 0;
+
+    font-size: 13px;
+    font-weight: 650;
+
+    color:
+        rgba(255, 255, 255, 0.72);
+}
+
+
+.group-members__empty p {
+    max-width: 280px;
+
+    margin: 6px 0 13px;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+
+    color:
+        rgba(255, 255, 255, 0.29);
+}
+
+
+.group-members__empty > button {
+    min-height: 31px;
+
+    padding: 0 12px;
+
+    border: 1px solid
+        rgba(139, 92, 246, 0.16);
+
+    border-radius: 8px;
+
+    background:
+        rgba(139, 92, 246, 0.08);
+
+    color:
+        rgba(192, 132, 252, 0.82);
+
+    font-family: inherit;
+
+    font-size: 9px;
+    font-weight: 650;
+
+    cursor: pointer;
+
+    transition:
+        background 160ms ease,
+        color 160ms ease;
+}
+
+
+.group-members__empty > button:hover {
+    background:
+        rgba(139, 92, 246, 0.15);
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .group-members {
+        padding: 14px;
+    }
+
+
+    .group-members__header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .group-members__search {
+        width: 100%;
+
+        flex-basis: auto;
+    }
+
+
+    .group-member__presence {
+        display: none;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .group-members {
+        padding: 12px;
+
+        border-radius: 13px;
+    }
+
+
+    .group-members__title-icon {
+        width: 32px;
+        height: 32px;
+
+        flex-basis: 32px;
+    }
+
+
+    .group-member {
+        gap: 8px;
+
+        padding: 7px;
+    }
+
+
+    .group-member__profile,
+    .group-member__avatar {
+        width: 36px;
+        height: 36px;
+    }
+
+
+    .group-member__name {
+        max-width: 135px;
+    }
+
+
+    .group-member__admin {
+        display: none;
+    }
+
+
+    .group-member__more {
+        width: 28px;
+        height: 28px;
+
+        flex-basis: 28px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .group-member__you {
+        display: none;
+    }
+
+
+    .group-member__name {
+        max-width: 120px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .group-member,
+    .group-members__search,
+    .group-member__more,
+    .group-members__empty > button {
+        transition: none;
+    }
+
+
+    .group-member:hover {
+        transform: none;
+    }
+
+}

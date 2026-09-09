@@ -1,0 +1,198 @@
+/* ===================================================
+   ROOT
+=================================================== */
+
+.message-actions{
+
+    position:absolute;
+
+    top:-18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    padding:5px;
+
+    border-radius:999px;
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    background:rgba(24,24,28,.74);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.38),
+        inset 0 1px rgba(255,255,255,.08);
+
+    opacity:0;
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transform:
+        translateY(8px)
+        scale(.92);
+
+    transform-origin:center;
+
+    transition:
+        opacity .22s ease,
+        transform .22s ease,
+        visibility .22s ease,
+        box-shadow .25s ease;
+
+    z-index:120;
+
+}
+
+/* ===================================================
+   SHOW
+=================================================== */
+
+.message-actions.show{
+
+    opacity:1;
+    visibility:visible;
+
+    pointer-events:auto;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+}
+
+/* ===================================================
+   OWN
+=================================================== */
+
+.message-actions.own{
+
+    right:8px;
+
+}
+
+/* ===================================================
+   RECEIVED
+=================================================== */
+
+.message-actions:not(.own){
+
+    left:8px;
+
+}
+
+/* ===================================================
+   BUTTON
+=================================================== */
+
+.action-btn{
+
+    width:34px;
+    height:34px;
+
+    border:none;
+    outline:none;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    cursor:pointer;
+
+    background:transparent;
+
+    color:#f4f4f4;
+
+    transition:
+        background .18s ease,
+        transform .18s ease,
+        color .18s ease;
+
+}
+
+/* ===================================================
+   HOVER
+=================================================== */
+
+.action-btn:hover{
+
+    background:rgba(255,255,255,.12);
+
+    transform:
+        translateY(-2px)
+        scale(1.08);
+
+}
+
+/* ===================================================
+   ACTIVE
+=================================================== */
+
+.action-btn:active{
+
+    transform:scale(.94);
+
+}
+
+/* ===================================================
+   ICON
+=================================================== */
+
+.action-btn svg{
+
+    transition:
+        transform .18s ease,
+        color .18s ease;
+
+}
+
+.action-btn:hover svg{
+
+    transform:scale(1.15);
+
+}
+
+/* ===================================================
+   TOOLBAR HOVER
+=================================================== */
+
+.message-actions:hover{
+
+    box-shadow:
+        0 16px 42px rgba(0,0,0,.45),
+        inset 0 1px rgba(255,255,255,.08);
+
+}
+
+/* ===================================================
+   MOBILE
+=================================================== */
+
+@media(max-width:768px){
+
+.message-actions{
+
+    top:-14px;
+
+    gap:4px;
+
+    padding:4px;
+
+}
+
+.action-btn{
+
+    width:32px;
+    height:32px;
+
+}
+
+}

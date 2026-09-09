@@ -1,0 +1,41 @@
+.date-divider{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    margin:24px 0;
+
+}
+
+.divider-line{
+
+    flex:1;
+
+    height:1px;
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.date-divider span{
+
+    padding:8px 16px;
+
+    border-radius:30px;
+
+    background:#1b2433;
+
+    color:#a7b0c3;
+
+    font-size:13px;
+
+    font-weight:500;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    white-space:nowrap;
+
+}

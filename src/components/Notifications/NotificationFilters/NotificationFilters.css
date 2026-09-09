@@ -1,0 +1,150 @@
+.notification-filters {
+    width: 100%;
+    min-width: 0;
+
+    padding: 4px 0;
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   SCROLL
+===================================================== */
+
+.notification-filters__scroll {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    overflow-x: auto;
+
+    padding: 2px 1px 6px;
+
+    scrollbar-width: none;
+}
+
+
+.notification-filters__scroll::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.notification-filters__button {
+    height: 34px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    gap: 6px;
+
+    padding: 0 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    color: rgba(255, 255, 255, 0.42);
+
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 650;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.notification-filters__button:hover {
+    background: rgba(255, 255, 255, 0.06);
+
+    border-color: rgba(255, 255, 255, 0.1);
+
+    color: rgba(255, 255, 255, 0.78);
+
+    transform: translateY(-1px);
+}
+
+
+.notification-filters__button--active {
+    background: rgba(255, 255, 255, 0.1);
+
+    border-color: rgba(255, 255, 255, 0.14);
+
+    color: #fff;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+
+.notification-filters__button--active:hover {
+    background: rgba(255, 255, 255, 0.12);
+
+    color: #fff;
+}
+
+
+/* =====================================================
+   ICONS
+===================================================== */
+
+.notification-filters__button svg {
+    flex-shrink: 0;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .notification-filters {
+        padding: 2px 0;
+    }
+
+
+    .notification-filters__scroll {
+        gap: 6px;
+
+        padding-bottom: 5px;
+    }
+
+
+    .notification-filters__button {
+        height: 32px;
+
+        padding: 0 10px;
+
+        font-size: 9px;
+
+        border-radius: 8px;
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .notification-filters__button {
+        transition: none;
+    }
+
+}

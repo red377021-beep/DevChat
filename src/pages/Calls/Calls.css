@@ -1,0 +1,73 @@
+.calls-page {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255, 255, 255, 0.035),
+            transparent 40%
+        ),
+        #0a0a10;
+
+    color: #fff;
+}
+
+
+/* =====================================================
+   SCROLL AREA
+===================================================== */
+
+.calls-page > .call-history {
+    flex: 1;
+    min-height: 0;
+}
+
+
+/* =====================================================
+   CALL INFO
+===================================================== */
+
+.calls-page > .call-info {
+    flex: 1;
+    min-height: 0;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .calls-page {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .calls-page {
+        min-height: 100%;
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .calls-page {
+        scroll-behavior: auto;
+    }
+
+}

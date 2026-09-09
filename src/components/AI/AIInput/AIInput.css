@@ -1,0 +1,277 @@
+.ai-input {
+    width: 100%;
+
+    padding: 12px 18px 10px;
+
+    background: rgba(10, 10, 16, 0.88);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+    position: relative;
+    z-index: 5;
+}
+
+
+/* =====================================================
+   INPUT BOX
+===================================================== */
+
+.ai-input__box {
+    width: 100%;
+    max-width: 900px;
+
+    min-height: 52px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+
+    padding: 7px 8px 7px 10px;
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 17px;
+
+    background: rgba(255, 255, 255, 0.045);
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.ai-input__box:focus-within {
+    border-color: rgba(255, 255, 255, 0.15);
+
+    background: rgba(255, 255, 255, 0.055);
+}
+
+
+/* =====================================================
+   TEXTAREA
+===================================================== */
+
+.ai-input textarea {
+    flex: 1;
+
+    width: 100%;
+    min-width: 0;
+
+    max-height: 140px;
+    min-height: 36px;
+
+    padding: 8px 6px;
+
+    border: none;
+    outline: none;
+
+    resize: none;
+
+    background: transparent;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+
+.ai-input textarea::placeholder {
+    color: rgba(255, 255, 255, 0.32);
+}
+
+
+.ai-input textarea:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.ai-input__button,
+.ai-input__clear,
+.ai-input__send {
+    width: 36px;
+    height: 36px;
+
+    flex: 0 0 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 11px;
+
+    background: transparent;
+
+    color: rgba(255, 255, 255, 0.45);
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.ai-input__button:hover,
+.ai-input__clear:hover {
+    background: rgba(255, 255, 255, 0.07);
+
+    color: rgba(255, 255, 255, 0.82);
+}
+
+
+.ai-input__button:active,
+.ai-input__clear:active,
+.ai-input__send:active {
+    transform: scale(0.94);
+}
+
+
+.ai-input__button:focus-visible,
+.ai-input__clear:focus-visible,
+.ai-input__send:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.45);
+    outline-offset: 2px;
+}
+
+
+.ai-input__button:disabled,
+.ai-input__clear:disabled,
+.ai-input__send:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+
+/* =====================================================
+   CLEAR
+===================================================== */
+
+.ai-input__clear {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
+
+    margin-bottom: 3px;
+}
+
+
+/* =====================================================
+   SEND
+===================================================== */
+
+.ai-input__send {
+    background: rgba(255, 255, 255, 0.12);
+
+    color: rgba(255, 255, 255, 0.92);
+}
+
+
+.ai-input__send:hover {
+    background: rgba(255, 255, 255, 0.19);
+
+    color: #fff;
+
+    transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   HINT
+===================================================== */
+
+.ai-input__hint {
+    max-width: 900px;
+
+    margin: 7px auto 0;
+
+    color: rgba(255, 255, 255, 0.24);
+
+    font-size: 9px;
+
+    line-height: 1.4;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .ai-input {
+        padding: 9px 11px 8px;
+    }
+
+    .ai-input__box {
+        min-height: 49px;
+
+        padding: 6px 6px 6px 8px;
+
+        border-radius: 15px;
+    }
+
+    .ai-input textarea {
+        font-size: 13px;
+    }
+
+    .ai-input__button,
+    .ai-input__send {
+        width: 34px;
+        height: 34px;
+        flex-basis: 34px;
+    }
+
+    .ai-input__hint {
+        font-size: 8px;
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    .ai-input {
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+
+    .ai-input__emoji {
+        display: none;
+    }
+
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .ai-input__box,
+    .ai-input__button,
+    .ai-input__clear,
+    .ai-input__send {
+        transition: none;
+    }
+
+}

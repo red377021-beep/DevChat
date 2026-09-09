@@ -1,0 +1,200 @@
+.context-wrapper{
+
+    position:fixed;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    z-index:999999;
+
+    pointer-events:auto;
+
+}
+
+/* =============================== */
+/* Reaction Card */
+/* =============================== */
+
+.context-reaction-card{
+
+    position:relative;
+
+    width:fit-content;
+
+    padding:8px 10px;
+
+    border-radius:18px;
+
+    background:rgba(18,20,28,.96);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    overflow:visible;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.05);
+
+    animation:contextMenuOpen .18s ease;
+
+}
+
+/* =============================== */
+/* Menu */
+/* =============================== */
+
+.context-menu{
+
+    position:relative;
+
+    width:240px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    padding:8px;
+
+    border-radius:18px;
+
+    background:rgba(18,20,28,.96);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    overflow:hidden;
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.05);
+
+    animation:contextMenuOpen .18s ease;
+
+}
+
+/* =============================== */
+/* Buttons */
+/* =============================== */
+
+.context-menu button{
+
+    width:100%;
+
+    height:46px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:0 14px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:12px;
+
+    background:transparent;
+
+    color:#ffffff;
+
+    font-size:14px;
+
+    font-weight:500;
+
+    cursor:pointer;
+
+    transition:
+        background .18s,
+        transform .15s,
+        color .15s;
+
+}
+
+.context-menu button:hover{
+
+    background:#252b37;
+
+    transform:translateX(4px);
+
+}
+
+.context-menu button:active{
+
+    transform:scale(.98);
+
+}
+
+.context-menu button svg{
+
+    flex-shrink:0;
+
+}
+
+/* =============================== */
+/* Disabled */
+/* =============================== */
+
+.context-menu button:disabled{
+
+    opacity:.45;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+}
+
+.context-menu button:disabled:hover{
+
+    background:transparent;
+
+}
+
+/* =============================== */
+/* Delete */
+/* =============================== */
+
+.delete-btn{
+
+    color:#ff6b6b;
+
+}
+
+.delete-btn:hover{
+
+    background:rgba(255,80,80,.12);
+
+}
+
+/* =============================== */
+
+@keyframes contextMenuOpen{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(6px) scale(.95);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0) scale(1);
+
+    }
+
+}

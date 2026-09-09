@@ -1,0 +1,75 @@
+.chat-menu {
+    position: absolute;
+
+    top: 58px;
+    right: 12px;
+
+    width: 230px;
+
+    padding: 7px;
+
+    background: #171b24;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.45);
+
+    z-index: 2000;
+
+    animation: chatMenuOpen 0.18s ease;
+}
+
+.chat-menu-item {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 11px 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: #e8eaf0;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    text-align: left;
+
+    transition:
+        background 0.18s ease,
+        color 0.18s ease;
+}
+
+.chat-menu-item:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: #ffffff;
+}
+
+.chat-menu-item svg {
+    flex-shrink: 0;
+    opacity: 0.85;
+}
+
+@keyframes chatMenuOpen {
+
+    from {
+        opacity: 0;
+        transform: translateY(-6px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}

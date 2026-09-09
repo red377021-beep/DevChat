@@ -1,0 +1,419 @@
+.starred-panel {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--chat-bg, #111827);
+
+    color: var(--text-primary, #ffffff);
+
+    overflow: hidden;
+}
+
+
+/* ========================================= */
+/* HEADER */
+/* ========================================= */
+
+.starred-panel-header {
+    min-height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 16px;
+
+    border-bottom: 1px solid
+        rgba(255, 255, 255, 0.08);
+
+    background: rgba(255, 255, 255, 0.02);
+}
+
+
+.starred-title {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    color: #f5c542;
+}
+
+
+.starred-title > div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+
+.starred-title h3 {
+    margin: 0;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    color: var(--text-primary, #ffffff);
+}
+
+
+.starred-title span {
+    font-size: 11px;
+
+    color: var(--text-secondary, #9ca3af);
+}
+
+
+.starred-close {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: var(--text-secondary, #9ca3af);
+
+    cursor: pointer;
+
+    transition:
+        background 0.18s ease,
+        color 0.18s ease;
+}
+
+
+.starred-close:hover {
+    background: rgba(255, 255, 255, 0.07);
+
+    color: #ffffff;
+}
+
+
+/* ========================================= */
+/* EMPTY STATE */
+/* ========================================= */
+
+.starred-empty {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 30px;
+}
+
+
+.starred-empty-icon {
+    width: 66px;
+    height: 66px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 16px;
+
+    border-radius: 50%;
+
+    color: #f5c542;
+
+    background: rgba(245, 197, 66, 0.10);
+
+    border: 1px solid
+        rgba(245, 197, 66, 0.18);
+}
+
+
+.starred-empty h3 {
+    margin: 0 0 7px;
+
+    font-size: 16px;
+}
+
+
+.starred-empty p {
+    max-width: 230px;
+
+    margin: 0;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    color: var(--text-secondary, #9ca3af);
+}
+
+
+/* ========================================= */
+/* LIST */
+/* ========================================= */
+
+.starred-list {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+
+    padding: 10px;
+
+    overflow-y: auto;
+}
+
+
+.starred-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+.starred-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+
+    border-radius: 10px;
+}
+
+
+/* ========================================= */
+/* ITEM */
+/* ========================================= */
+
+.starred-item {
+    display: flex;
+    align-items: stretch;
+
+    gap: 5px;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    transition:
+        background 0.18s ease;
+}
+
+
+.starred-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+
+/* ========================================= */
+/* MESSAGE BUTTON */
+/* ========================================= */
+
+.starred-message {
+    flex: 1;
+
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px;
+
+    border: none;
+
+    background: transparent;
+
+    color: inherit;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+
+.starred-item-icon {
+    flex-shrink: 0;
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    color: #f5c542;
+
+    background: rgba(245, 197, 66, 0.10);
+}
+
+
+.starred-item-content {
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.starred-item-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+
+    margin-bottom: 4px;
+}
+
+
+.starred-item-sender {
+    min-width: 0;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    opacity: 0.75;
+}
+
+
+.starred-item-time {
+    flex-shrink: 0;
+
+    font-size: 10px;
+
+    opacity: 0.45;
+}
+
+
+.starred-item-text {
+    font-size: 13px;
+
+    line-height: 1.4;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    opacity: 0.9;
+}
+
+
+/* ========================================= */
+/* REMOVE BUTTON */
+/* ========================================= */
+
+.starred-remove {
+    flex-shrink: 0;
+
+    width: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    background: transparent;
+
+    color: rgba(255, 255, 255, 0.35);
+
+    cursor: pointer;
+
+    transition:
+        color 0.18s ease,
+        background 0.18s ease;
+}
+
+
+.starred-remove:hover {
+    color: #ff5c5c;
+
+    background: rgba(255, 92, 92, 0.08);
+}
+
+
+/* ========================================= */
+/* MESSAGE HIGHLIGHT */
+/* ========================================= */
+
+.starred-message-highlight {
+    position: relative;
+
+    z-index: 2;
+
+    animation:
+        starredMessageHighlight 1.6s ease;
+}
+
+
+@keyframes starredMessageHighlight {
+
+    0% {
+        box-shadow:
+            0 0 0 0
+            rgba(245, 197, 66, 0);
+    }
+
+    25% {
+        box-shadow:
+            0 0 0 5px
+            rgba(245, 197, 66, 0.45);
+    }
+
+    55% {
+        box-shadow:
+            0 0 20px 6px
+            rgba(245, 197, 66, 0.22);
+    }
+
+    100% {
+        box-shadow:
+            0 0 0 0
+            rgba(245, 197, 66, 0);
+    }
+
+}
+
+
+/* ========================================= */
+/* MOBILE */
+/* ========================================= */
+
+@media (max-width: 768px) {
+
+    .starred-panel-header {
+        min-height: 58px;
+
+        padding: 0 12px;
+    }
+
+    .starred-list {
+        padding: 8px;
+    }
+
+    .starred-item-text {
+        font-size: 12px;
+    }
+
+}
+ 

@@ -1,0 +1,31 @@
+.reaction-portal{
+
+    position:fixed;
+
+    z-index:999999;
+
+    animation:reactionFade .18s ease;
+
+    pointer-events:auto;
+
+}
+
+@keyframes reactionFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(8px) scale(.96);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0) scale(1);
+
+    }
+
+}

@@ -1,0 +1,359 @@
+/* =======================================================
+   DEVWAVE V2
+======================================================= */
+
+.voice-container{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    width:fit-content;
+
+    max-width:420px;
+
+    padding:8px 10px;
+
+    border-radius:999px;
+
+    position:relative;
+
+    background:rgba(255,255,255,.03);
+
+    backdrop-filter:blur(24px);
+
+}
+
+.voice-container.own{
+
+    margin-left:auto;
+
+}
+
+/* ============================== */
+
+.voice-play{
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    color:#fff;
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        #8b5cf6,
+
+        #34d3ff
+
+    );
+
+    box-shadow:
+
+        0 0 18px rgba(124,92,255,.40);
+
+    transition:.35s;
+
+}
+
+.voice-play:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:
+
+        0 0 30px rgba(124,92,255,.70);
+
+}
+
+.voice-play.playing{
+
+    animation:pulseGlow 1.3s infinite;
+
+}
+
+/* ============================== */
+
+.voice-wave-wrapper{
+
+    flex:1;
+
+    position:relative;
+
+    height:46px;
+
+    display:flex;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+}
+
+/* ============================== */
+
+.voice-progress{
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    bottom:0;
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        rgba(139,92,246,.20),
+
+        rgba(52,211,255,.20)
+
+    );
+
+    transition:.15s linear;
+
+}
+
+/* ============================== */
+
+.voice-wave{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    z-index:2;
+
+}
+
+/* ============================== */
+
+.wave-bar{
+
+    width:3px;
+
+    border-radius:999px;
+
+    background:
+
+    linear-gradient(
+
+        to top,
+
+        #9b5cff,
+
+        #48d9ff
+
+    );
+
+    opacity:.85;
+
+}
+
+.wave-bar.playing{
+
+    animation:waveDance .8s ease-in-out infinite;
+
+}
+
+/* ============================== */
+
+.voice-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+/* ============================== */
+
+.voice-speed{
+
+    border:none;
+
+    padding:5px 10px;
+
+    border-radius:999px;
+
+    cursor:pointer;
+
+    color:white;
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.voice-speed:hover{
+
+    background:#7b5cff;
+
+}
+
+/* ============================== */
+
+.voice-current,
+
+.voice-total{
+
+    font-size:11px;
+
+    color:#cfcfcf;
+
+}
+
+/* ============================== */
+
+.voice-icon{
+
+    width:30px;
+
+    height:30px;
+
+    border:none;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+
+    color:white;
+
+    background:transparent;
+
+    transition:.25s;
+
+}
+
+.voice-icon:hover{
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.voice-icon.active{
+
+    color:#ff5fa2;
+
+}
+
+/* ============================== */
+
+.voice-status{
+
+    font-size:18px;
+
+    user-select:none;
+
+}
+
+/* ============================== */
+
+@keyframes pulseGlow{
+
+    0%{
+
+        box-shadow:
+
+        0 0 8px #8b5cf6;
+
+    }
+
+    50%{
+
+        box-shadow:
+
+        0 0 28px #48d9ff;
+
+    }
+
+    100%{
+
+        box-shadow:
+
+        0 0 8px #8b5cf6;
+
+    }
+
+}
+
+@keyframes waveDance{
+
+    0%{
+
+        transform:scaleY(.4);
+
+    }
+
+    25%{
+
+        transform:scaleY(1.4);
+
+    }
+
+    50%{
+
+        transform:scaleY(.7);
+
+    }
+
+    75%{
+
+        transform:scaleY(1.6);
+
+    }
+
+    100%{
+
+        transform:scaleY(.4);
+
+    }
+
+}
+
+/* ============================== */
+
+@media(max-width:768px){
+
+    .voice-container{
+
+        max-width:100%;
+
+    }
+
+}

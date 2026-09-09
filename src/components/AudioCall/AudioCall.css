@@ -1,0 +1,958 @@
+/* =====================================================
+   AUDIO CALL OVERLAY
+===================================================== */
+
+.audio-call-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    backdrop-filter: blur(14px);
+
+    animation: audioCallFadeIn 0.22s ease;
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.audio-call-modal {
+    width: min(430px, 100%);
+    min-height: 560px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 25px;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 28px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(99, 102, 241, 0.2),
+            transparent 45%
+        ),
+        linear-gradient(
+            145deg,
+            #171b26,
+            #090c12
+        );
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.7);
+
+    animation: audioCallScaleIn 0.25s ease;
+}
+
+
+/* =====================================================
+   AVATAR
+===================================================== */
+
+.audio-call-avatar {
+    width: 120px;
+    height: 120px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 25px;
+
+    border-radius: 50%;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6
+        );
+
+    font-size: 48px;
+    font-weight: 700;
+
+    box-shadow:
+        0 0 0 10px rgba(99, 102, 241, 0.08),
+        0 20px 60px rgba(99, 102, 241, 0.35);
+
+    animation: audioCallPulse 2s infinite;
+}
+
+
+/* =====================================================
+   NAME
+===================================================== */
+
+.audio-call-modal h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 23px;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.audio-call-status {
+    margin-top: 8px;
+
+    color: #6ee7b7;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+.audio-call-timer {
+    margin-top: 6px;
+
+    color: #8f98a8;
+
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* =====================================================
+   CONTROLS
+===================================================== */
+
+.audio-call-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 16px;
+
+    margin-top: 55px;
+}
+
+
+/* =====================================================
+   CONTROL BUTTON
+===================================================== */
+
+.audio-call-control,
+.audio-call-end {
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    border-radius: 50%;
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.audio-call-control {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+
+.audio-call-control:hover {
+    transform: translateY(-3px);
+
+    background: rgba(255, 255, 255, 0.18);
+}
+
+
+/* =====================================================
+   CONTROL OFF
+===================================================== */
+
+.audio-call-control.is-off {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+
+/* =====================================================
+   END CALL
+===================================================== */
+
+.audio-call-end {
+    width: 60px;
+    height: 60px;
+
+    margin-left: 8px;
+
+    background: #ef4444;
+}
+
+
+.audio-call-end:hover {
+    transform: translateY(-3px);
+
+    background: #dc2626;
+}
+
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes audioCallFadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes audioCallScaleIn {
+
+    from {
+        opacity: 0;
+        transform: scale(0.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+@keyframes audioCallPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 0 10px rgba(99, 102, 241, 0.08),
+            0 20px 60px rgba(99, 102, 241, 0.35);
+    }
+
+    50% {
+        box-shadow:
+            0 0 0 18px rgba(99, 102, 241, 0.03),
+            0 20px 70px rgba(99, 102, 241, 0.45);
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .audio-call-overlay {
+        padding: 0;
+    }
+
+    .audio-call-modal {
+        width: 100%;
+        height: 100%;
+        min-height: 100vh;
+
+        border-radius: 0;
+        border: 0;
+    }
+
+    .audio-call-avatar {
+        width: 105px;
+        height: 105px;
+
+        font-size: 42px;
+    }
+
+    .audio-call-controls {
+        margin-top: 45px;
+    }
+
+}/* =====================================================
+   DEVCHAT — AUDIO CALL
+===================================================== */
+
+
+/* =====================================================
+   OVERLAY
+===================================================== */
+
+.audio-call-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(99, 102, 241, 0.16),
+            transparent 35%
+        ),
+        rgba(3, 5, 10, 0.88);
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+
+    animation:
+        audioCallFadeIn 0.25s ease forwards;
+}
+
+
+/* =====================================================
+   BACKGROUND GLOW
+===================================================== */
+
+.audio-call-overlay::before {
+    content: "";
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(99, 102, 241, 0.12),
+            transparent 70%
+        );
+
+    filter: blur(20px);
+
+    pointer-events: none;
+
+    animation:
+        audioCallBackgroundGlow 5s ease-in-out infinite;
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.audio-call-modal {
+    position: relative;
+
+    width: min(450px, 100%);
+    min-height: 590px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 50px 30px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 32px;
+
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(99, 102, 241, 0.18),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(139, 92, 246, 0.08),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(24, 28, 42, 0.98),
+            rgba(7, 10, 16, 0.99)
+        );
+
+    box-shadow:
+        0 40px 120px rgba(0, 0, 0, 0.75),
+        0 0 80px rgba(99, 102, 241, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+    animation:
+        audioCallScaleIn 0.3s cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        );
+}
+
+
+/* =====================================================
+   TOP SHINE
+===================================================== */
+
+.audio-call-modal::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 10%;
+
+    width: 80%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.18),
+            transparent
+        );
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   AVATAR
+===================================================== */
+
+.audio-call-avatar {
+    position: relative;
+
+    width: 128px;
+    height: 128px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 28px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #7c3aed
+        );
+
+    font-size: 50px;
+    font-weight: 700;
+
+    box-shadow:
+        0 0 0 8px rgba(99, 102, 241, 0.05),
+        0 0 0 16px rgba(99, 102, 241, 0.025),
+        0 25px 70px rgba(99, 102, 241, 0.35);
+
+    animation:
+        audioCallAvatarPulse 2.6s ease-in-out infinite;
+}
+
+
+/* =====================================================
+   AVATAR INNER SHINE
+===================================================== */
+
+.audio-call-avatar::after {
+    content: "";
+
+    position: absolute;
+    inset: 4px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.18),
+            transparent 45%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   CONNECTED AVATAR
+===================================================== */
+
+.audio-call-avatar.connected {
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6
+        );
+
+    box-shadow:
+        0 0 0 8px rgba(99, 102, 241, 0.06),
+        0 0 0 16px rgba(99, 102, 241, 0.025),
+        0 25px 80px rgba(99, 102, 241, 0.4);
+}
+
+
+/* =====================================================
+   CALLER NAME
+===================================================== */
+
+.audio-call-modal h2 {
+    position: relative;
+
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 25px;
+    font-weight: 650;
+
+    letter-spacing: -0.3px;
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.audio-call-status {
+    margin-top: 9px;
+
+    color: #8f98a8;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    letter-spacing: 0.2px;
+
+    transition:
+        color 0.25s ease;
+}
+
+
+/* Connected status */
+
+.audio-call-modal
+    .audio-call-status {
+    color: #6ee7b7;
+}
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+.audio-call-timer {
+    min-width: 55px;
+
+    margin-top: 7px;
+
+    color: #7f899b;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    font-variant-numeric: tabular-nums;
+
+    letter-spacing: 0.8px;
+}
+
+
+/* =====================================================
+   CONTROLS
+===================================================== */
+
+.audio-call-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 18px;
+
+    margin-top: 62px;
+}
+
+
+/* =====================================================
+   NORMAL CONTROL
+===================================================== */
+
+.audio-call-control,
+.audio-call-end {
+    position: relative;
+
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    outline: none;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* =====================================================
+   CONTROL BACKGROUND
+===================================================== */
+
+.audio-call-control {
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+
+/* =====================================================
+   CONTROL HOVER
+===================================================== */
+
+.audio-call-control:hover {
+    transform: translateY(-4px);
+
+    background:
+        rgba(255, 255, 255, 0.14);
+
+    border-color:
+        rgba(255, 255, 255, 0.14);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =====================================================
+   CONTROL ACTIVE
+===================================================== */
+
+.audio-call-control:active,
+.audio-call-end:active {
+    transform: scale(0.94);
+}
+
+
+/* =====================================================
+   CONTROL FOCUS
+===================================================== */
+
+.audio-call-control:focus-visible,
+.audio-call-end:focus-visible {
+    box-shadow:
+        0 0 0 4px rgba(99, 102, 241, 0.22);
+}
+
+
+/* =====================================================
+   MIC / SPEAKER OFF
+===================================================== */
+
+.audio-call-control.is-off {
+    background:
+        rgba(255, 255, 255, 0.16);
+
+    color: #d7dbe4;
+
+    border-color:
+        rgba(255, 255, 255, 0.12);
+}
+
+
+/* =====================================================
+   END CALL
+===================================================== */
+
+.audio-call-end {
+    width: 64px;
+    height: 64px;
+
+    margin-left: 8px;
+
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ef4444,
+            #dc2626
+        );
+
+    box-shadow:
+        0 12px 35px rgba(239, 68, 68, 0.28);
+}
+
+
+/* =====================================================
+   END CALL HOVER
+===================================================== */
+
+.audio-call-end:hover {
+    transform: translateY(-4px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #f05252,
+            #e02b2b
+        );
+
+    box-shadow:
+        0 16px 42px rgba(239, 68, 68, 0.4);
+}
+
+
+/* =====================================================
+   DISABLED / TOUCH
+===================================================== */
+
+.audio-call-control:disabled,
+.audio-call-end:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =====================================================
+   FADE IN
+===================================================== */
+
+@keyframes audioCallFadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+/* =====================================================
+   SCALE IN
+===================================================== */
+
+@keyframes audioCallScaleIn {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(12px)
+            scale(0.94);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* =====================================================
+   AVATAR PULSE
+===================================================== */
+
+@keyframes audioCallAvatarPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 0 8px rgba(99, 102, 241, 0.05),
+            0 0 0 16px rgba(99, 102, 241, 0.025),
+            0 25px 70px rgba(99, 102, 241, 0.35);
+    }
+
+    50% {
+        box-shadow:
+            0 0 0 12px rgba(99, 102, 241, 0.06),
+            0 0 0 23px rgba(99, 102, 241, 0.025),
+            0 28px 82px rgba(99, 102, 241, 0.46);
+    }
+
+}
+
+
+/* =====================================================
+   BACKGROUND GLOW ANIMATION
+===================================================== */
+
+@keyframes audioCallBackgroundGlow {
+
+    0%,
+    100% {
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .audio-call-overlay {
+        padding: 0;
+    }
+
+
+    .audio-call-modal {
+        width: 100%;
+        height: 100%;
+        min-height: 100vh;
+
+        padding:
+            40px 22px;
+
+        border-radius: 0;
+
+        border: none;
+    }
+
+
+    .audio-call-avatar {
+        width: 112px;
+        height: 112px;
+
+        font-size: 44px;
+    }
+
+
+    .audio-call-modal h2 {
+        font-size: 23px;
+    }
+
+
+    .audio-call-controls {
+        gap: 14px;
+
+        margin-top: 50px;
+    }
+
+
+    .audio-call-control {
+        width: 54px;
+        height: 54px;
+    }
+
+
+    .audio-call-end {
+        width: 60px;
+        height: 60px;
+
+        margin-left: 5px;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .audio-call-avatar {
+        width: 100px;
+        height: 100px;
+
+        font-size: 40px;
+    }
+
+
+    .audio-call-controls {
+        gap: 11px;
+    }
+
+
+    .audio-call-control {
+        width: 50px;
+        height: 50px;
+    }
+
+
+    .audio-call-end {
+        width: 56px;
+        height: 56px;
+    }
+
+}
+
+
+/* =====================================================
+   REDUCE MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .audio-call-overlay,
+    .audio-call-modal,
+    .audio-call-avatar {
+        animation: none;
+    }
+
+}

@@ -1,0 +1,41 @@
+.message-status{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.message-status svg{
+
+    width:14px;
+
+    height:14px;
+
+}
+
+.sending{
+
+    color:#9CA3AF;
+
+}
+
+.sent{
+
+    color:#C9CED6;
+
+}
+
+.delivered{
+
+    color:#C9CED6;
+
+}
+
+.seen{
+
+    color:#4CC9F0;
+
+}

@@ -1,0 +1,87 @@
+/* ======================================================
+   MESSAGE AREA
+====================================================== */
+
+.message{
+
+    flex:1;
+
+    background:#0f172a;
+
+    overflow:hidden;
+
+    display:flex;
+
+}
+
+.message-container{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px;
+
+}
+
+.message-empty{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+.message-icon{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    background:#1e293b;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:42px;
+
+    margin-bottom:20px;
+
+}
+
+.message-empty h2{
+
+    margin:0;
+
+    color:white;
+
+    font-size:28px;
+
+    font-weight:700;
+
+}
+
+.message-empty p{
+
+    margin-top:10px;
+
+    color:#94a3b8;
+
+    font-size:15px;
+
+}

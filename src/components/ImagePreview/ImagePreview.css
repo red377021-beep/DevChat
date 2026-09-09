@@ -1,0 +1,305 @@
+/* =========================================================
+   IMAGE PREVIEW
+========================================================= */
+
+.image-preview-panel {
+
+    width: 100%;
+    max-width: 330px;
+
+    margin: 0 0 8px 0;
+    padding: 7px;
+
+    border-radius: 14px;
+
+    background: #111827;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.25);
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.image-preview-header {
+
+    height: 26px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 5px;
+}
+
+
+.image-preview-title {
+
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    color: #e5e7eb;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+.image-preview-clear {
+
+    width: 24px;
+    height: 24px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,.08);
+
+    color: #cbd5e1;
+
+    cursor: pointer;
+}
+
+
+.image-preview-clear:hover {
+
+    background: rgba(239,68,68,.25);
+
+    color: #fff;
+
+}
+
+
+/* =========================================================
+   MAIN PREVIEW
+========================================================= */
+
+.image-preview-main {
+
+    width: 100%;
+
+    height: 145px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background: #080d18;
+}
+
+
+.image-preview-main img {
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    border-radius: 9px;
+
+}
+
+
+/* =========================================================
+   THUMBNAILS
+========================================================= */
+
+.image-preview-thumbnails {
+
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    height: 48px;
+
+    margin-top: 6px;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+}
+
+
+.image-preview-thumbnails::-webkit-scrollbar {
+
+    display: none;
+
+}
+
+
+/* =========================================================
+   THUMBNAIL
+========================================================= */
+
+.image-preview-thumbnail {
+
+    position: relative;
+
+    flex: 0 0 43px;
+
+    width: 43px;
+    height: 43px;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    background: #0f172a;
+}
+
+
+.image-preview-thumbnail.active {
+
+    border: 2px solid #7c3aed;
+
+}
+
+
+.image-preview-thumbnail-button {
+
+    width: 100%;
+    height: 100%;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+}
+
+
+.image-preview-thumbnail-button img {
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+}
+
+
+/* =========================================================
+   REMOVE
+========================================================= */
+
+.image-preview-remove {
+
+    position: absolute;
+
+    top: 2px;
+    right: 2px;
+
+    width: 15px;
+    height: 15px;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(0,0,0,.75);
+
+    color: #fff;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   ADD MORE
+========================================================= */
+
+.image-preview-add {
+
+    flex: 0 0 43px;
+
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border-radius: 8px;
+
+    border: 1px dashed rgba(255,255,255,.2);
+
+    background: rgba(255,255,255,.04);
+
+    color: #cbd5e1;
+
+    cursor: pointer;
+
+    transition: .18s ease;
+
+}
+
+
+.image-preview-add:hover {
+
+    background: rgba(124,58,237,.18);
+
+    border-color: #7c3aed;
+
+    color: #fff;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .image-preview-panel {
+
+        max-width: 280px;
+
+    }
+
+    .image-preview-main {
+
+        height: 120px;
+
+    }
+
+}

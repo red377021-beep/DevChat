@@ -1,0 +1,27 @@
+.devchat-emoji-picker{
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+
+}
+
+.EmojiPickerReact{
+
+    --epr-bg-color:#18191d !important;
+
+    --epr-category-label-bg-color:#18191d !important;
+
+    --epr-search-border-color:#2f3138 !important;
+
+    --epr-hover-bg-color:#2d3038 !important;
+
+    --epr-highlight-color:#5865f2 !important;
+
+    border:none !important;
+
+    border-radius:18px !important;
+
+}

@@ -1,0 +1,711 @@
+/* =========================================================
+   GROUP SETTINGS
+   ========================================================= */
+
+.group-settings {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    padding: 24px;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.group-settings-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-bottom: 24px;
+}
+
+
+.group-settings-header-icon {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(124, 92, 255, 0.18);
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124, 92, 255, 0.16),
+            rgba(79, 140, 255, 0.08)
+        );
+
+    color: #9b8cff;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+
+.group-settings-header-content {
+    min-width: 0;
+}
+
+
+.group-settings-header h2 {
+    margin: 0;
+
+    font-size: 22px;
+    font-weight: 750;
+    letter-spacing: -0.35px;
+}
+
+
+.group-settings-header p {
+    margin: 5px 0 0;
+
+    color: rgba(255, 255, 255, 0.42);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.group-settings-section {
+    margin-bottom: 18px;
+
+    padding: 17px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.045),
+            rgba(255, 255, 255, 0.015)
+        );
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.018);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+
+.group-settings-title {
+    margin-bottom: 11px;
+
+    color: rgba(255, 255, 255, 0.35);
+
+    font-size: 11px;
+    font-weight: 750;
+
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   SETTINGS ROW
+   ========================================================= */
+
+.group-settings-row {
+    width: 100%;
+
+    min-height: 62px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 9px 5px;
+
+    border: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+
+    background: transparent;
+
+    color: inherit;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        padding 0.2s ease;
+}
+
+
+.group-settings-row:last-child {
+    border-bottom: 0;
+}
+
+
+.group-settings-row:hover {
+    padding-left: 9px;
+    padding-right: 9px;
+
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.035);
+}
+
+
+.group-settings-row-icon {
+    width: 37px;
+    height: 37px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.065);
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    color: rgba(255, 255, 255, 0.62);
+}
+
+
+.group-settings-row-content {
+    min-width: 0;
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.group-settings-row-content strong {
+    color: rgba(255, 255, 255, 0.88);
+
+    font-size: 13px;
+    font-weight: 650;
+}
+
+
+.group-settings-row-content small {
+    margin-top: 3px;
+
+    color: rgba(255, 255, 255, 0.35);
+
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+
+.group-settings-chevron {
+    flex-shrink: 0;
+
+    color: rgba(255, 255, 255, 0.27);
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.group-settings-row:hover .group-settings-chevron {
+    color: rgba(255, 255, 255, 0.65);
+
+    transform: translateX(2px);
+}
+
+
+/* =========================================================
+   TOGGLE ROW
+   ========================================================= */
+
+.group-settings-toggle-row {
+    min-height: 62px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 9px 5px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+
+.group-settings-toggle-row:last-child {
+    border-bottom: 0;
+}
+
+
+/* =========================================================
+   TOGGLE
+   ========================================================= */
+
+.group-toggle {
+    position: relative;
+
+    width: 43px;
+    height: 24px;
+
+    flex-shrink: 0;
+
+    padding: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.09);
+
+    cursor: pointer;
+
+    transition:
+        background 0.22s ease,
+        border-color 0.22s ease;
+}
+
+
+.group-toggle span {
+    position: absolute;
+
+    top: 3px;
+    left: 3px;
+
+    width: 16px;
+    height: 16px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.68);
+
+    box-shadow:
+        0 2px 7px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.22s ease,
+        background 0.22s ease;
+}
+
+
+.group-toggle.active {
+    border-color: rgba(124, 92, 255, 0.42);
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c5cff,
+            #5d7cff
+        );
+}
+
+
+.group-toggle.active span {
+    transform: translateX(19px);
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   SECURITY
+   ========================================================= */
+
+.group-settings-security {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 13px;
+
+    border: 1px solid rgba(83, 220, 151, 0.1);
+    border-radius: 12px;
+
+    background: rgba(83, 220, 151, 0.035);
+}
+
+
+.group-settings-security-icon {
+    width: 37px;
+    height: 37px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: rgba(83, 220, 151, 0.08);
+
+    color: #70e5a6;
+}
+
+
+.group-settings-security strong {
+    display: block;
+
+    color: rgba(255, 255, 255, 0.84);
+
+    font-size: 13px;
+}
+
+
+.group-settings-security p {
+    margin: 4px 0 0;
+
+    color: rgba(255, 255, 255, 0.36);
+
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   SAVE
+   ========================================================= */
+
+.group-settings-save {
+    width: 100%;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    margin-bottom: 22px;
+
+    border: 1px solid rgba(124, 92, 255, 0.25);
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c5cff,
+            #5d7cff
+        );
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 28px rgba(92, 82, 220, 0.2);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+
+.group-settings-save:hover {
+    transform: translateY(-1px);
+
+    filter: brightness(1.06);
+
+    box-shadow:
+        0 14px 32px rgba(92, 82, 220, 0.28);
+}
+
+
+.group-settings-save:active {
+    transform: scale(0.99);
+}
+
+
+.group-settings-save.saved {
+    background:
+        linear-gradient(
+            135deg,
+            #32b875,
+            #249a62
+        );
+
+    border-color: rgba(83, 220, 151, 0.25);
+}
+
+
+/* =========================================================
+   DANGER ZONE
+   ========================================================= */
+
+.group-settings-danger {
+    padding: 17px;
+
+    border: 1px solid rgba(255, 92, 110, 0.1);
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 92, 110, 0.035),
+            rgba(255, 255, 255, 0.012)
+        );
+}
+
+
+.group-settings-danger .group-settings-title {
+    color: rgba(255, 120, 135, 0.62);
+}
+
+
+.group-settings-danger-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 13px;
+
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+
+    background: rgba(0, 0, 0, 0.12);
+}
+
+
+.group-settings-danger-info {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+}
+
+
+.group-settings-danger-icon {
+    width: 37px;
+    height: 37px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: rgba(255, 92, 110, 0.08);
+
+    color: #ff7d8d;
+}
+
+
+.group-settings-danger-info strong {
+    display: block;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 13px;
+}
+
+
+.group-settings-danger-info p {
+    margin: 4px 0 0;
+
+    color: rgba(255, 255, 255, 0.35);
+
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   DELETE
+   ========================================================= */
+
+.group-delete-button {
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    padding: 0 12px;
+
+    border: 1px solid rgba(255, 92, 110, 0.17);
+    border-radius: 10px;
+
+    background: rgba(255, 92, 110, 0.055);
+
+    color: rgba(255, 125, 141, 0.9);
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 650;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.group-delete-button:hover {
+    background: rgba(255, 92, 110, 0.11);
+
+    border-color: rgba(255, 92, 110, 0.3);
+
+    color: #ff9ba7;
+}
+
+
+.group-delete-button:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+.group-settings button:focus-visible {
+    outline: 2px solid rgba(124, 92, 255, 0.75);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .group-settings {
+        padding: 20px 16px;
+    }
+
+
+    .group-settings-section {
+        padding: 15px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+    .group-settings {
+        padding: 15px 11px;
+    }
+
+
+    .group-settings-header {
+        margin-bottom: 18px;
+    }
+
+
+    .group-settings-header-icon {
+        width: 43px;
+        height: 43px;
+    }
+
+
+    .group-settings-header h2 {
+        font-size: 19px;
+    }
+
+
+    .group-settings-section {
+        padding: 13px;
+
+        border-radius: 14px;
+    }
+
+
+    .group-settings-row,
+    .group-settings-toggle-row {
+        min-height: 58px;
+    }
+
+
+    .group-settings-danger {
+        padding: 13px;
+    }
+
+
+    .group-settings-danger-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    .group-delete-button {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .group-settings {
+        padding: 12px 8px;
+    }
+
+
+    .group-settings-row-content small {
+        font-size: 10px;
+    }
+
+
+    .group-settings-row-content strong {
+        font-size: 12px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .group-settings-row,
+    .group-settings-chevron,
+    .group-toggle,
+    .group-toggle span,
+    .group-settings-save,
+    .group-delete-button {
+        transition: none;
+    }
+
+}

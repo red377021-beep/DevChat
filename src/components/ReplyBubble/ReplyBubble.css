@@ -1,0 +1,77 @@
+.reply-bubble{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    margin-bottom:10px;
+
+    padding:10px;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.06);
+
+    backdrop-filter:blur(8px);
+
+}
+
+.reply-line{
+
+    width:4px;
+
+    align-self:stretch;
+
+    border-radius:20px;
+
+    background:linear-gradient(
+        180deg,
+        #8B5CF6,
+        #6D28D9
+    );
+
+}
+
+.reply-body{
+
+    flex:1;
+
+    overflow:hidden;
+
+}
+
+.reply-sender{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    color:#A78BFA;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    margin-bottom:4px;
+
+}
+
+.reply-body p{
+
+    margin:0;
+
+    color:#CBD5E1;
+
+    font-size:12px;
+
+    overflow:hidden;
+
+    white-space:nowrap;
+
+    text-overflow:ellipsis;
+
+}

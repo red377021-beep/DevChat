@@ -1,0 +1,315 @@
+/* =====================================================
+   DEVCHAT VIDEO PREVIEW
+===================================================== */
+
+.bubble-video-preview {
+
+    width: 100%;
+
+    display: grid;
+
+    gap: 8px;
+
+    margin-top: 8px;
+
+}
+
+
+/* =====================================================
+   GRID TYPES
+===================================================== */
+
+.bubble-video-preview.single {
+
+    grid-template-columns: 1fr;
+
+    max-width: 320px;
+
+}
+
+
+.bubble-video-preview.double {
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    max-width: 420px;
+
+}
+
+
+.bubble-video-preview.multiple {
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    max-width: 420px;
+
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.bubble-video-preview-card {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 10;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    background:
+        #151821;
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    box-shadow:
+        0 8px 24px
+        rgba(0,0,0,.22);
+
+}
+
+
+/* =====================================================
+   VIDEO THUMBNAIL
+===================================================== */
+
+.bubble-video-preview-video {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    pointer-events: none;
+
+}
+
+
+/* =====================================================
+   OVERLAY
+===================================================== */
+
+.bubble-video-preview-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.05),
+            rgba(0,0,0,.48)
+        );
+
+    pointer-events: none;
+
+}
+
+
+/* =====================================================
+   PLAY
+===================================================== */
+
+.bubble-video-preview-play {
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    width: 48px;
+
+    height: 48px;
+
+    transform:
+        translate(-50%, -50%);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: #fff;
+
+    background:
+        rgba(0,0,0,.55);
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    backdrop-filter:
+        blur(10px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.35);
+
+    pointer-events: none;
+
+}
+
+
+/* =====================================================
+   REMOVE
+===================================================== */
+
+.bubble-video-preview-remove {
+
+    position: absolute;
+
+    top: 7px;
+
+    right: 7px;
+
+    width: 30px;
+
+    height: 30px;
+
+    padding: 0;
+
+    border: 1px solid
+        rgba(255,255,255,.15);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #fff;
+
+    background:
+        rgba(0,0,0,.62);
+
+    backdrop-filter:
+        blur(10px);
+
+    cursor: pointer;
+
+    transition:
+        background .18s ease,
+        transform .18s ease;
+
+    z-index: 5;
+
+}
+
+
+.bubble-video-preview-remove:hover {
+
+    background:
+        rgba(239,68,68,.88);
+
+    transform:
+        scale(1.08);
+
+}
+
+
+/* =====================================================
+   NAME
+===================================================== */
+
+.bubble-video-preview-name {
+
+    position: absolute;
+
+    left: 8px;
+
+    right: 8px;
+
+    bottom: 7px;
+
+    z-index: 4;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+    color: #fff;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    text-shadow:
+        0 1px 4px
+        rgba(0,0,0,.8);
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .bubble-video-preview.single {
+
+        max-width: 280px;
+
+    }
+
+
+    .bubble-video-preview.double,
+    .bubble-video-preview.multiple {
+
+        max-width: 100%;
+
+        gap: 6px;
+
+    }
+
+
+    .bubble-video-preview-card {
+
+        border-radius: 10px;
+
+    }
+
+
+    .bubble-video-preview-play {
+
+        width: 42px;
+
+        height: 42px;
+
+    }
+
+
+    .bubble-video-preview-remove {
+
+        width: 28px;
+
+        height: 28px;
+
+    }
+
+}

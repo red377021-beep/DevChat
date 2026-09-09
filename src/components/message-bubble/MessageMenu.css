@@ -1,0 +1,150 @@
+/* ======================================================
+   DevChat
+   Message Bubble
+====================================================== */
+
+.message-row{
+
+    width:100%;
+
+    display:flex;
+
+    animation:messagePop .25s ease;
+
+}
+
+.message-row.mine{
+
+    justify-content:flex-end;
+
+}
+
+.message-row.other{
+
+    justify-content:flex-start;
+
+}
+
+/* Bubble */
+
+.message-bubble{
+
+    position:relative;
+
+    max-width:72%;
+
+    min-width:70px;
+
+    padding:12px 15px;
+
+    border-radius:18px;
+
+    word-break:break-word;
+
+    transition:.25s;
+
+    cursor:pointer;
+
+}
+
+/* My Message */
+
+.message-row.mine .message-bubble{
+
+    background:#4f7cff;
+
+    color:white;
+
+    border-bottom-right-radius:6px;
+
+}
+
+/* Other Message */
+
+.message-row.other .message-bubble{
+
+    background:#1f2937;
+
+    color:white;
+
+    border-bottom-left-radius:6px;
+
+}
+
+/* Hover */
+
+.message-bubble:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* Text */
+
+.message-text{
+
+    font-size:15px;
+
+    line-height:1.55;
+
+    white-space:pre-wrap;
+
+}
+
+/* Footer */
+
+.message-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    gap:6px;
+
+    margin-top:8px;
+
+}
+
+/* Time */
+
+.message-time{
+
+    font-size:11px;
+
+    opacity:.7;
+
+}
+
+/* Seen */
+
+.message-status{
+
+    color:#dbeafe;
+
+    font-size:12px;
+
+}
+
+/* Animation */
+
+@keyframes messagePop{
+
+from{
+
+opacity:0;
+
+transform:translateY(8px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}

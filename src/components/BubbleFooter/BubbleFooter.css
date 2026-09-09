@@ -1,0 +1,139 @@
+.bubble-footer{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    gap:6px;
+
+    margin-top:6px;
+
+    font-size:11px;
+
+    color:#9ca3af;
+
+    user-select:none;
+
+}
+
+.bubble-meta{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    margin-right:auto;
+
+}
+
+.edited-label,
+.forwarded-label,
+.pinned-label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:4px;
+
+    padding:2px 6px;
+
+    border-radius:20px;
+
+    font-size:10px;
+
+    font-weight:500;
+
+    background:rgba(255,255,255,.06);
+
+    color:#bfc6d1;
+
+}
+
+.message-time{
+
+    font-size:11px;
+
+    color:#a8adb8;
+
+    white-space:nowrap;
+
+}
+
+/* ========================= */
+/* Status Icons */
+/* ========================= */
+
+.status-icon{
+
+    width:14px;
+
+    height:14px;
+
+    flex-shrink:0;
+
+}
+
+/* Sending */
+
+.status-icon.sending{
+
+    color:#fbbf24;
+
+    animation:spinStatus 1s linear infinite;
+
+}
+
+/* Sent */
+
+.status-icon.sent{
+
+    color:#b8bcc7;
+
+}
+
+/* Delivered */
+
+.status-icon.delivered{
+
+    color:#8aa1ff;
+
+}
+
+/* Seen */
+
+.status-icon.seen{
+
+    color:#3b82f6;
+
+}
+
+/* Failed */
+
+.status-icon.failed{
+
+    color:#ef4444;
+
+}
+
+/* ========================= */
+
+@keyframes spinStatus{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}

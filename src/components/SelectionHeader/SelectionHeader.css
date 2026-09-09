@@ -1,0 +1,41 @@
+.selection-toolbar{
+
+    width:100%;
+    height:60px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 18px;
+
+    background:#202c33;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.selection-left{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+}
+
+.selection-right{
+
+    display:flex;
+    align-items:center;
+
+}
+
+.selection-count{
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:600;
+
+}

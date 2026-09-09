@@ -1,0 +1,517 @@
+/* =========================================================
+   GROUP MESSAGE INPUT
+   ========================================================= */
+
+.group-message-input-wrapper {
+    width: 100%;
+    padding: 12px 16px 16px;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(10, 14, 24, 0.72),
+            rgba(7, 10, 18, 0.96)
+        );
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+}
+
+
+/* =========================================================
+   REPLY PREVIEW
+   ========================================================= */
+
+.group-input-reply {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto 10px;
+
+    padding: 10px 12px 10px 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.025)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    animation: groupReplyIn 0.2s ease;
+}
+
+
+.group-input-reply-accent {
+    width: 3px;
+    align-self: stretch;
+    flex-shrink: 0;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #7c5cff,
+            #4f8cff
+        );
+}
+
+
+.group-input-reply-content {
+    min-width: 0;
+    flex: 1;
+}
+
+
+.group-input-reply-content span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #8d7cff;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.group-input-reply-content p {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.72);
+
+    font-size: 13px;
+    line-height: 1.4;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.group-input-reply-close {
+    width: 30px;
+    height: 30px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.045);
+
+    color: rgba(255, 255, 255, 0.65);
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.group-input-reply-close:hover {
+    background: rgba(255, 255, 255, 0.09);
+
+    color: #ffffff;
+
+    border-color: rgba(255, 255, 255, 0.14);
+
+    transform: scale(1.04);
+}
+
+
+.group-input-reply-close:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* =========================================================
+   INPUT BAR
+   ========================================================= */
+
+.group-message-input {
+    width: 100%;
+    max-width: 1000px;
+
+    min-height: 54px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+
+    padding: 6px 7px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.065),
+            rgba(255, 255, 255, 0.025)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 17px;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.group-message-input:focus-within {
+    border-color: rgba(124, 92, 255, 0.34);
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.22),
+        0 0 0 3px rgba(124, 92, 255, 0.055);
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+
+.group-input-button,
+.group-send-button {
+    width: 40px;
+    height: 40px;
+
+    flex: 0 0 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid transparent;
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.group-input-button {
+    background: transparent;
+
+    color: rgba(255, 255, 255, 0.56);
+}
+
+
+.group-input-button:hover {
+    background: rgba(255, 255, 255, 0.065);
+
+    color: #ffffff;
+
+    border-color: rgba(255, 255, 255, 0.07);
+
+    transform: translateY(-1px);
+}
+
+
+.group-input-button:active {
+    transform: scale(0.95);
+}
+
+
+.group-input-button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* =========================================================
+   TEXTAREA
+   ========================================================= */
+
+.group-message-input textarea {
+    flex: 1;
+
+    width: 100%;
+    min-width: 0;
+
+    min-height: 40px;
+    max-height: 130px;
+
+    padding: 10px 8px;
+
+    resize: none;
+
+    border: 0;
+    outline: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 20px;
+
+    scrollbar-width: thin;
+}
+
+
+.group-message-input textarea::placeholder {
+    color: rgba(255, 255, 255, 0.34);
+}
+
+
+.group-message-input textarea:disabled {
+    color: rgba(255, 255, 255, 0.3);
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   SEND BUTTON
+   ========================================================= */
+
+.group-send-button {
+    background:
+        linear-gradient(
+            135deg,
+            #7c5cff,
+            #5d7cff
+        );
+
+    color: #ffffff;
+
+    border-color: rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 7px 20px rgba(92, 82, 220, 0.25);
+}
+
+
+.group-send-button:hover {
+    transform: translateY(-1px) scale(1.02);
+
+    box-shadow:
+        0 10px 25px rgba(92, 82, 220, 0.32);
+}
+
+
+.group-send-button:active {
+    transform: scale(0.94);
+}
+
+
+.group-send-button:disabled {
+    opacity: 0.4;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   MIC
+   ========================================================= */
+
+.group-mic-button {
+    color: rgba(255, 255, 255, 0.62);
+}
+
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+.group-input-button:focus-visible,
+.group-send-button:focus-visible,
+.group-input-reply-close:focus-visible {
+    outline: 2px solid rgba(124, 92, 255, 0.8);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes groupReplyIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .group-message-input-wrapper {
+        padding: 10px 12px 13px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+    .group-message-input-wrapper {
+        padding: 8px 9px 10px;
+    }
+
+
+    .group-message-input {
+        min-height: 50px;
+
+        padding: 5px;
+
+        border-radius: 15px;
+    }
+
+
+    .group-input-button,
+    .group-send-button {
+        width: 37px;
+        height: 37px;
+
+        flex-basis: 37px;
+
+        border-radius: 10px;
+    }
+
+
+    .group-message-input textarea {
+        min-height: 37px;
+
+        padding: 8px 5px;
+
+        font-size: 13px;
+        line-height: 19px;
+    }
+
+
+    .group-input-reply {
+        margin-bottom: 8px;
+
+        padding: 8px 9px 8px 11px;
+
+        border-radius: 12px;
+    }
+
+
+    .group-input-reply-close {
+        width: 28px;
+        height: 28px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .group-message-input-wrapper {
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+
+
+    .group-message-input {
+        gap: 3px;
+    }
+
+
+    .group-input-button,
+    .group-send-button {
+        width: 34px;
+        height: 34px;
+
+        flex-basis: 34px;
+    }
+
+
+    .group-message-input textarea {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+
+    .group-input-reply-content span {
+        font-size: 11px;
+    }
+
+
+    .group-input-reply-content p {
+        font-size: 12px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .group-input-button,
+    .group-send-button,
+    .group-input-reply-close {
+        transition: none;
+    }
+
+
+    .group-input-reply {
+        animation: none;
+    }
+
+}

@@ -1,0 +1,231 @@
+.ai-message {
+    width: 100%;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    padding: 16px 12px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+
+    animation: aiMessageIn 0.25s ease;
+}
+
+
+/* =====================================================
+   AVATAR
+===================================================== */
+
+.ai-message__avatar {
+    width: 34px;
+    height: 34px;
+
+    flex: 0 0 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 11px;
+
+    background: rgba(255, 255, 255, 0.055);
+
+    color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
+
+.ai-message__body {
+    min-width: 0;
+    flex: 1;
+}
+
+
+.ai-message__top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 6px;
+}
+
+
+.ai-message__name {
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+.ai-message__time {
+    color: rgba(255, 255, 255, 0.28);
+
+    font-size: 10px;
+}
+
+
+.ai-message__content {
+    color: rgba(255, 255, 255, 0.76);
+
+    font-size: 14px;
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+
+/* =====================================================
+   USER MESSAGE
+===================================================== */
+
+.ai-message--user {
+    background: rgba(255, 255, 255, 0.018);
+}
+
+
+.ai-message--user .ai-message__avatar {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+
+.ai-message--user .ai-message__content {
+    color: rgba(255, 255, 255, 0.86);
+}
+
+
+/* =====================================================
+   ASSISTANT ACTIONS
+===================================================== */
+
+.ai-message__actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    margin-top: 10px;
+}
+
+
+.ai-message__actions button {
+    min-height: 28px;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 5px 8px;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: rgba(255, 255, 255, 0.34);
+
+    font-family: inherit;
+    font-size: 10px;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.ai-message__actions button:hover {
+    color: rgba(255, 255, 255, 0.78);
+
+    background: rgba(255, 255, 255, 0.05);
+
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+
+.ai-message__actions button:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.45);
+    outline-offset: 2px;
+}
+
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+
+@keyframes aiMessageIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .ai-message {
+        gap: 9px;
+        padding: 13px 5px;
+    }
+
+    .ai-message__avatar {
+        width: 31px;
+        height: 31px;
+        flex-basis: 31px;
+        border-radius: 10px;
+    }
+
+    .ai-message__content {
+        font-size: 13px;
+        line-height: 1.65;
+    }
+
+}
+
+
+@media (max-width: 380px) {
+
+    .ai-message__actions {
+        gap: 2px;
+    }
+
+    .ai-message__actions button {
+        padding: 4px 6px;
+    }
+
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .ai-message {
+        animation: none;
+    }
+
+    .ai-message__actions button {
+        transition: none;
+    }
+
+}

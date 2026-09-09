@@ -1,0 +1,855 @@
+/* =========================================================
+   DEVCHAT — STORIES PAGE
+   PRODUCTION / PREMIUM UI
+========================================================= */
+
+.stories-page {
+    position: relative;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 100%;
+
+    box-sizing: border-box;
+
+    padding:
+        26px
+        28px
+        35px;
+
+    overflow-x: hidden;
+
+    color:
+        var(
+            --text-primary,
+            #ffffff
+        );
+
+    background:
+        radial-gradient(
+            circle at 15% 0%,
+            rgba(105, 82, 255, 0.075),
+            transparent 32%
+        ),
+
+        radial-gradient(
+            circle at 90% 15%,
+            rgba(63, 135, 255, 0.045),
+            transparent 30%
+        );
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.stories-page__header {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 24px;
+
+    margin-bottom: 20px;
+}
+
+
+.stories-page__heading {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    min-width: 0;
+}
+
+
+.stories-page__icon {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 13px;
+
+    color: #a99cff;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(124, 101, 255, 0.20),
+            rgba(73, 104, 255, 0.07)
+        );
+
+    border:
+        1px solid
+        rgba(140, 120, 255, 0.18);
+
+    box-shadow:
+        0 10px 30px
+        rgba(76, 56, 190, 0.12);
+
+    backdrop-filter:
+        blur(12px);
+}
+
+
+.stories-page__title-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+}
+
+
+.stories-page__title-row h1 {
+    margin: 0;
+
+    font-size: 23px;
+
+    line-height: 1.15;
+
+    font-weight: 760;
+
+    letter-spacing:
+        -0.55px;
+
+    color:
+        var(
+            --text-primary,
+            #ffffff
+        );
+}
+
+
+.stories-page__count {
+    min-width: 20px;
+    height: 20px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        0
+        6px;
+
+    box-sizing: border-box;
+
+    border-radius: 999px;
+
+    background:
+        rgba(112, 92, 255, 0.15);
+
+    border:
+        1px solid
+        rgba(112, 92, 255, 0.20);
+
+    color:
+        #a99cff;
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+.stories-page__heading p {
+    margin:
+        5px
+        0
+        0;
+
+    color:
+        var(
+            --text-secondary,
+            rgba(255,255,255,0.45)
+        );
+
+    font-size: 12px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   ADD BUTTON
+========================================================= */
+
+.stories-page__add {
+    min-height: 41px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    flex-shrink: 0;
+
+    padding:
+        0
+        16px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius: 11px;
+
+    outline: none;
+
+    cursor: pointer;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7562ff,
+            #5540d5
+        );
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 680;
+
+    box-shadow:
+        0 10px 28px
+        rgba(88, 66, 215, 0.24);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+
+.stories-page__add:hover {
+    transform:
+        translateY(-2px);
+
+    filter:
+        brightness(1.06);
+
+    box-shadow:
+        0 14px 35px
+        rgba(88, 66, 215, 0.32);
+}
+
+
+.stories-page__add:active {
+    transform:
+        scale(0.96);
+}
+
+
+.stories-page__add:focus-visible {
+    box-shadow:
+        0 0 0 3px
+        rgba(117, 98, 255, 0.18),
+
+        0 12px 30px
+        rgba(88, 66, 215, 0.28);
+}
+
+
+/* =========================================================
+   INFO BAR
+========================================================= */
+
+.stories-page__info {
+    width: 100%;
+
+    min-height: 34px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 4px;
+
+    padding:
+        0
+        2px;
+
+    box-sizing: border-box;
+
+    color:
+        rgba(255,255,255,0.45);
+
+    font-size: 10px;
+}
+
+
+.stories-page__info-left,
+.stories-page__expiry {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+}
+
+
+.stories-page__status-dot {
+    width: 6px;
+    height: 6px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        #7d6aff;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(125,106,255,0.08);
+}
+
+
+.stories-page__expiry {
+    color:
+        rgba(255,255,255,0.34);
+}
+
+
+/* =========================================================
+   STORIES SECTION
+========================================================= */
+
+.stories-page__section {
+    width: 100%;
+
+    padding:
+        8px
+        0
+        15px;
+
+    box-sizing: border-box;
+}
+
+
+.stories-page__list {
+    width: 100%;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 15px;
+
+    overflow-x: auto;
+    overflow-y: visible;
+
+    padding:
+        8px
+        4px
+        16px;
+
+    box-sizing: border-box;
+
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+}
+
+
+.stories-page__list::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.stories-page__empty {
+    position: relative;
+
+    width:
+        min(
+            440px,
+            calc(100% - 20px)
+        );
+
+    margin:
+        28px
+        auto
+        0;
+
+    padding:
+        42px
+        28px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.075);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.035),
+            rgba(255,255,255,0.012)
+        );
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,0.18);
+
+    backdrop-filter:
+        blur(18px);
+
+    animation:
+        storiesEmptyIn
+        0.45s
+        ease
+        both;
+}
+
+
+.stories-page__empty-glow {
+    position: absolute;
+
+    top: -100px;
+    left: 50%;
+
+    width: 230px;
+    height: 230px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        rgba(107, 88, 255, 0.12);
+
+    filter:
+        blur(60px);
+
+    pointer-events: none;
+}
+
+
+.stories-page__empty-icon {
+    position: relative;
+
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 17px;
+
+    border-radius: 19px;
+
+    color:
+        #a99cff;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(117, 98, 255, 0.18),
+            rgba(80, 103, 255, 0.08)
+        );
+
+    border:
+        1px solid
+        rgba(130,110,255,0.18);
+
+    box-shadow:
+        0 15px 35px
+        rgba(77,58,190,0.14);
+}
+
+
+.stories-page__empty h2 {
+    position: relative;
+
+    margin:
+        0
+        0
+        8px;
+
+    font-size: 18px;
+
+    font-weight: 720;
+
+    letter-spacing:
+        -0.25px;
+}
+
+
+.stories-page__empty p {
+    position: relative;
+
+    max-width: 330px;
+
+    margin:
+        0
+        0
+        20px;
+
+    color:
+        var(
+            --text-secondary,
+            rgba(255,255,255,0.45)
+        );
+
+    font-size: 12px;
+
+    line-height: 1.65;
+}
+
+
+.stories-page__empty button {
+    position: relative;
+
+    min-height: 40px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding:
+        0
+        17px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.07);
+
+    border-radius: 10px;
+
+    outline: none;
+
+    cursor: pointer;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7562ff,
+            #5540d5
+        );
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 650;
+
+    box-shadow:
+        0 10px 25px
+        rgba(88,66,215,0.22);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.stories-page__empty button:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 14px 30px
+        rgba(88,66,215,0.30);
+}
+
+
+.stories-page__empty button:active {
+    transform:
+        scale(0.96);
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes storiesEmptyIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(12px)
+            scale(0.985);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   LARGE SCREENS
+========================================================= */
+
+@media (min-width: 1200px) {
+
+    .stories-page {
+        padding:
+            30px
+            34px
+            40px;
+    }
+
+
+    .stories-page__header {
+        margin-bottom: 21px;
+    }
+
+
+    .stories-page__list {
+        gap: 17px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .stories-page {
+        padding:
+            22px
+            20px
+            30px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .stories-page {
+        padding:
+            17px
+            13px
+            25px;
+    }
+
+
+    .stories-page__header {
+        gap: 12px;
+
+        margin-bottom: 14px;
+    }
+
+
+    .stories-page__icon {
+        width: 38px;
+        height: 38px;
+
+        border-radius: 11px;
+    }
+
+
+    .stories-page__title-row h1 {
+        font-size: 20px;
+    }
+
+
+    .stories-page__heading p {
+        font-size: 10px;
+    }
+
+
+    .stories-page__add {
+        min-height: 37px;
+
+        padding:
+            0
+            11px;
+
+        border-radius: 10px;
+
+        font-size: 11px;
+    }
+
+
+    .stories-page__info {
+        font-size: 9px;
+    }
+
+
+    .stories-page__expiry {
+        display: none;
+    }
+
+
+    .stories-page__section {
+        padding-top: 4px;
+    }
+
+
+    .stories-page__list {
+        gap: 12px;
+
+        padding:
+            6px
+            3px
+            13px;
+    }
+
+
+    .stories-page__empty {
+        width:
+            calc(
+                100% - 10px
+            );
+
+        margin-top: 20px;
+
+        padding:
+            32px
+            18px;
+
+        border-radius: 18px;
+    }
+
+
+    .stories-page__empty-icon {
+        width: 55px;
+        height: 55px;
+
+        border-radius: 17px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .stories-page__heading {
+        gap: 9px;
+    }
+
+
+    .stories-page__icon {
+        width: 35px;
+        height: 35px;
+    }
+
+
+    .stories-page__title-row h1 {
+        font-size: 18px;
+    }
+
+
+    .stories-page__heading p {
+        display: none;
+    }
+
+
+    .stories-page__add span {
+        display: none;
+    }
+
+
+    .stories-page__add {
+        width: 36px;
+
+        padding: 0;
+    }
+
+
+    .stories-page__empty h2 {
+        font-size: 17px;
+    }
+
+
+    .stories-page__empty p {
+        font-size: 11px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .stories-page *,
+    .stories-page *::before,
+    .stories-page *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+
+        scroll-behavior:
+            auto !important;
+    }
+
+}

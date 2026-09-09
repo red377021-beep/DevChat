@@ -1,0 +1,157 @@
+/* =====================================================
+   POPUP
+===================================================== */
+
+.emoji-popup{
+
+    position:fixed;
+
+    z-index:9999;
+
+    width:390px;
+
+    max-width:95vw;
+
+    max-height:420px;
+
+    overflow:hidden;
+
+    border-radius:24px;
+
+    background:rgba(18,18,24,.82);
+
+    backdrop-filter:blur(30px);
+
+    -webkit-backdrop-filter:blur(30px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+
+        0 25px 70px rgba(0,0,0,.45),
+
+        inset 0 1px 0 rgba(255,255,255,.08);
+
+    animation:emojiPopup .22s ease;
+
+    transform-origin:center;
+
+}
+
+/* =====================================================
+   SCROLL
+===================================================== */
+
+.emoji-popup *::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+.emoji-popup *::-webkit-scrollbar-thumb{
+
+    background:rgba(255,255,255,.18);
+
+    border-radius:999px;
+
+}
+
+.emoji-popup *::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+/* =====================================================
+   BORDER GLOW
+===================================================== */
+
+.emoji-popup::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:24px;
+
+    padding:1px;
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            rgba(120,170,255,.35),
+
+            rgba(255,255,255,.05),
+
+            rgba(255,120,255,.18)
+
+        );
+
+    -webkit-mask:
+
+        linear-gradient(#fff 0 0) content-box,
+
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+
+            mask-composite:exclude;
+
+    pointer-events:none;
+
+}
+
+/* =====================================================
+   OPEN ANIMATION
+===================================================== */
+
+@keyframes emojiPopup{
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateY(12px)
+
+            scale(.92);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0)
+
+            scale(1);
+
+    }
+
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:650px){
+
+    .emoji-popup{
+
+        width:95vw;
+
+        max-height:52vh;
+
+        border-radius:20px;
+
+    }
+
+}

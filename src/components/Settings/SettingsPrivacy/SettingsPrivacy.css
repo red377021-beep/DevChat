@@ -1,0 +1,353 @@
+.settings-privacy {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.settings-privacy__section {
+    width: 100%;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.018);
+}
+
+
+.settings-privacy__header {
+    padding: 16px 18px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+
+.settings-privacy__header h2 {
+    margin: 0 0 4px;
+
+    color: rgba(255, 255, 255, 0.88);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.settings-privacy__header span {
+    color: rgba(255, 255, 255, 0.3);
+
+    font-size: 9px;
+}
+
+
+/* =====================================================
+   ITEMS
+===================================================== */
+
+.settings-privacy__items {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.settings-privacy__item {
+    min-height: 66px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 11px 16px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+}
+
+
+.settings-privacy__item:last-child {
+    border-bottom: 0;
+}
+
+
+/* =====================================================
+   ICON
+===================================================== */
+
+.settings-privacy__icon {
+    width: 36px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.settings-privacy__content {
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.settings-privacy__content strong {
+    color: rgba(255, 255, 255, 0.72);
+
+    font-size: 10px;
+    font-weight: 650;
+}
+
+
+.settings-privacy__content span {
+    overflow: hidden;
+
+    color: rgba(255, 255, 255, 0.28);
+
+    font-size: 8px;
+
+    line-height: 1.4;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/* =====================================================
+   TOGGLE
+===================================================== */
+
+.settings-privacy__toggle {
+    position: relative;
+
+    width: 38px;
+    height: 21px;
+
+    flex-shrink: 0;
+
+    padding: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.settings-privacy__toggle span {
+    position: absolute;
+
+    top: 3px;
+    left: 3px;
+
+    width: 13px;
+    height: 13px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.5);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.settings-privacy__toggle--active {
+    background: rgba(255, 255, 255, 0.16);
+
+    border-color: rgba(255, 255, 255, 0.16);
+}
+
+
+.settings-privacy__toggle--active span {
+    transform: translateX(17px);
+
+    background: #fff;
+}
+
+
+/* =====================================================
+   BLOCKED USERS
+===================================================== */
+
+.settings-privacy__blocked {
+    width: 100%;
+
+    min-height: 62px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 11px 16px;
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.018);
+
+    color: inherit;
+
+    text-align: left;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.settings-privacy__blocked:hover {
+    background: rgba(255, 255, 255, 0.035);
+
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+
+.settings-privacy__blocked-icon {
+    width: 36px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    color: rgba(255, 255, 255, 0.48);
+}
+
+
+.settings-privacy__blocked-content {
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.settings-privacy__blocked-content strong {
+    color: rgba(255, 255, 255, 0.72);
+
+    font-size: 10px;
+    font-weight: 650;
+}
+
+
+.settings-privacy__blocked-content span {
+    color: rgba(255, 255, 255, 0.28);
+
+    font-size: 8px;
+}
+
+
+.settings-privacy__blocked-count {
+    min-width: 24px;
+    height: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    color: rgba(255, 255, 255, 0.4);
+
+    font-size: 8px;
+    font-weight: 650;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .settings-privacy__header {
+        padding: 14px;
+    }
+
+
+    .settings-privacy__item {
+        min-height: 62px;
+
+        padding: 10px 12px;
+    }
+
+
+    .settings-privacy__icon,
+    .settings-privacy__blocked-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+
+    .settings-privacy__content span {
+        font-size: 7px;
+    }
+
+
+    .settings-privacy__blocked {
+        padding: 10px 12px;
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .settings-privacy__toggle,
+    .settings-privacy__toggle span,
+    .settings-privacy__blocked {
+        transition: none;
+    }
+
+}

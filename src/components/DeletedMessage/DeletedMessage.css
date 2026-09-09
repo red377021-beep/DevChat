@@ -1,0 +1,25 @@
+.deleted-message{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:#9a9a9a;
+
+    font-size:13px;
+
+    font-style:italic;
+
+    user-select:none;
+
+    padding:2px 0;
+
+}
+
+.deleted-message svg{
+
+    flex-shrink:0;
+
+}

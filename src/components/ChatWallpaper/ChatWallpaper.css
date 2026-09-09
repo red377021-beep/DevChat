@@ -1,0 +1,72 @@
+.chat-wallpaper{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:0;
+
+    background:#0b1120;
+
+}
+
+.gradient-one{
+
+    position:absolute;
+
+    width:600px;
+
+    height:600px;
+
+    border-radius:50%;
+
+    background:#7C3AED;
+
+    filter:blur(180px);
+
+    opacity:.18;
+
+    top:-200px;
+
+    left:-120px;
+
+}
+
+.gradient-two{
+
+    position:absolute;
+
+    width:500px;
+
+    height:500px;
+
+    border-radius:50%;
+
+    background:#2563EB;
+
+    filter:blur(180px);
+
+    opacity:.15;
+
+    right:-120px;
+
+    bottom:-180px;
+
+}
+
+.noise{
+
+    position:absolute;
+
+    inset:0;
+
+    opacity:.03;
+
+    background-image:
+    radial-gradient(circle,#ffffff 1px,transparent 1px);
+
+    background-size:14px 14px;
+
+}

@@ -1,0 +1,622 @@
+.message-attachment {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    width: fit-content;
+
+    max-width: 100%;
+
+}
+
+
+/* =====================================================
+   IMAGE GRID
+===================================================== */
+
+.message-image-grid {
+
+    display: grid;
+
+    gap: 5px;
+
+    width: fit-content;
+
+    max-width: 100%;
+
+    overflow: hidden;
+
+    border-radius: 17px;
+}
+
+
+/* Single */
+
+.message-image-grid.single {
+
+    grid-template-columns: 1fr;
+}
+
+
+/* Two */
+
+.message-image-grid.double {
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+}
+
+
+/* Three or more */
+
+.message-image-grid.multiple {
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+}
+
+
+/* =====================================================
+   GRID BUBBLE
+===================================================== */
+
+.message-image-grid
+.bubble-image {
+
+    width: 100%;
+
+    min-width: 0;
+
+    border-radius: 12px;
+
+    box-shadow: none;
+}
+
+.message-image-grid
+.bubble-image img {
+
+    width: 100%;
+
+    height: 190px;
+
+    min-width: 0;
+
+    min-height: 0;
+
+    max-width: none;
+
+    max-height: none;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+}
+
+
+/* Single image stays large */
+
+.message-image-grid.single
+.bubble-image img {
+
+    width: auto;
+
+    height: auto;
+
+    max-width: min(420px, 62vw);
+
+    max-height: 430px;
+
+    object-fit: contain;
+
+}
+
+
+/* =====================================================
+   ATTACHMENT BOX
+===================================================== */
+
+.attachment-box {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    min-width: 220px;
+
+    max-width: 330px;
+
+    padding: 10px 12px;
+
+    border-radius: 13px;
+
+    background:
+        rgba(255,255,255,.055);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    color: #fff;
+}
+
+
+/* Icon */
+
+.attachment-box-icon {
+
+    width: 38px;
+
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        rgba(139,92,246,.14);
+
+    color: #a78bfa;
+}
+
+.attachment-box-icon.video {
+
+    color: #60a5fa;
+
+    background:
+        rgba(96,165,250,.12);
+}
+
+.attachment-box-icon.file {
+
+    color: #fbbf24;
+
+    background:
+        rgba(251,191,36,.12);
+}
+
+.attachment-box-icon.audio {
+
+    color: #34d399;
+
+    background:
+        rgba(52,211,153,.12);
+}
+
+
+/* Info */
+
+.attachment-box-info {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.attachment-box-title {
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    color: #e5e7eb;
+}
+
+.attachment-box-name {
+
+    max-width: 240px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    font-size: 11px;
+
+    color: #8f9bad;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .message-image-grid
+    .bubble-image img {
+
+        height: 150px;
+    }
+
+    .message-image-grid.single
+    .bubble-image img {
+
+        max-width: 76vw;
+
+        max-height: 380px;
+    }
+
+    .attachment-box {
+
+        min-width: 190px;
+
+        max-width: 75vw;
+    }
+}
+/* =====================================================
+   DEVCHAT — VIDEO ATTACHMENT
+===================================================== */
+
+.message-video-wrapper {
+    width: 100%;
+    max-width: 430px;
+
+    display: block;
+
+    margin-top: 2px;
+
+    overflow: hidden;
+
+    border-radius: 16px;
+}
+
+
+/* =====================================================
+   VIDEO INSIDE MESSAGE
+===================================================== */
+
+.message-video-wrapper
+.bubble-video {
+    width: 100%;
+    max-width: 430px;
+
+    margin: 0;
+}
+
+
+/* =====================================================
+   WHEN IMAGE + VIDEO EXIST
+===================================================== */
+
+.message-image-grid
++ .message-video-wrapper {
+    margin-top: 8px;
+}
+
+
+/* =====================================================
+   ATTACHMENT BOX
+===================================================== */
+
+.attachment-box {
+    width: min(
+        100%,
+        360px
+    );
+
+    min-height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 10px 12px;
+
+    margin-top: 8px;
+
+    box-sizing: border-box;
+
+    border-radius: 14px;
+
+    background:
+        rgba(255, 255, 255, 0.045);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.attachment-box:hover {
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    border-color:
+        rgba(139, 92, 246, 0.28);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =====================================================
+   ATTACHMENT ICON
+===================================================== */
+
+.attachment-box-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    color: #ffffff;
+}
+
+
+.attachment-box-icon.file {
+    background:
+        linear-gradient(
+            135deg,
+            #3b82f6,
+            #2563eb
+        );
+}
+
+
+.attachment-box-icon.audio {
+    background:
+        linear-gradient(
+            135deg,
+            #ec4899,
+            #be185d
+        );
+}
+
+
+/* =====================================================
+   ATTACHMENT INFO
+===================================================== */
+
+.attachment-box-info {
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+
+.attachment-box-title {
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    line-height: 18px;
+}
+
+
+.attachment-box-name {
+    min-width: 0;
+
+    color: #8998ae;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    line-height: 16px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .message-video-wrapper {
+        max-width: 100%;
+
+        border-radius: 14px;
+    }
+
+
+    .message-video-wrapper
+    .bubble-video {
+        max-width: 100%;
+    }
+
+
+    .attachment-box {
+        width: 100%;
+
+        max-width: 100%;
+    }
+
+}
+
+/* ==========================================
+   LOCATION
+========================================== */
+
+.message-location {
+    width: 280px;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    background: #171a20;
+
+    border: 1px solid #292e38;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.message-location-map {
+    position: relative;
+
+    width: 100%;
+    height: 150px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #20252d 25%,
+            #181c23 25%,
+            #181c23 50%,
+            #20252d 50%,
+            #20252d 75%,
+            #181c23 75%
+        );
+
+    background-size: 32px 32px;
+}
+
+
+/* ==========================================
+   MAP GRID
+========================================== */
+
+.message-location-grid {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0.25;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            transparent 48%,
+            #777d89 49%,
+            #777d89 51%,
+            transparent 52%
+        ),
+        linear-gradient(
+            transparent 48%,
+            #777d89 49%,
+            #777d89 51%,
+            transparent 52%
+        );
+
+    background-size: 55px 55px;
+
+    transform: rotate(12deg) scale(1.4);
+}
+
+
+/* ==========================================
+   LOCATION PIN
+========================================== */
+
+.message-location-pin {
+    position: relative;
+
+    z-index: 2;
+
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    font-size: 24px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ==========================================
+   LOCATION INFO
+========================================== */
+
+.message-location-info {
+    padding: 13px 14px;
+}
+
+
+.message-location-title {
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #ffffff;
+}
+
+
+.message-location-coordinates {
+    margin-top: 5px;
+
+    font-size: 11px;
+
+    color: #858b98;
+}
+
+
+.message-location-open {
+    display: inline-block;
+
+    margin-top: 10px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    color: #ffffff;
+
+    text-decoration: none;
+}
+
+
+.message-location-open:hover {
+    text-decoration: underline;
+}

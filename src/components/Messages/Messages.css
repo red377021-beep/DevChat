@@ -1,0 +1,31 @@
+.messages{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:24px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    scrollbar-width:thin;
+
+}
+
+.messages::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+.messages::-webkit-scrollbar-thumb{
+
+    background:#3b4254;
+
+    border-radius:20px;
+
+}

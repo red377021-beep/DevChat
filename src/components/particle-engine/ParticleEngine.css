@@ -1,0 +1,80 @@
+.particle-engine {
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+  overflow: visible;
+
+}
+
+.particle {
+
+  position: absolute;
+
+  width: 6px;
+  height: 6px;
+
+  left: 50%;
+  top: 50%;
+
+  margin-left: -3px;
+  margin-top: -3px;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.9);
+
+  box-shadow:
+    0 0 8px rgba(255,255,255,.9),
+    0 0 14px rgba(91,124,255,.7);
+
+  animation: particleFly 1.8s ease-out forwards;
+
+  animation-delay: calc(var(--i) * .02s);
+
+}
+
+.particle:nth-child(odd){
+
+  background:#7aa2ff;
+
+}
+
+.particle:nth-child(even){
+
+  background:#ffffff;
+
+}
+
+@keyframes particleFly{
+
+  0%{
+
+    opacity:1;
+
+    transform:
+      translate(0,0)
+      scale(1);
+
+    filter:blur(0);
+
+  }
+
+  100%{
+
+    opacity:0;
+
+    transform:
+      rotate(calc(var(--i) * 15deg))
+      translate(
+        calc((var(--i) - 12) * 10px),
+        calc((var(--i) - 12) * -6px)
+      )
+      scale(.2);
+
+    filter:blur(4px);
+
+  }
+
+}

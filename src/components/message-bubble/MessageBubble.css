@@ -1,0 +1,95 @@
+/* ======================================================
+   DEVCHAT MESSAGE BUBBLE
+====================================================== */
+
+.message-row{
+
+    display:flex;
+
+    margin-bottom:14px;
+
+}
+
+.message-row.own{
+
+    justify-content:flex-end;
+
+}
+
+/* Bubble */
+
+.message-bubble{
+
+    max-width:68%;
+
+    padding:14px 18px;
+
+    border-radius:18px;
+
+    background:#1a2333;
+
+    color:#fff;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    box-shadow:
+
+        0 10px 24px rgba(0,0,0,.18);
+
+    transition:.25s;
+
+}
+
+.message-bubble:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.message-bubble.own{
+
+    background:linear-gradient(
+        135deg,
+        #5865F2,
+        #4F46E5
+    );
+
+}
+
+/* Text */
+
+.message-text{
+
+    font-size:15px;
+
+    line-height:1.7;
+
+    word-break:break-word;
+
+}
+
+/* Footer */
+
+.message-footer{
+
+    margin-top:10px;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-size:11px;
+
+    opacity:.75;
+
+}
+
+.message-seen{
+
+    color:#7dd3fc;
+
+}

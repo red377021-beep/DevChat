@@ -1,0 +1,1549 @@
+/* =========================================================
+   CREATE STORY MODAL
+   Production Level / Premium Dark UI
+========================================================= */
+
+
+/* =========================================================
+   ROOT MODAL
+========================================================= */
+
+.create-story-modal {
+    position: fixed;
+    inset: 0;
+
+    z-index: 10000;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    isolation: isolate;
+
+    overflow: hidden;
+
+    animation:
+        createStoryModalFadeIn
+        0.22s
+        ease
+        both;
+}
+
+
+/* =========================================================
+   BACKDROP
+========================================================= */
+
+.create-story-modal__backdrop {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    width: 100%;
+    height: 100%;
+
+    cursor: default;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(99, 102, 241, 0.12),
+            transparent 38%
+        ),
+        rgba(3, 5, 12, 0.82);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+
+/* =========================================================
+   MODAL CONTENT
+========================================================= */
+
+.create-story-modal__content {
+    position: relative;
+
+    z-index: 1;
+
+    width: min(100%, 560px);
+    max-height: min(900px, calc(100vh - 40px));
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 23, 35, 0.99),
+            rgba(10, 12, 20, 0.99)
+        );
+
+    box-shadow:
+        0 35px 90px rgba(0, 0, 0, 0.72),
+        0 0 80px rgba(99, 102, 241, 0.08);
+
+    animation:
+        createStoryModalScaleIn
+        0.25s
+        ease
+        both;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.create-story-modal__header {
+    position: relative;
+
+    z-index: 2;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 20px 22px 18px;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+    background:
+        rgba(255, 255, 255, 0.015);
+}
+
+
+.create-story-modal__heading {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+}
+
+
+.create-story-modal__heading-icon {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 13px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6
+        );
+
+    box-shadow:
+        0 8px 25px
+        rgba(99, 102, 241, 0.28);
+}
+
+
+.create-story-modal__heading-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+
+.create-story-modal__header h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 19px;
+    font-weight: 700;
+
+    line-height: 1.2;
+    letter-spacing: -0.3px;
+}
+
+
+.create-story-modal__header p {
+    margin: 4px 0 0;
+
+    color:
+        rgba(255, 255, 255, 0.48);
+
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.create-story-modal__close {
+    position: relative;
+
+    z-index: 3;
+
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+    border-radius: 11px;
+
+    color:
+        rgba(255, 255, 255, 0.62);
+
+    background:
+        rgba(255, 255, 255, 0.04);
+
+    cursor: pointer;
+
+    transition:
+        background 0.18s ease,
+        color 0.18s ease,
+        transform 0.18s ease,
+        border-color 0.18s ease;
+}
+
+
+.create-story-modal__close:hover:not(:disabled) {
+    color: #ffffff;
+
+    background:
+        rgba(255, 255, 255, 0.09);
+
+    border-color:
+        rgba(255, 255, 255, 0.14);
+
+    transform: rotate(4deg);
+}
+
+
+.create-story-modal__close:active:not(:disabled) {
+    transform: scale(0.94);
+}
+
+
+.create-story-modal__close:disabled {
+    opacity: 0.45;
+
+    cursor: not-allowed;
+}
+
+
+.create-story-modal__close:focus-visible {
+    outline:
+        2px solid
+        rgba(129, 140, 248, 0.9);
+
+    outline-offset: 3px;
+}
+
+
+.create-story-modal__close svg {
+    width: 18px;
+    height: 18px;
+}
+
+
+/* =========================================================
+   UPLOAD / MEDIA BODY AREA
+========================================================= */
+
+.create-story-modal__upload,
+.create-story-modal__preview,
+.create-story-modal__field,
+.create-story-modal__change,
+.create-story-modal__error,
+.create-story-modal__info,
+.create-story-modal__actions {
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   UPLOAD AREA
+========================================================= */
+
+.create-story-modal__upload {
+    position: relative;
+
+    width: 100%;
+    min-height: 270px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 34px 24px;
+
+    overflow: hidden;
+
+    border:
+        1px dashed
+        rgba(255, 255, 255, 0.16);
+
+    border-radius: 19px;
+
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(99, 102, 241, 0.08),
+            transparent 65%
+        ),
+        rgba(255, 255, 255, 0.025);
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.create-story-modal__upload:hover:not(:disabled) {
+    border-color:
+        rgba(129, 140, 248, 0.42);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(99, 102, 241, 0.11),
+            transparent 68%
+        ),
+        rgba(255, 255, 255, 0.03);
+}
+
+
+.create-story-modal__upload:active:not(:disabled) {
+    transform: scale(0.995);
+}
+
+
+.create-story-modal__upload:focus-visible {
+    outline:
+        2px solid
+        rgba(129, 140, 248, 0.8);
+
+    outline-offset: 3px;
+}
+
+
+.create-story-modal__upload:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+}
+
+
+.create-story-modal__upload--dragging {
+    border-color:
+        rgba(129, 140, 248, 0.9);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(99, 102, 241, 0.18),
+            transparent 68%
+        ),
+        rgba(99, 102, 241, 0.06);
+
+    box-shadow:
+        inset 0 0 0 1px
+        rgba(129, 140, 248, 0.12),
+
+        0 0 35px
+        rgba(99, 102, 241, 0.12);
+
+    transform: scale(1.01);
+}
+
+
+/* =========================================================
+   UPLOAD ICON
+========================================================= */
+
+.create-story-modal__upload-icon {
+    width: 66px;
+    height: 66px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 17px;
+
+    border:
+        1px solid
+        rgba(129, 140, 248, 0.18);
+
+    border-radius: 19px;
+
+    color: #a5b4fc;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(99, 102, 241, 0.16),
+            rgba(139, 92, 246, 0.08)
+        );
+
+    box-shadow:
+        0 12px 35px
+        rgba(99, 102, 241, 0.1);
+}
+
+
+.create-story-modal__upload-icon svg {
+    width: 27px;
+    height: 27px;
+}
+
+
+.create-story-modal__upload strong {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 650;
+
+    line-height: 1.4;
+
+    text-align: center;
+}
+
+
+.create-story-modal__upload > span {
+    margin-top: 7px;
+
+    color:
+        rgba(255, 255, 255, 0.46);
+
+    font-size: 12px;
+    line-height: 1.5;
+
+    text-align: center;
+}
+
+
+.create-story-modal__upload small {
+    margin-top: 8px;
+
+    color:
+        rgba(255, 255, 255, 0.3);
+
+    font-size: 10px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   UPLOAD LIMITS
+========================================================= */
+
+.create-story-modal__upload-limits {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: 18px;
+}
+
+
+.create-story-modal__upload-limits span {
+    padding: 5px 9px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.06);
+
+    border-radius: 7px;
+
+    color:
+        rgba(255, 255, 255, 0.35);
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   PREVIEW
+========================================================= */
+
+.create-story-modal__preview {
+    position: relative;
+
+    width: 100%;
+    min-height: 270px;
+    max-height: 470px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 19px;
+
+    background: #070910;
+}
+
+
+.create-story-modal__preview img,
+.create-story-modal__preview video {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    max-height: 470px;
+
+    object-fit: contain;
+
+    background: #05060a;
+}
+
+
+.create-story-modal__preview img {
+    min-height: 270px;
+}
+
+
+.create-story-modal__preview video {
+    min-height: 270px;
+
+    outline: none;
+}
+
+
+/* =========================================================
+   PREVIEW OVERLAY
+========================================================= */
+
+.create-story-modal__preview-overlay {
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.12),
+            transparent 25%,
+            transparent 72%,
+            rgba(0, 0, 0, 0.38)
+        );
+}
+
+
+/* =========================================================
+   REMOVE MEDIA
+========================================================= */
+
+.create-story-modal__remove {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    z-index: 3;
+
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
+    border-radius: 11px;
+
+    color: #ffffff;
+
+    background:
+        rgba(5, 7, 12, 0.72);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    cursor: pointer;
+
+    transition:
+        background 0.18s ease,
+        transform 0.18s ease,
+        border-color 0.18s ease;
+}
+
+
+.create-story-modal__remove:hover:not(:disabled) {
+    background:
+        rgba(239, 68, 68, 0.85);
+
+    border-color:
+        rgba(248, 113, 113, 0.45);
+
+    transform: scale(1.06);
+}
+
+
+.create-story-modal__remove:active:not(:disabled) {
+    transform: scale(0.94);
+}
+
+
+.create-story-modal__remove:disabled {
+    opacity: 0.45;
+
+    cursor: not-allowed;
+}
+
+
+.create-story-modal__remove:focus-visible {
+    outline:
+        2px solid
+        rgba(248, 113, 113, 0.9);
+
+    outline-offset: 3px;
+}
+
+
+.create-story-modal__remove svg {
+    width: 17px;
+    height: 17px;
+}
+
+
+/* =========================================================
+   MEDIA INFO
+========================================================= */
+
+.create-story-modal__media-info {
+    position: absolute;
+
+    left: 12px;
+    bottom: 12px;
+
+    z-index: 3;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 8px 11px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.1);
+
+    border-radius: 9px;
+
+    color:
+        rgba(255, 255, 255, 0.72);
+
+    background:
+        rgba(5, 7, 12, 0.72);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+
+.create-story-modal__media-info svg {
+    flex-shrink: 0;
+
+    color: #a5b4fc;
+}
+
+
+.create-story-modal__media-info span {
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   CHANGE MEDIA
+========================================================= */
+
+.create-story-modal__change {
+    align-self: flex-start;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+
+    margin-top: 10px;
+
+    padding: 6px 9px;
+
+    border: 0;
+    border-radius: 8px;
+
+    color: #a5b4fc;
+
+    background: transparent;
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.18s ease,
+        color 0.18s ease;
+}
+
+
+.create-story-modal__change:hover:not(:disabled) {
+    color: #c7d2fe;
+
+    background:
+        rgba(129, 140, 248, 0.09);
+}
+
+
+.create-story-modal__change:disabled {
+    opacity: 0.45;
+
+    cursor: not-allowed;
+}
+
+
+.create-story-modal__change:focus-visible {
+    outline:
+        2px solid
+        rgba(129, 140, 248, 0.75);
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   CAPTION FIELD
+========================================================= */
+
+.create-story-modal__field {
+    width: 100%;
+
+    margin-top: 19px;
+}
+
+
+.create-story-modal__field-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 8px;
+}
+
+
+.create-story-modal__field-header label {
+    color:
+        rgba(255, 255, 255, 0.76);
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+.create-story-modal__field-header span {
+    color:
+        rgba(255, 255, 255, 0.34);
+
+    font-size: 10px;
+
+    transition:
+        color 0.18s ease;
+}
+
+
+.create-story-modal__field-header span.is-warning {
+    color: #fbbf24;
+}
+
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+.create-story-modal__field textarea {
+    display: block;
+
+    width: 100%;
+    min-height: 94px;
+
+    resize: vertical;
+
+    padding: 13px 14px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 13px;
+
+    outline: none;
+
+    color: #ffffff;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.55;
+
+    transition:
+        border-color 0.18s ease,
+        background 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+
+.create-story-modal__field textarea::placeholder {
+    color:
+        rgba(255, 255, 255, 0.27);
+}
+
+
+.create-story-modal__field textarea:hover:not(:disabled) {
+    border-color:
+        rgba(255, 255, 255, 0.13);
+}
+
+
+.create-story-modal__field textarea:focus {
+    border-color:
+        rgba(129, 140, 248, 0.52);
+
+    background:
+        rgba(129, 140, 248, 0.035);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(99, 102, 241, 0.08);
+}
+
+
+.create-story-modal__field textarea:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.create-story-modal__error {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-top: 14px;
+    padding: 12px 13px;
+
+    border:
+        1px solid
+        rgba(248, 113, 113, 0.16);
+
+    border-radius: 12px;
+
+    color: #fca5a5;
+
+    background:
+        rgba(239, 68, 68, 0.07);
+
+    font-size: 11px;
+    line-height: 1.5;
+
+    animation:
+        createStoryErrorIn
+        0.2s
+        ease
+        both;
+}
+
+
+.create-story-modal__error > span {
+    width: 18px;
+    height: 18px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: #ffffff;
+
+    background:
+        rgba(239, 68, 68, 0.55);
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   24 HOUR INFO
+========================================================= */
+
+.create-story-modal__info {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 11px;
+
+    margin-top: 15px;
+    padding: 13px;
+
+    border:
+        1px solid
+        rgba(129, 140, 248, 0.09);
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(99, 102, 241, 0.055),
+            rgba(139, 92, 246, 0.025)
+        );
+}
+
+
+.create-story-modal__info > svg {
+    flex-shrink: 0;
+
+    margin-top: 1px;
+
+    color: #a5b4fc;
+}
+
+
+.create-story-modal__info div {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.create-story-modal__info strong {
+    color:
+        rgba(255, 255, 255, 0.76);
+
+    font-size: 11px;
+    font-weight: 650;
+}
+
+
+.create-story-modal__info span {
+    color:
+        rgba(255, 255, 255, 0.37);
+
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.create-story-modal__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 20px;
+    padding-top: 16px;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.06);
+}
+
+
+/* =========================================================
+   BASE BUTTON
+========================================================= */
+
+.create-story-modal__cancel,
+.create-story-modal__create {
+    min-height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 0 17px;
+
+    border-radius: 11px;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 650;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.18s ease,
+        background 0.18s ease,
+        border-color 0.18s ease,
+        opacity 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+
+.create-story-modal__cancel:disabled,
+.create-story-modal__create:disabled {
+    opacity: 0.48;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+.create-story-modal__cancel:focus-visible,
+.create-story-modal__create:focus-visible {
+    outline:
+        2px solid
+        rgba(165, 180, 252, 0.85);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   CANCEL
+========================================================= */
+
+.create-story-modal__cancel {
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    color:
+        rgba(255, 255, 255, 0.68);
+
+    background:
+        rgba(255, 255, 255, 0.035);
+}
+
+
+.create-story-modal__cancel:hover:not(:disabled) {
+    color: #ffffff;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    border-color:
+        rgba(255, 255, 255, 0.13);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   CREATE
+========================================================= */
+
+.create-story-modal__create {
+    min-width: 125px;
+
+    border:
+        1px solid
+        rgba(129, 140, 248, 0.22);
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6
+        );
+
+    box-shadow:
+        0 8px 25px
+        rgba(99, 102, 241, 0.2);
+}
+
+
+.create-story-modal__create:hover:not(:disabled) {
+    box-shadow:
+        0 12px 32px
+        rgba(99, 102, 241, 0.3);
+
+    transform: translateY(-1px);
+
+    filter: brightness(1.06);
+}
+
+
+.create-story-modal__create:active:not(:disabled) {
+    transform: translateY(0) scale(0.98);
+}
+
+
+.create-story-modal__create svg {
+    width: 15px;
+    height: 15px;
+}
+
+
+/* =========================================================
+   SPINNER
+========================================================= */
+
+.create-story-modal__spinner {
+    width: 15px;
+    height: 15px;
+
+    flex-shrink: 0;
+
+    border:
+        2px solid
+        rgba(255, 255, 255, 0.28);
+
+    border-top-color: #ffffff;
+
+    border-radius: 50%;
+
+    animation:
+        createStorySpin
+        0.7s
+        linear
+        infinite;
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 1200px) {
+
+    .create-story-modal {
+        padding: 30px;
+    }
+
+    .create-story-modal__content {
+        width: 570px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .create-story-modal {
+        padding: 18px;
+    }
+
+    .create-story-modal__content {
+        width: min(100%, 540px);
+
+        max-height:
+            calc(100vh - 36px);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .create-story-modal {
+        align-items: flex-end;
+
+        padding: 0;
+    }
+
+
+    .create-story-modal__backdrop {
+        background:
+            rgba(3, 5, 12, 0.84);
+
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+
+    .create-story-modal__content {
+        width: 100%;
+
+        max-height: 94vh;
+
+        border-radius:
+            24px 24px 0 0;
+
+        animation:
+            createStoryMobileIn
+            0.25s
+            ease
+            both;
+    }
+
+
+    .create-story-modal__header {
+        padding:
+            17px
+            17px
+            15px;
+    }
+
+
+    .create-story-modal__heading {
+        gap: 10px;
+    }
+
+
+    .create-story-modal__heading-icon {
+        width: 38px;
+        height: 38px;
+
+        border-radius: 11px;
+    }
+
+
+    .create-story-modal__header h2 {
+        font-size: 17px;
+    }
+
+
+    .create-story-modal__header p {
+        font-size: 11px;
+    }
+
+
+    .create-story-modal__close {
+        width: 36px;
+        height: 36px;
+    }
+
+
+    .create-story-modal__upload {
+        min-height: 230px;
+
+        border-radius: 16px;
+    }
+
+
+    .create-story-modal__preview {
+        min-height: 230px;
+
+        border-radius: 16px;
+    }
+
+
+    .create-story-modal__preview img,
+    .create-story-modal__preview video {
+        max-height: 390px;
+    }
+
+
+    .create-story-modal__upload-limits {
+        gap: 5px;
+
+        margin-top: 14px;
+    }
+
+
+    .create-story-modal__upload-limits span {
+        font-size: 8px;
+    }
+
+
+    .create-story-modal__field {
+        margin-top: 16px;
+    }
+
+
+    .create-story-modal__actions {
+        margin-top: 16px;
+    }
+
+
+    .create-story-modal__cancel,
+    .create-story-modal__create {
+        min-height: 40px;
+
+        padding: 0 14px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .create-story-modal__content {
+        max-height: 96vh;
+    }
+
+
+    .create-story-modal__upload {
+        min-height: 205px;
+    }
+
+
+    .create-story-modal__upload-icon {
+        width: 56px;
+        height: 56px;
+
+        margin-bottom: 13px;
+
+        border-radius: 16px;
+    }
+
+
+    .create-story-modal__upload-icon svg {
+        width: 23px;
+        height: 23px;
+    }
+
+
+    .create-story-modal__upload strong {
+        font-size: 14px;
+    }
+
+
+    .create-story-modal__upload > span {
+        font-size: 11px;
+    }
+
+
+    .create-story-modal__upload small {
+        font-size: 9px;
+    }
+
+
+    .create-story-modal__upload-limits {
+        display: none;
+    }
+
+
+    .create-story-modal__actions {
+        display: grid;
+
+        grid-template-columns:
+            1fr
+            1.35fr;
+
+        gap: 8px;
+    }
+
+
+    .create-story-modal__cancel,
+    .create-story-modal__create {
+        width: 100%;
+
+        min-width: 0;
+    }
+
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes createStoryModalFadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes createStoryModalScaleIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(12px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+@keyframes createStoryMobileIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+@keyframes createStoryErrorIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+@keyframes createStorySpin {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .create-story-modal,
+    .create-story-modal__content,
+    .create-story-modal__error,
+    .create-story-modal__spinner {
+        animation: none !important;
+    }
+
+
+    .create-story-modal__upload,
+    .create-story-modal__cancel,
+    .create-story-modal__create,
+    .create-story-modal__close,
+    .create-story-modal__change,
+    .create-story-modal__remove {
+        transition: none !important;
+    }
+
+
+    .create-story-modal__backdrop {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+}

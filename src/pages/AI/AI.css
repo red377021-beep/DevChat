@@ -1,0 +1,197 @@
+.ai-page {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255, 255, 255, 0.035),
+            transparent 42%
+        ),
+        #0a0a10;
+
+    color: #fff;
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
+
+.ai-page__body {
+    position: relative;
+
+    flex: 1;
+    min-height: 0;
+
+    display: flex;
+
+    overflow: hidden;
+}
+
+
+.ai-page__chat {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   HISTORY
+===================================================== */
+
+.ai-page__history {
+    width: 280px;
+    height: 100%;
+
+    flex: 0 0 280px;
+
+    display: flex;
+    flex-direction: column;
+
+    border-left: 1px solid rgba(255, 255, 255, 0.07);
+
+    background: rgba(12, 12, 18, 0.96);
+
+    box-shadow:
+        -15px 0 40px rgba(0, 0, 0, 0.18);
+
+    animation: aiHistoryIn 0.22s ease;
+}
+
+
+.ai-page__history-top {
+    min-height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+
+    padding: 8px 10px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+.ai-page__history-top button {
+    min-height: 32px;
+
+    padding: 6px 10px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    color: rgba(255, 255, 255, 0.65);
+
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.ai-page__history-top button:hover {
+    background: rgba(255, 255, 255, 0.08);
+
+    border-color: rgba(255, 255, 255, 0.12);
+
+    color: rgba(255, 255, 255, 0.9);
+}
+
+
+.ai-page__history-top button:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.45);
+    outline-offset: 2px;
+}
+
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+
+@keyframes aiHistoryIn {
+
+    from {
+        opacity: 0;
+        transform: translateX(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 800px) {
+
+    .ai-page__history {
+        position: absolute;
+
+        top: 0;
+        right: 0;
+        bottom: 0;
+
+        width: min(310px, 88vw);
+
+        z-index: 20;
+
+        box-shadow:
+            -25px 0 60px rgba(0, 0, 0, 0.45);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .ai-page__history {
+        width: 88vw;
+    }
+
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .ai-page__history {
+        animation: none;
+    }
+
+    .ai-page__history-top button {
+        transition: none;
+    }
+
+}

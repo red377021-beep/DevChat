@@ -1,0 +1,51 @@
+.chat-input{
+
+    width:100%;
+
+    min-height:24px;
+
+    max-height:140px;
+
+    resize:none;
+
+    overflow-y:auto;
+
+    background:transparent;
+
+    border:none;
+
+    outline:none;
+
+    color:var(--text);
+
+    font-size:15px;
+
+    line-height:24px;
+
+    font-family:inherit;
+
+    padding:0;
+
+    margin:0;
+
+}
+
+.chat-input::placeholder{
+
+    color:var(--sub-text);
+
+}
+
+.chat-input::-webkit-scrollbar{
+
+    width:5px;
+
+}
+
+.chat-input::-webkit-scrollbar-thumb{
+
+    background:#555;
+
+    border-radius:20px;
+
+}

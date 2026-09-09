@@ -1,0 +1,297 @@
+.settings-page {
+    width: 100%;
+    height: 100%;
+
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 70% 0%,
+            rgba(124, 58, 237, 0.07),
+            transparent 35%
+        ),
+        #0c0c10;
+
+    color: #ffffff;
+}
+
+
+/* =====================================================
+   LAYOUT
+===================================================== */
+
+.settings-layout {
+    flex: 1;
+
+    min-height: 0;
+
+    display: flex;
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.settings-navigation {
+    width: 230px;
+
+    flex-shrink: 0;
+
+    padding: 22px 14px;
+
+    overflow-y: auto;
+
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.018),
+            rgba(255, 255, 255, 0.005)
+        );
+}
+
+.settings-navigation::-webkit-scrollbar {
+    width: 4px;
+}
+
+.settings-navigation::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.settings-navigation-title {
+    padding: 0 10px;
+    margin-bottom: 11px;
+
+    color: #555661;
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+}
+
+.settings-navigation-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+
+/* =====================================================
+   NAV ITEM
+===================================================== */
+
+.settings-navigation-item {
+    width: 100%;
+
+    min-height: 45px;
+
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    padding: 7px 10px;
+
+    border: 1px solid transparent;
+    border-radius: 12px;
+
+    color: #81828d;
+
+    background: transparent;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.settings-navigation-item:hover {
+    color: #c7c7ce;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    transform: translateX(2px);
+}
+
+.settings-navigation-item.active {
+    color: #eeeeef;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124, 58, 237, 0.16),
+            rgba(124, 58, 237, 0.045)
+        );
+
+    border-color: rgba(167, 139, 250, 0.12);
+
+    box-shadow:
+        inset 3px 0 0 #8b5cf6;
+}
+
+.settings-navigation-icon {
+    width: 30px;
+    height: 30px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    color: inherit;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.settings-navigation-item.active
+.settings-navigation-icon {
+    color: #a78bfa;
+
+    background: rgba(139, 92, 246, 0.12);
+}
+
+.settings-navigation-label {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.settings-content {
+    flex: 1;
+
+    min-width: 0;
+    min-height: 0;
+
+    overflow-y: auto;
+
+    padding: 26px 34px;
+}
+
+.settings-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.settings-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.settings-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 10px;
+}
+
+.settings-content > section {
+    width: min(760px, 100%);
+
+    margin: 0 auto;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+    .settings-navigation {
+        width: 190px;
+    }
+
+    .settings-content {
+        padding: 22px;
+    }
+}
+
+@media (max-width: 700px) {
+    .settings-layout {
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .settings-navigation {
+        width: 100%;
+        height: auto;
+
+        padding: 10px 12px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .settings-navigation-title {
+        display: none;
+    }
+
+    .settings-navigation-list {
+        flex-direction: row;
+
+        width: max-content;
+
+        gap: 6px;
+    }
+
+    .settings-navigation-item {
+        width: auto;
+
+        min-width: 96px;
+
+        justify-content: center;
+
+        padding: 7px 11px;
+    }
+
+    .settings-navigation-item.active {
+        box-shadow:
+            inset 0 -2px 0 #8b5cf6;
+    }
+
+    .settings-navigation-icon {
+        width: 27px;
+        height: 27px;
+    }
+
+    .settings-content {
+        padding: 18px 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .settings-navigation-item {
+        min-width: 84px;
+    }
+
+    .settings-navigation-label {
+        font-size: 10px;
+    }
+
+    .settings-content {
+        padding: 15px 10px;
+    }
+}

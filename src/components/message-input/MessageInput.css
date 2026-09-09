@@ -1,0 +1,121 @@
+/* ======================================================
+   MESSAGE INPUT
+====================================================== */
+
+.message-input{
+
+    height:78px;
+
+    display:flex;
+    align-items:center;
+
+    gap:14px;
+
+    padding:0 18px;
+
+    background:#111827;
+
+    border-top:1px solid #1f2937;
+
+    flex-shrink:0;
+
+}
+
+.input-left,
+.input-right{
+
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.input-btn{
+
+    width:42px;
+    height:42px;
+
+    border:none;
+    outline:none;
+
+    border-radius:12px;
+
+    background:#1e293b;
+
+    color:white;
+
+    cursor:pointer;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    transition:.25s;
+
+}
+
+.input-btn:hover{
+
+    background:#334155;
+
+}
+
+.message-input input{
+
+    flex:1;
+
+    height:46px;
+
+    border:none;
+    outline:none;
+
+    border-radius:14px;
+
+    padding:0 18px;
+
+    background:#1e293b;
+
+    color:white;
+
+    font-size:15px;
+
+}
+
+.message-input input::placeholder{
+
+    color:#94a3b8;
+
+}
+
+.send-btn{
+
+    width:46px;
+    height:46px;
+
+    border:none;
+    outline:none;
+
+    border-radius:14px;
+
+    background:#4f46e5;
+
+    color:white;
+
+    cursor:pointer;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    transition:.25s;
+
+}
+
+.send-btn:hover{
+
+    transform:scale(1.05);
+
+    background:#6366f1;
+
+}

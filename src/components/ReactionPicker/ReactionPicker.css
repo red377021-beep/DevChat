@@ -1,0 +1,105 @@
+.reaction-picker{
+
+    position:absolute;
+
+    bottom:58px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:8px 12px;
+
+    border-radius:999px;
+
+    background:rgba(20,20,30,.88);
+
+    backdrop-filter:blur(25px);
+
+    -webkit-backdrop-filter:blur(25px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.35),
+        0 0 25px rgba(120,92,255,.18);
+
+    animation:reactionPopup .25s ease;
+
+    z-index:999;
+}
+
+.reaction-btn{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:transparent;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+.reaction-btn:hover{
+
+    transform:translateY(-8px) scale(1.25);
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.reaction-btn:active{
+
+    transform:scale(.9);
+
+}
+
+.reaction-plus-icon{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    line-height:1;
+
+}
+
+@keyframes reactionPopup{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-50%) translateY(18px) scale(.8);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(-50%) translateY(0) scale(1);
+
+    }
+
+}

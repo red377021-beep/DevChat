@@ -1,0 +1,525 @@
+.settings-security {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding-bottom: 30px;
+}
+
+
+/* =====================================================
+   HEADING
+===================================================== */
+
+.settings-security-heading {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.settings-security-heading-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    color: #a78bfa;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(139, 92, 246, 0.2),
+            rgba(124, 58, 237, 0.06)
+        );
+
+    border: 1px solid rgba(167, 139, 250, 0.14);
+}
+
+.settings-security-heading h2 {
+    margin: 0;
+
+    color: #f5f5f7;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.settings-security-heading p {
+    margin: 4px 0 0;
+
+    color: #777985;
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   SECURITY STATUS
+===================================================== */
+
+.settings-security-status {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 17px 19px;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(34, 197, 94, 0.09),
+            rgba(34, 197, 94, 0.025)
+        );
+
+    border: 1px solid rgba(34, 197, 94, 0.14);
+}
+
+.settings-security-status-icon {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    color: #4ade80;
+
+    background: rgba(34, 197, 94, 0.1);
+}
+
+.settings-security-status-content {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.settings-security-status-content strong {
+    color: #e9fbea;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.settings-security-status-content span {
+    color: #76917d;
+    font-size: 10px;
+    line-height: 1.4;
+}
+
+.settings-security-status-badge {
+    margin-left: auto;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    color: #4ade80;
+    background: rgba(34, 197, 94, 0.1);
+
+    border: 1px solid rgba(34, 197, 94, 0.14);
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.settings-security-card {
+    padding: 20px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.045),
+            rgba(255, 255, 255, 0.018)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.12);
+
+    backdrop-filter: blur(14px);
+}
+
+.settings-security-section-title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    margin-bottom: 16px;
+}
+
+.settings-security-section-title span {
+    color: #eeeeef;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.settings-security-section-title small {
+    color: #70717d;
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   SECURITY ROW
+===================================================== */
+
+.settings-security-row {
+    min-height: 67px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 11px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+.settings-security-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.settings-security-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    color: #9293a0;
+
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.settings-security-content {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.settings-security-content strong {
+    color: #e9e9ec;
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.settings-security-content span {
+    color: #71727d;
+    font-size: 10px;
+    line-height: 1.4;
+}
+
+
+/* =====================================================
+   ACTION BUTTON
+===================================================== */
+
+.settings-security-action {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 2px;
+
+    padding: 7px 10px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 9px;
+
+    color: #aaaab4;
+    background: rgba(255, 255, 255, 0.035);
+
+    font-size: 10px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.settings-security-action:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.07);
+}
+
+
+/* =====================================================
+   SWITCH
+===================================================== */
+
+.settings-security-switch {
+    width: 42px;
+    height: 23px;
+
+    flex-shrink: 0;
+
+    margin-left: auto;
+
+    padding: 3px;
+
+    border: none;
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.11);
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.settings-security-switch span {
+    display: block;
+
+    width: 17px;
+    height: 17px;
+
+    border-radius: 50%;
+
+    background: #8b8c96;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.settings-security-switch.active {
+    background: #7c3aed;
+
+    box-shadow:
+        0 0 14px rgba(124, 58, 237, 0.28);
+}
+
+.settings-security-switch.active span {
+    transform: translateX(19px);
+    background: #ffffff;
+}
+
+
+/* =====================================================
+   SESSIONS
+===================================================== */
+
+.settings-session {
+    min-height: 70px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 11px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+.settings-session:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.settings-session-icon {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    color: #999aa7;
+
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.settings-session-content {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.settings-session-content strong {
+    color: #e9e9ec;
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.settings-session-content span {
+    color: #777884;
+    font-size: 10px;
+}
+
+.settings-session-content small {
+    color: #4ade80;
+    font-size: 9px;
+}
+
+.settings-session-current {
+    margin-left: auto;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    color: #4ade80;
+    background: rgba(34, 197, 94, 0.08);
+
+    font-size: 9px;
+    font-weight: 650;
+}
+
+.settings-session-logout {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 7px 10px;
+
+    color: #999aa5;
+    background: rgba(255, 255, 255, 0.035);
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 9px;
+
+    font-size: 9px;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.settings-session-logout:hover {
+    color: #fca5a5;
+    background: rgba(239, 68, 68, 0.08);
+}
+
+
+/* =====================================================
+   SECURITY TIP
+===================================================== */
+
+.settings-security-tip {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+
+    padding: 15px 17px;
+
+    border-radius: 15px;
+
+    background: rgba(167, 139, 250, 0.045);
+
+    border: 1px solid rgba(167, 139, 250, 0.09);
+}
+
+.settings-security-tip-icon {
+    width: 32px;
+    height: 32px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    color: #a78bfa;
+
+    background: rgba(139, 92, 246, 0.1);
+}
+
+.settings-security-tip strong {
+    color: #dcd7ed;
+    font-size: 11px;
+}
+
+.settings-security-tip p {
+    margin: 4px 0 0;
+
+    color: #777384;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 700px) {
+    .settings-security-card {
+        padding: 16px;
+    }
+
+    .settings-security-status {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .settings-security {
+        gap: 14px;
+    }
+
+    .settings-security-heading-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .settings-security-heading h2 {
+        font-size: 15px;
+    }
+
+    .settings-security-heading p {
+        font-size: 11px;
+    }
+
+    .settings-security-status-badge {
+        display: none;
+    }
+
+    .settings-session-logout span {
+        display: none;
+    }
+
+    .settings-session-logout {
+        padding: 8px;
+    }
+}

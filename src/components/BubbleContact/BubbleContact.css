@@ -1,0 +1,261 @@
+/* =========================================================
+   PREMIUM CONTACT BUBBLE
+   Red + Blue Theme
+========================================================= */
+
+.bubble-contact {
+    width: 320px;
+    max-width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 13px;
+
+    box-sizing: border-box;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 24, 35, 0.98),
+            rgba(10, 14, 23, 0.98)
+        );
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 16px 40px
+            rgba(0, 0, 0, 0.38),
+
+        0 0 25px
+            rgba(30, 90, 255, 0.07),
+
+        0 0 22px
+            rgba(255, 30, 60, 0.05);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.bubble-contact:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(80, 120, 255, 0.24);
+
+    box-shadow:
+        0 20px 45px
+            rgba(0, 0, 0, 0.45),
+
+        0 0 30px
+            rgba(30, 90, 255, 0.10),
+
+        0 0 25px
+            rgba(255, 30, 60, 0.07);
+}
+
+
+/* =========================================================
+   AVATAR
+========================================================= */
+
+.bubble-contact-avatar {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ff304f,
+            #235dff
+        );
+
+    border:
+        2px solid
+        rgba(255, 255, 255, 0.10);
+
+    box-shadow:
+        0 7px 20px
+            rgba(255, 30, 65, 0.18),
+
+        0 0 20px
+            rgba(30, 90, 255, 0.13);
+}
+
+
+.bubble-contact-avatar img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   CONTACT INFO
+========================================================= */
+
+.bubble-contact-info {
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.bubble-contact-info strong {
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    line-height: 18px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.2px;
+}
+
+
+.bubble-contact-info span {
+    margin-top: 3px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    color: #858ea1;
+
+    font-size: 10px;
+
+    line-height: 15px;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.bubble-contact-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    flex-shrink: 0;
+}
+
+
+.bubble-contact-actions button {
+    width: 32px;
+    height: 32px;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.07);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    color: #7fa5ff;
+
+    cursor: pointer;
+
+    transition:
+        all 0.22s ease;
+}
+
+
+/* =========================================================
+   BUTTON HOVER
+========================================================= */
+
+.bubble-contact-actions button:hover {
+    color: #ffffff;
+
+    border-color:
+        rgba(80, 120, 255, 0.28);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 35, 65, 0.18),
+            rgba(35, 90, 255, 0.20)
+        );
+
+    box-shadow:
+        0 0 15px
+            rgba(35, 90, 255, 0.12);
+
+    transform:
+        translateY(-1px);
+}
+
+
+.bubble-contact-actions button:active {
+    transform:
+        scale(0.94);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .bubble-contact {
+        width: 290px;
+
+        padding: 11px;
+    }
+
+    .bubble-contact-avatar {
+        width: 44px;
+        height: 44px;
+    }
+
+}

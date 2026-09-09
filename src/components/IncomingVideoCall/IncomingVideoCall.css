@@ -1,0 +1,407 @@
+/* =========================================================
+   INCOMING VIDEO CALL
+   PREMIUM DEVCHAT UI
+========================================================= */
+
+.incoming-video-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(90, 80, 255, 0.16),
+            transparent 42%
+        ),
+        rgba(5, 7, 14, 0.82);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    animation: incomingVideoOverlayIn 0.25s ease;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.incoming-video-card {
+    width: min(390px, 100%);
+
+    padding: 34px 28px 28px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30, 34, 52, 0.96),
+            rgba(13, 16, 28, 0.98)
+        );
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.55),
+        0 0 50px rgba(80, 70, 255, 0.08);
+
+    animation: incomingVideoCardIn 0.35s cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+    );
+}
+
+
+/* =========================================================
+   AVATAR
+========================================================= */
+
+.incoming-video-avatar {
+    width: 92px;
+    height: 92px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 20px;
+
+    border-radius: 50%;
+
+    color: #fff;
+
+    font-size: 34px;
+    font-weight: 700;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7167ff,
+            #4b42d6
+        );
+
+    border: 3px solid rgba(255, 255, 255, 0.14);
+
+    box-shadow:
+        0 0 0 8px rgba(100, 90, 255, 0.08),
+        0 15px 40px rgba(60, 50, 220, 0.3);
+
+    animation: incomingVideoAvatarPulse 2s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   CALLER INFO
+========================================================= */
+
+.incoming-video-info {
+    text-align: center;
+}
+
+
+.incoming-video-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #969db5;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+
+.incoming-video-info h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 26px;
+    font-weight: 700;
+
+    letter-spacing: -0.02em;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.incoming-video-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    margin-top: 9px;
+
+    color: #aeb5ca;
+
+    font-size: 13px;
+}
+
+
+.incoming-video-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #5ee89a;
+
+    box-shadow:
+        0 0 0 4px rgba(94, 232, 154, 0.08),
+        0 0 12px rgba(94, 232, 154, 0.65);
+
+    animation: incomingVideoDotPulse 1.4s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   CALL TYPE
+========================================================= */
+
+.incoming-video-type {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    margin-top: 25px;
+    padding: 9px 14px;
+
+    color: #c4c9dc;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.045);
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.incoming-video-actions {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 14px;
+
+    margin-top: 30px;
+}
+
+
+/* =========================================================
+   COMMON BUTTON
+========================================================= */
+
+.incoming-video-actions button {
+    min-height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    border: 0;
+    border-radius: 17px;
+
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+
+.incoming-video-actions button:hover {
+    transform: translateY(-2px);
+}
+
+
+.incoming-video-actions button:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================================================
+   DECLINE
+========================================================= */
+
+.incoming-video-decline {
+    background:
+        linear-gradient(
+            135deg,
+            #ef4d65,
+            #c8324b
+        );
+
+    box-shadow:
+        0 10px 25px rgba(239, 77, 101, 0.18);
+}
+
+
+.incoming-video-decline:hover {
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 14px 30px rgba(239, 77, 101, 0.28);
+}
+
+
+/* =========================================================
+   ACCEPT
+========================================================= */
+
+.incoming-video-accept {
+    background:
+        linear-gradient(
+            135deg,
+            #42d88b,
+            #21ad69
+        );
+
+    box-shadow:
+        0 10px 25px rgba(66, 216, 139, 0.18);
+}
+
+
+.incoming-video-accept:hover {
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 14px 30px rgba(66, 216, 139, 0.28);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes incomingVideoOverlayIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes incomingVideoCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(22px) scale(0.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+@keyframes incomingVideoAvatarPulse {
+    0%,
+    100% {
+        box-shadow:
+            0 0 0 8px rgba(100, 90, 255, 0.08),
+            0 15px 40px rgba(60, 50, 220, 0.3);
+    }
+
+    50% {
+        box-shadow:
+            0 0 0 14px rgba(100, 90, 255, 0.04),
+            0 18px 48px rgba(60, 50, 220, 0.42);
+    }
+}
+
+
+@keyframes incomingVideoDotPulse {
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.25);
+        opacity: 0.7;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .incoming-video-overlay {
+        padding: 16px;
+    }
+
+    .incoming-video-card {
+        width: 100%;
+
+        padding:
+            30px
+            20px
+            22px;
+
+        border-radius: 24px;
+    }
+
+    .incoming-video-avatar {
+        width: 82px;
+        height: 82px;
+
+        font-size: 30px;
+    }
+
+    .incoming-video-info h2 {
+        font-size: 23px;
+    }
+
+    .incoming-video-actions {
+        gap: 10px;
+    }
+
+    .incoming-video-actions button {
+        min-height: 54px;
+
+        border-radius: 15px;
+
+        font-size: 13px;
+    }
+}

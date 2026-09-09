@@ -1,0 +1,599 @@
+.group-view {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    color: #f8fafc;
+
+    background:
+        radial-gradient(
+            circle at 20% 0%,
+            rgba(99, 102, 241, 0.08),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(168, 85, 247, 0.06),
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #0b0d12 0%,
+            #090b10 100%
+        );
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.group-view-content {
+    flex: 1;
+    min-height: 0;
+
+    width: 100%;
+    max-width: 1180px;
+
+    margin: 0 auto;
+    padding: 28px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.14) transparent;
+}
+
+.group-view-content::-webkit-scrollbar {
+    width: 7px;
+}
+
+.group-view-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.group-view-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+}
+
+.group-view-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+
+/* =========================================================
+   WELCOME
+========================================================= */
+
+.group-welcome {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 24px;
+    margin-bottom: 22px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.018)
+        );
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    overflow: hidden;
+}
+
+.group-welcome::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -100px;
+    right: -70px;
+
+    border-radius: 50%;
+
+    background: rgba(99, 102, 241, 0.1);
+
+    filter: blur(30px);
+
+    pointer-events: none;
+}
+
+.group-welcome-icon {
+    position: relative;
+    z-index: 1;
+
+    width: 58px;
+    height: 58px;
+
+    flex: 0 0 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 17px;
+
+    color: #c7d2fe;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(99, 102, 241, 0.2),
+            rgba(139, 92, 246, 0.1)
+        );
+
+    border: 1px solid rgba(129, 140, 248, 0.2);
+
+    box-shadow:
+        0 12px 30px rgba(79, 70, 229, 0.12);
+}
+
+.group-welcome-text {
+    position: relative;
+    z-index: 1;
+
+    min-width: 0;
+}
+
+.group-welcome-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+
+    color: rgba(165, 180, 252, 0.72);
+}
+
+.group-welcome-text h2 {
+    margin: 0 0 6px;
+
+    font-size: 21px;
+    line-height: 1.3;
+    font-weight: 750;
+
+    color: #f8fafc;
+}
+
+.group-welcome-text p {
+    margin: 0;
+
+    max-width: 680px;
+
+    font-size: 13px;
+    line-height: 1.65;
+
+    color: rgba(203, 213, 225, 0.68);
+}
+
+
+/* =========================================================
+   QUICK ACTIONS
+========================================================= */
+
+.group-quick-actions {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 14px;
+
+    margin-bottom: 28px;
+}
+
+.group-action-card {
+    position: relative;
+
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 17px;
+
+    border: 1px solid rgba(255, 255, 255, 0.075);
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.045),
+            rgba(255, 255, 255, 0.015)
+        );
+
+    color: inherit;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        background 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.group-action-card::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.045),
+            transparent 45%
+        );
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity 180ms ease;
+}
+
+.group-action-card:hover {
+    transform: translateY(-2px);
+
+    border-color: rgba(129, 140, 248, 0.2);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(99, 102, 241, 0.09),
+            rgba(255, 255, 255, 0.025)
+        );
+
+    box-shadow:
+        0 14px 32px rgba(0, 0, 0, 0.2);
+}
+
+.group-action-card:hover::after {
+    opacity: 1;
+}
+
+.group-action-card:active {
+    transform: translateY(0);
+}
+
+.group-action-card:focus-visible {
+    outline: none;
+
+    border-color: rgba(129, 140, 248, 0.55);
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.16);
+}
+
+
+/* =========================================================
+   ACTION ICON
+========================================================= */
+
+.group-action-icon {
+    position: relative;
+    z-index: 1;
+
+    width: 42px;
+    height: 42px;
+
+    flex: 0 0 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    color: #c7d2fe;
+
+    background: rgba(99, 102, 241, 0.1);
+
+    border: 1px solid rgba(129, 140, 248, 0.12);
+}
+
+
+/* =========================================================
+   ACTION CONTENT
+========================================================= */
+
+.group-action-content {
+    position: relative;
+    z-index: 1;
+
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.group-action-content strong {
+    display: block;
+
+    overflow: hidden;
+
+    font-size: 13px;
+    line-height: 1.35;
+    font-weight: 700;
+
+    color: #f1f5f9;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.group-action-content small {
+    display: block;
+
+    overflow: hidden;
+
+    font-size: 11px;
+    line-height: 1.45;
+
+    color: rgba(148, 163, 184, 0.7);
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   MEMBERS SECTION
+========================================================= */
+
+.group-members-section {
+    width: 100%;
+
+    padding: 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.075);
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.035),
+            rgba(255, 255, 255, 0.012)
+        );
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.group-section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 16px;
+}
+
+.group-section-title {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    min-width: 0;
+}
+
+.group-section-icon {
+    width: 36px;
+    height: 36px;
+
+    flex: 0 0 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    color: #c7d2fe;
+
+    background: rgba(99, 102, 241, 0.1);
+
+    border: 1px solid rgba(129, 140, 248, 0.12);
+}
+
+.group-section-title > div {
+    min-width: 0;
+}
+
+.group-section-title h3 {
+    margin: 0 0 3px;
+
+    font-size: 14px;
+    font-weight: 750;
+
+    color: #f8fafc;
+}
+
+.group-section-title p {
+    margin: 0;
+
+    font-size: 11px;
+
+    color: rgba(148, 163, 184, 0.65);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .group-view-content {
+        padding: 22px;
+    }
+
+    .group-quick-actions {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .group-action-card:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+    .group-view-content {
+        padding: 16px;
+    }
+
+    .group-welcome {
+        padding: 18px;
+        gap: 13px;
+        border-radius: 17px;
+    }
+
+    .group-welcome-icon {
+        width: 48px;
+        height: 48px;
+
+        flex-basis: 48px;
+
+        border-radius: 14px;
+    }
+
+    .group-welcome-text h2 {
+        font-size: 18px;
+    }
+
+    .group-welcome-text p {
+        font-size: 12px;
+    }
+
+    .group-quick-actions {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+
+        margin-bottom: 20px;
+    }
+
+    .group-action-card:last-child {
+        grid-column: auto;
+    }
+
+    .group-action-card {
+        padding: 15px;
+    }
+
+    .group-members-section {
+        padding: 15px;
+        border-radius: 17px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .group-view-content {
+        padding: 12px;
+    }
+
+    .group-welcome {
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .group-welcome-label {
+        font-size: 9px;
+    }
+
+    .group-welcome-text h2 {
+        font-size: 16px;
+    }
+
+    .group-welcome-text p {
+        font-size: 11px;
+    }
+
+    .group-action-icon {
+        width: 39px;
+        height: 39px;
+
+        flex-basis: 39px;
+    }
+
+    .group-action-content strong {
+        font-size: 12px;
+    }
+
+    .group-action-content small {
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .group-action-card,
+    .group-action-card::after {
+        transition: none;
+    }
+
+    .group-action-card:hover {
+        transform: none;
+    }
+}

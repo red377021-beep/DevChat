@@ -1,0 +1,574 @@
+/* ==========================================================
+   DEVCHAT — MESSAGE INFO
+   PREMIUM DARK UI
+========================================================== */
+
+
+/* ==========================================================
+   OVERLAY
+========================================================== */
+
+.message-info-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(3, 6, 12, 0.76);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+    animation:
+        messageInfoFadeIn
+        0.22s
+        ease;
+}
+
+
+/* ==========================================================
+   PANEL
+========================================================== */
+
+.message-info-panel {
+    width: min(430px, 100%);
+
+    max-height: min(680px, 90vh);
+
+    overflow-y: auto;
+
+    position: relative;
+
+    padding: 0;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.10);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(24, 29, 40, 0.98),
+            rgba(10, 13, 20, 0.99)
+        );
+
+    box-shadow:
+        0 30px 90px
+        rgba(0, 0, 0, 0.65),
+
+        0 0 0 1px
+        rgba(255, 255, 255, 0.025);
+
+    color: #ffffff;
+
+    animation:
+        messageInfoScaleIn
+        0.25s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+/* ==========================================================
+   SCROLLBAR
+========================================================== */
+
+.message-info-panel::-webkit-scrollbar {
+    width: 5px;
+}
+
+.message-info-panel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.message-info-panel::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.14);
+}
+
+.message-info-panel::-webkit-scrollbar-thumb:hover {
+    background:
+        rgba(255, 255, 255, 0.22);
+}
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.message-info-header {
+    min-height: 68px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding:
+        0 18px;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.075);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.035),
+            transparent
+        );
+}
+
+
+/* ==========================================================
+   TITLE
+========================================================== */
+
+.message-info-title {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.message-info-title svg {
+    color: #8b5cf6;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(139, 92, 246, 0.35)
+        );
+}
+
+.message-info-header h3 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 17px;
+
+    font-weight: 650;
+
+    letter-spacing:
+        -0.2px;
+}
+
+
+/* ==========================================================
+   CLOSE BUTTON
+========================================================== */
+
+.message-info-close {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    color: #9ca5b5;
+
+    background:
+        rgba(255, 255, 255, 0.055);
+
+    cursor: pointer;
+
+    transition:
+        background 0.18s ease,
+        color 0.18s ease,
+        transform 0.18s ease;
+}
+
+.message-info-close:hover {
+    color: #ffffff;
+
+    background:
+        rgba(255, 255, 255, 0.11);
+
+    transform:
+        rotate(4deg);
+}
+
+.message-info-close:active {
+    transform:
+        scale(0.94);
+}
+
+
+/* ==========================================================
+   MESSAGE PREVIEW
+========================================================== */
+
+.message-info-message {
+    margin: 18px;
+
+    padding: 15px 16px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.075);
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.025)
+        );
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.035);
+}
+
+
+/* ==========================================================
+   PREVIEW LABEL
+========================================================== */
+
+.message-info-preview-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #7f899b;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing:
+        0.8px;
+}
+
+
+/* ==========================================================
+   PREVIEW TEXT
+========================================================== */
+
+.message-info-preview {
+    color: #edf0f6;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+
+    font-weight: 450;
+
+    word-break: break-word;
+}
+
+
+/* ==========================================================
+   INFO ROW
+========================================================== */
+
+.message-info-row {
+    min-height: 64px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    margin:
+        0 12px;
+
+    padding:
+        11px 8px;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.055);
+
+    transition:
+        background 0.18s ease,
+        border-radius 0.18s ease;
+}
+
+.message-info-row:hover {
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    border-radius: 12px;
+}
+
+
+/* ==========================================================
+   ROW ICON
+========================================================== */
+
+.message-info-row > svg {
+    flex:
+        0 0 auto;
+
+    color: #8b5cf6;
+
+    filter:
+        drop-shadow(
+            0 0 7px
+            rgba(139, 92, 246, 0.25)
+        );
+}
+
+
+/* ==========================================================
+   ROW CONTENT
+========================================================== */
+
+.message-info-row > div {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+/* ==========================================================
+   ROW LABEL
+========================================================== */
+
+.message-info-row span {
+    color: #7f899b;
+
+    font-size: 11px;
+
+    font-weight: 500;
+}
+
+
+/* ==========================================================
+   ROW VALUE
+========================================================== */
+
+.message-info-row strong {
+    color: #e9edf5;
+
+    font-size: 13px;
+
+    font-weight: 550;
+
+    line-height: 1.35;
+
+    word-break: break-word;
+}
+
+
+/* ==========================================================
+   SEEN / DELIVERED CHECKS
+========================================================== */
+
+.message-info-row svg[data-lucide="check-check"] {
+    color: #60a5fa;
+}
+
+
+/* ==========================================================
+   DANGER / DELETED
+========================================================== */
+
+.message-info-row.message-info-danger {
+    margin-top: 4px;
+
+    border-bottom: 0;
+
+    color: #f87171;
+
+    background:
+        rgba(239, 68, 68, 0.055);
+
+    border:
+        1px solid
+        rgba(239, 68, 68, 0.10);
+
+    border-radius: 12px;
+}
+
+.message-info-row.message-info-danger > svg {
+    color: #ef4444;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(239, 68, 68, 0.3)
+        );
+}
+
+.message-info-row.message-info-danger span {
+    color: #b87979;
+}
+
+.message-info-row.message-info-danger strong {
+    color: #f87171;
+}
+
+
+/* ==========================================================
+   LAST ROW
+========================================================== */
+
+.message-info-panel .message-info-row:last-child {
+    margin-bottom: 12px;
+
+    border-bottom: 0;
+}
+
+
+/* ==========================================================
+   FOCUS
+========================================================== */
+
+.message-info-close:focus-visible {
+    outline:
+        2px solid
+        rgba(139, 92, 246, 0.75);
+
+    outline-offset: 2px;
+}
+
+
+/* ==========================================================
+   ANIMATIONS
+========================================================== */
+
+@keyframes messageInfoFadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+@keyframes messageInfoScaleIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(10px)
+            scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 600px) {
+
+    .message-info-overlay {
+        align-items: flex-end;
+
+        padding: 0;
+    }
+
+
+    .message-info-panel {
+        width: 100%;
+
+        max-height: 88vh;
+
+        border-radius:
+            22px 22px 0 0;
+
+        animation:
+            messageInfoMobileIn
+            0.25s
+            cubic-bezier(
+                0.22,
+                1,
+                0.36,
+                1
+            );
+    }
+
+
+    .message-info-header {
+        min-height: 64px;
+
+        padding:
+            0 16px;
+    }
+
+
+    .message-info-message {
+        margin:
+            15px;
+    }
+
+
+    .message-info-row {
+        min-height: 60px;
+
+        margin:
+            0 10px;
+    }
+
+}
+
+
+/* ==========================================================
+   MOBILE ANIMATION
+========================================================== */
+
+@keyframes messageInfoMobileIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}

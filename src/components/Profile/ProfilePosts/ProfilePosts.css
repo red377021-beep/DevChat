@@ -1,0 +1,302 @@
+.profile-posts {
+    width: 100%;
+    margin-top: 18px;
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.profile-posts-grid {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 5px;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+}
+
+
+/* =========================================================
+   POST CARD
+========================================================= */
+
+.profile-post-card {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    border: none;
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    cursor: pointer;
+
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.profile-post-image {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.4s ease;
+}
+
+
+.profile-post-card:hover .profile-post-image {
+    transform: scale(1.06);
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+========================================================= */
+
+.profile-post-placeholder {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: rgba(255, 255, 255, 0.25);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(145, 92, 255, 0.12),
+            rgba(255, 255, 255, 0.035)
+        );
+}
+
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.profile-post-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+
+    background:
+        rgba(0, 0, 0, 0.48);
+
+    transition:
+        opacity 0.25s ease;
+}
+
+
+.profile-post-card:hover .profile-post-overlay {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.profile-post-stats {
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 650;
+}
+
+
+.profile-post-stats span {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+
+/* =========================================================
+   VIDEO BADGE
+========================================================= */
+
+.profile-post-video {
+    position: absolute;
+
+    top: 10px;
+    right: 10px;
+
+    width: 29px;
+    height: 29px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: #ffffff;
+
+    background:
+        rgba(0, 0, 0, 0.55);
+
+    backdrop-filter: blur(8px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.profile-posts-empty {
+    width: 100%;
+
+    min-height: 250px;
+
+    margin-top: 18px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    border-radius: 16px;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+}
+
+
+.profile-posts-empty-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 14px;
+
+    border-radius: 17px;
+
+    color: #c9a8ff;
+
+    background:
+        rgba(145, 92, 255, 0.10);
+
+    border: 1px solid rgba(145, 92, 255, 0.14);
+}
+
+
+.profile-posts-empty h3 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 18px;
+}
+
+
+.profile-posts-empty p {
+    margin: 7px 20px 0;
+
+    color: rgba(255, 255, 255, 0.45);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+.profile-post-card:focus-visible {
+    outline: 2px solid rgba(145, 92, 255, 0.65);
+
+    outline-offset: -2px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .profile-posts {
+        margin-top: 14px;
+    }
+
+    .profile-posts-grid {
+        gap: 3px;
+
+        border-radius: 10px;
+    }
+
+    .profile-post-stats {
+        gap: 10px;
+
+        font-size: 11px;
+    }
+
+    .profile-post-stats span {
+        gap: 4px;
+    }
+
+    .profile-post-video {
+        top: 7px;
+        right: 7px;
+
+        width: 25px;
+        height: 25px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .profile-posts-empty {
+        min-height: 210px;
+    }
+
+}

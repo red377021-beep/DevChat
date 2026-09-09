@@ -1,0 +1,178 @@
+.emoji-picker{
+
+  position:absolute;
+
+  left:18px;
+  bottom:82px;
+
+  width:380px;
+  height:480px;
+
+  border-radius:24px;
+
+  overflow:hidden;
+
+  background:rgba(12,18,30,.92);
+
+  backdrop-filter:blur(30px);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  box-shadow:
+      0 25px 70px rgba(0,0,0,.55),
+      inset 0 1px 0 rgba(255,255,255,.06);
+
+  animation:emojiOpen .28s ease;
+
+  z-index:9999;
+
+}
+
+/* Library Root */
+
+.emoji-picker > div{
+
+  width:100%!important;
+  height:100%!important;
+
+  border:none!important;
+
+  border-radius:24px!important;
+
+  background:#0f172a!important;
+
+}
+
+/* Search Box */
+
+.EmojiPickerReact input{
+
+  background:#111827!important;
+
+  color:#fff!important;
+
+  border-radius:14px!important;
+
+  border:1px solid rgba(255,255,255,.08)!important;
+
+  box-shadow:none!important;
+
+}
+
+.EmojiPickerReact input::placeholder{
+
+  color:#94a3b8!important;
+
+}
+
+/* Category Header */
+
+.EmojiPickerReact .epr-category-label{
+
+  background:#0f172a!important;
+
+  color:#94a3b8!important;
+
+}
+
+/* Emoji Hover */
+
+.EmojiPickerReact button:hover{
+
+  background:#1e293b!important;
+
+  transform:scale(1.12);
+
+  transition:.18s;
+
+}
+
+/* Selected Emoji */
+
+.EmojiPickerReact button:active{
+
+  transform:scale(.92);
+
+}
+
+/* Scroll */
+
+.EmojiPickerReact ::-webkit-scrollbar{
+
+  width:7px;
+
+}
+
+.EmojiPickerReact ::-webkit-scrollbar-track{
+
+  background:transparent;
+
+}
+
+.EmojiPickerReact ::-webkit-scrollbar-thumb{
+
+  background:#334155;
+
+  border-radius:999px;
+
+}
+
+.EmojiPickerReact ::-webkit-scrollbar-thumb:hover{
+
+  background:#5b7cff;
+
+}
+
+/* Top Search Area */
+
+.EmojiPickerReact .epr-search-container{
+
+  padding:12px!important;
+
+}
+
+/* Category Icons */
+
+.EmojiPickerReact .epr-category-nav{
+
+  background:#111827!important;
+
+  border-top:1px solid rgba(255,255,255,.05)!important;
+
+}
+
+/* Preview */
+
+.EmojiPickerReact .epr-preview{
+
+  background:#111827!important;
+
+  border-top:1px solid rgba(255,255,255,.05)!important;
+
+}
+
+/* Animation */
+
+@keyframes emojiOpen{
+
+  from{
+
+    opacity:0;
+
+    transform:
+      translateY(18px)
+      scale(.94);
+
+  }
+
+  to{
+
+    opacity:1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+  }
+
+}

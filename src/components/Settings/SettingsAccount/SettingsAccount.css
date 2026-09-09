@@ -1,0 +1,678 @@
+/* =========================================================
+   SETTINGS ACCOUNT
+========================================================= */
+
+.settings-account {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+
+/* =========================================================
+   ACCOUNT HEADING
+========================================================= */
+
+.settings-account-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-bottom: 24px;
+}
+
+.settings-account-heading-icon {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 14px;
+
+    color: #a78bfa;
+
+    background: rgba(167, 139, 250, 0.10);
+
+    border: 1px solid rgba(167, 139, 250, 0.18);
+}
+
+.settings-account-heading h2 {
+    margin: 0;
+
+    font-size: 21px;
+    font-weight: 700;
+
+    color: #f4f4f5;
+}
+
+.settings-account-heading p {
+    margin: 4px 0 0;
+
+    font-size: 13px;
+
+    color: #8b8b95;
+}
+
+
+/* =========================================================
+   ACCOUNT CARD
+========================================================= */
+
+.settings-account-card {
+    width: 100%;
+
+    margin-bottom: 18px;
+    padding: 20px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.045),
+            rgba(255, 255, 255, 0.018)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.075);
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.20);
+
+    backdrop-filter: blur(18px);
+}
+
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.settings-account-section-title {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+
+    margin-bottom: 16px;
+}
+
+.settings-account-section-title span {
+    font-size: 15px;
+    font-weight: 700;
+
+    color: #f4f4f5;
+}
+
+.settings-account-section-title small {
+    font-size: 12px;
+
+    color: #777781;
+}
+
+
+/* =========================================================
+   ACCOUNT ROW
+========================================================= */
+
+.settings-account-row {
+    min-height: 68px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 11px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+.settings-account-row:last-child {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   ROW ICON
+========================================================= */
+
+.settings-account-icon {
+    width: 39px;
+    height: 39px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 11px;
+
+    color: #a78bfa;
+
+    background: rgba(167, 139, 250, 0.08);
+
+    border: 1px solid rgba(167, 139, 250, 0.13);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.settings-account-row:hover .settings-account-icon {
+    background: rgba(167, 139, 250, 0.13);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   ROW CONTENT
+========================================================= */
+
+.settings-account-content {
+    flex: 1;
+
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.settings-account-content strong {
+    font-size: 13px;
+    font-weight: 600;
+
+    color: #eeeeef;
+}
+
+.settings-account-content span {
+    overflow: hidden;
+
+    font-size: 11px;
+
+    line-height: 1.45;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    color: #777781;
+}
+
+
+/* =========================================================
+   GENERAL ACTION BUTTON
+========================================================= */
+
+.settings-account-action {
+    min-width: 72px;
+
+    padding: 8px 13px;
+
+    border-radius: 9px;
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+
+    background: rgba(255, 255, 255, 0.045);
+
+    color: #cfcfd5;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.settings-account-action:hover {
+    background: rgba(167, 139, 250, 0.10);
+
+    border-color: rgba(167, 139, 250, 0.25);
+
+    color: #b9a3ff;
+
+    transform: translateY(-1px);
+}
+
+.settings-account-action:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================================================
+   EMAIL STATUS
+========================================================= */
+
+.settings-account-status {
+    min-width: 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    padding: 8px 11px;
+
+    border-radius: 9px;
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+
+    background: rgba(255, 255, 255, 0.045);
+
+    color: #a1a1aa;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.settings-account-status:hover {
+    background: rgba(167, 139, 250, 0.09);
+
+    border-color: rgba(167, 139, 250, 0.25);
+
+    color: #b9a3ff;
+}
+
+.settings-account-status.verified {
+    color: #86efac;
+
+    background: rgba(74, 222, 128, 0.08);
+
+    border-color: rgba(74, 222, 128, 0.18);
+}
+
+.settings-account-status.verified:hover {
+    background: rgba(74, 222, 128, 0.12);
+
+    border-color: rgba(74, 222, 128, 0.28);
+
+    color: #a7f3b9;
+}
+
+
+/* =========================================================
+   CONNECTED ACCOUNT BUTTON
+========================================================= */
+
+.settings-account-connect {
+    min-width: 82px;
+
+    padding: 8px 12px;
+
+    border-radius: 9px;
+
+    border: 1px solid rgba(167, 139, 250, 0.20);
+
+    background: rgba(167, 139, 250, 0.08);
+
+    color: #b9a3ff;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.settings-account-connect:hover {
+    background: rgba(167, 139, 250, 0.15);
+
+    border-color: rgba(167, 139, 250, 0.35);
+
+    transform: translateY(-1px);
+}
+
+.settings-account-connect.connected {
+    color: #86efac;
+
+    background: rgba(74, 222, 128, 0.08);
+
+    border-color: rgba(74, 222, 128, 0.18);
+}
+
+.settings-account-connect.connected:hover {
+    background: rgba(74, 222, 128, 0.13);
+
+    border-color: rgba(74, 222, 128, 0.30);
+}
+
+
+/* =========================================================
+   DANGER ZONE
+========================================================= */
+
+.settings-account-danger {
+    width: 100%;
+
+    padding: 19px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(248, 113, 113, 0.065),
+            rgba(248, 113, 113, 0.025)
+        );
+
+    border: 1px solid rgba(248, 113, 113, 0.14);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================================
+   DANGER HEADER
+========================================================= */
+
+.settings-account-danger-header {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 0;
+}
+
+.settings-account-danger-icon {
+    width: 39px;
+    height: 39px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 11px;
+
+    color: #f87171;
+
+    background: rgba(248, 113, 113, 0.09);
+
+    border: 1px solid rgba(248, 113, 113, 0.15);
+}
+
+.settings-account-danger-header > div:last-child {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+
+    min-width: 0;
+}
+
+.settings-account-danger-header strong {
+    font-size: 13px;
+    font-weight: 700;
+
+    color: #fca5a5;
+}
+
+.settings-account-danger-header span {
+    font-size: 11px;
+
+    color: #8f7474;
+}
+
+
+/* =========================================================
+   DELETE BUTTON
+========================================================= */
+
+.settings-account-delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    flex-shrink: 0;
+
+    padding: 9px 14px;
+
+    border-radius: 9px;
+
+    border: 1px solid rgba(248, 113, 113, 0.18);
+
+    background: rgba(248, 113, 113, 0.07);
+
+    color: #f87171;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.settings-account-delete:hover {
+    background: rgba(248, 113, 113, 0.13);
+
+    border-color: rgba(248, 113, 113, 0.32);
+
+    box-shadow:
+        0 8px 22px rgba(248, 113, 113, 0.08);
+
+    transform: translateY(-1px);
+}
+
+.settings-account-delete:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================================================
+   FOCUS STATES
+========================================================= */
+
+.settings-account-action:focus-visible,
+.settings-account-status:focus-visible,
+.settings-account-connect:focus-visible,
+.settings-account-delete:focus-visible {
+    outline: 2px solid rgba(167, 139, 250, 0.55);
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 760px) {
+
+    .settings-account {
+        padding-bottom: 25px;
+    }
+
+
+    .settings-account-heading {
+        margin-bottom: 18px;
+    }
+
+
+    .settings-account-heading-icon {
+        width: 40px;
+        height: 40px;
+
+        border-radius: 12px;
+    }
+
+
+    .settings-account-heading h2 {
+        font-size: 18px;
+    }
+
+
+    .settings-account-heading p {
+        font-size: 11px;
+    }
+
+
+    .settings-account-card {
+        padding: 16px;
+
+        border-radius: 15px;
+    }
+
+
+    .settings-account-danger {
+        padding: 16px;
+
+        border-radius: 15px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 520px) {
+
+    .settings-account-row {
+        align-items: center;
+
+        gap: 10px;
+
+        min-height: 64px;
+    }
+
+
+    .settings-account-icon {
+        width: 35px;
+        height: 35px;
+
+        border-radius: 10px;
+    }
+
+
+    .settings-account-content strong {
+        font-size: 12px;
+    }
+
+
+    .settings-account-content span {
+        font-size: 10px;
+    }
+
+
+    .settings-account-action {
+        min-width: 60px;
+
+        padding: 7px 9px;
+
+        font-size: 10px;
+    }
+
+
+    .settings-account-status {
+        min-width: 67px;
+
+        padding: 7px 8px;
+
+        font-size: 10px;
+    }
+
+
+    .settings-account-connect {
+        min-width: 68px;
+
+        padding: 7px 8px;
+
+        font-size: 10px;
+    }
+
+
+    .settings-account-danger {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 15px;
+    }
+
+
+    .settings-account-delete {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .settings-account-card {
+        padding: 13px;
+    }
+
+
+    .settings-account-row {
+        gap: 7px;
+    }
+
+
+    .settings-account-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+
+    .settings-account-content span {
+        max-width: 130px;
+    }
+
+
+    .settings-account-action,
+    .settings-account-status,
+    .settings-account-connect {
+        min-width: auto;
+
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+
+}

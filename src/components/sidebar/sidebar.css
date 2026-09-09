@@ -1,0 +1,405 @@
+/* ==========================================================
+   DEVCHAT SIDEBAR
+========================================================== */
+
+.sidebar{
+    width:82px;
+    min-width:82px;
+    height:100vh;
+
+    background:#0b1220;
+
+    border-right:1px solid rgba(255,255,255,.06);
+
+    display:flex;
+    flex-direction:column;
+
+    transition:.35s ease;
+
+    overflow:hidden;
+}
+
+.sidebar-expanded{
+    width:260px;
+    min-width:260px;
+}
+
+.sidebar-header{
+
+    height:78px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:18px;
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+}
+
+.sidebar-logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.logo-box{
+
+    width:48px;
+    height:48px;
+
+    border-radius:16px;
+
+    background:linear-gradient(
+        135deg,
+        #5865F2,
+        #7C3AED
+    );
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+
+    font-weight:700;
+
+    font-size:18px;
+
+    flex-shrink:0;
+
+}
+
+.logo-text{
+
+    white-space:nowrap;
+
+}
+
+.logo-text h2{
+
+    color:white;
+
+    font-size:18px;
+
+}
+
+.logo-text span{
+
+    color:#94A3B8;
+
+    font-size:12px;
+
+}
+
+.sidebar-toggle{
+
+    width:38px;
+
+    height:38px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#172033;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.sidebar-toggle:hover{
+
+    background:#5865F2;
+
+}
+
+.sidebar-menu{
+
+    flex:1;
+
+    padding:12px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.sidebar-item{
+
+    width:100%;
+
+    height:54px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:transparent;
+
+    color:#9CA3AF;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    padding:0 14px;
+
+    position:relative;
+
+}
+
+.sidebar-item:hover{
+
+    background:#162033;
+
+    color:white;
+
+}
+
+.sidebar-icon{
+
+    width:24px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-shrink:0;
+
+}
+
+.sidebar-text{
+
+    font-size:15px;
+
+    font-weight:500;
+
+    transition:.25s;
+
+}
+
+.sidebar-text.hide{
+
+    opacity:0;
+
+    width:0;
+
+    overflow:hidden;
+
+}
+
+.sidebar-text.show{
+
+    opacity:1;
+
+}
+
+.sidebar-footer{
+
+    padding:12px;
+
+    border-top:1px solid rgba(255,255,255,.05);
+
+}
+/* ==========================================================
+   ACTIVE ITEM
+========================================================== */
+
+.sidebar-item.active{
+
+    color:#ffffff;
+
+    background:linear-gradient(
+        90deg,
+        rgba(88,101,242,.25),
+        rgba(88,101,242,.08)
+    );
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.04),
+        0 8px 25px rgba(88,101,242,.15);
+
+}
+
+.sidebar-item.active::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-12px;
+
+    width:4px;
+
+    height:34px;
+
+    border-radius:20px;
+
+    background:#5865F2;
+
+}
+
+/* ==========================================================
+   ICON EFFECT
+========================================================== */
+
+.sidebar-item svg{
+
+    transition:.25s;
+
+}
+
+.sidebar-item:hover svg{
+
+    transform:scale(1.12);
+
+}
+
+.sidebar-item.active svg{
+
+    color:#ffffff;
+
+}
+
+/* ==========================================================
+   COLLAPSE
+========================================================== */
+
+.sidebar-collapsed .logo-text{
+
+    opacity:0;
+
+    width:0;
+
+    overflow:hidden;
+
+}
+
+.sidebar-collapsed .sidebar-header{
+
+    flex-direction:column;
+
+    justify-content:flex-start;
+
+    gap:14px;
+
+}
+
+.sidebar-collapsed .sidebar-item{
+
+    justify-content:center;
+
+    padding:0;
+
+}
+
+.sidebar-collapsed .sidebar-footer{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+/* ==========================================================
+   PROFILE
+========================================================== */
+
+.sidebar-footer .sidebar-item{
+
+    margin-top:6px;
+
+}
+
+/* ==========================================================
+   SCROLLBAR
+========================================================== */
+
+.sidebar-menu{
+
+    overflow-y:auto;
+
+    scrollbar-width:none;
+
+}
+
+.sidebar-menu::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+/* ==========================================================
+   TRANSITIONS
+========================================================== */
+
+.sidebar,
+.sidebar-item,
+.sidebar-text,
+.logo-text,
+.sidebar-toggle{
+
+    transition:all .30s ease;
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width:992px){
+
+    .sidebar{
+
+        position:fixed;
+
+        left:0;
+        top:0;
+
+        z-index:999;
+
+        box-shadow:0 0 40px rgba(0,0,0,.45);
+
+    }
+
+}
+.sidebar-toggle-item{
+    margin-bottom:12px;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    padding-bottom:8px;
+}
+
+.sidebar-toggle-item:hover{
+    background:#5865F2;
+    color:#fff;
+}

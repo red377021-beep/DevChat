@@ -1,0 +1,612 @@
+/* =========================================================
+   GROUP MESSAGE
+   ========================================================= */
+
+.group-message {
+    width: 100%;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 9px;
+
+    padding: 0 10px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   SENDER
+   ========================================================= */
+
+.group-message-sender {
+    margin-left: 45px;
+    margin-bottom: 4px;
+
+    max-width: fit-content;
+
+    overflow: hidden;
+
+    color:
+        rgba(192, 132, 252, 0.72);
+
+    font-size: 9px;
+    font-weight: 650;
+
+    line-height: 1.3;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   ROW
+   ========================================================= */
+
+.group-message-row {
+    display: flex;
+    align-items: flex-end;
+
+    gap: 8px;
+
+    min-width: 0;
+}
+
+
+.group-message-own
+.group-message-row {
+    justify-content: flex-end;
+}
+
+
+/* =========================================================
+   AVATAR BUTTON
+   ========================================================= */
+
+.group-message-avatar-button {
+    flex: 0 0 auto;
+
+    width: 32px;
+    height: 32px;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+
+.group-message-avatar-button:focus-visible {
+    outline: 2px solid
+        rgba(139, 92, 246, 0.75);
+
+    outline-offset: 2px;
+
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   AVATAR
+   ========================================================= */
+
+.group-message-avatar {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(139, 92, 246, 0.22),
+            rgba(59, 130, 246, 0.15)
+        );
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.08);
+
+    color:
+        rgba(255, 255, 255, 0.78);
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+.group-message-avatar img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.group-message-content {
+    position: relative;
+
+    min-width: 0;
+    max-width: min(72%, 520px);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+}
+
+
+.group-message-own
+.group-message-content {
+    align-items: flex-end;
+}
+
+
+/* =========================================================
+   REPLY PREVIEW
+   ========================================================= */
+
+.group-message-reply {
+    width: min(100%, 330px);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    margin-bottom: 4px;
+
+    padding: 7px 9px;
+
+    border: 0;
+    border-left: 2px solid
+        rgba(192, 132, 252, 0.65);
+
+    border-radius: 7px;
+
+    background:
+        rgba(139, 92, 246, 0.07);
+
+    color: inherit;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    box-sizing: border-box;
+
+    transition:
+        background 160ms ease,
+        border-color 160ms ease;
+}
+
+
+.group-message-reply:hover {
+    background:
+        rgba(139, 92, 246, 0.12);
+
+    border-left-color:
+        rgba(192, 132, 252, 0.90);
+}
+
+
+.group-message-reply:focus-visible {
+    outline: 2px solid
+        rgba(139, 92, 246, 0.65);
+
+    outline-offset: 2px;
+}
+
+
+.group-message-reply span {
+    max-width: 100%;
+
+    overflow: hidden;
+
+    color:
+        rgba(192, 132, 252, 0.78);
+
+    font-size: 8px;
+    font-weight: 650;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.group-message-reply p {
+    width: 100%;
+
+    overflow: hidden;
+
+    margin: 2px 0 0;
+
+    color:
+        rgba(255, 255, 255, 0.36);
+
+    font-size: 8px;
+
+    line-height: 1.35;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   BUBBLE
+   ========================================================= */
+
+.group-message-bubble {
+    position: relative;
+
+    max-width: 100%;
+
+    display: flex;
+    align-items: flex-end;
+
+    gap: 9px;
+
+    padding: 9px 11px;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.055);
+
+    border-radius:
+        5px 13px 13px 13px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.028)
+        );
+
+    box-shadow:
+        0 5px 18px
+        rgba(0, 0, 0, 0.12);
+}
+
+
+.group-message-own
+.group-message-bubble {
+    border-color:
+        rgba(139, 92, 246, 0.16);
+
+    border-radius:
+        13px 5px 13px 13px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(139, 92, 246, 0.18),
+            rgba(109, 40, 217, 0.10)
+        );
+}
+
+
+/* =========================================================
+   MESSAGE TEXT
+   ========================================================= */
+
+.group-message-bubble p {
+    min-width: 0;
+
+    margin: 0;
+
+    color:
+        rgba(255, 255, 255, 0.82);
+
+    font-size: 11px;
+
+    font-weight: 450;
+
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+
+    white-space: pre-wrap;
+}
+
+
+.group-message-own
+.group-message-bubble p {
+    color:
+        rgba(255, 255, 255, 0.91);
+}
+
+
+/* =========================================================
+   META
+   ========================================================= */
+
+.group-message-meta {
+    flex: 0 0 auto;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 3px;
+
+    padding-bottom: 1px;
+
+    color:
+        rgba(255, 255, 255, 0.28);
+
+    font-size: 7px;
+
+    white-space: nowrap;
+}
+
+
+.group-message-meta time {
+    line-height: 1;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.group-message-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    color:
+        rgba(255, 255, 255, 0.40);
+}
+
+
+.group-message-status.read {
+    color:
+        rgba(96, 165, 250, 0.88);
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.group-message-actions {
+    position: absolute;
+
+    top: 50%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 3px;
+
+    padding: 3px;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.07);
+
+    border-radius: 8px;
+
+    background:
+        rgba(17, 19, 28, 0.92);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform:
+        translateY(-50%)
+        scale(0.94);
+
+    transition:
+        opacity 160ms ease,
+        transform 160ms ease;
+}
+
+
+.group-message-content:hover
+.group-message-actions,
+.group-message-content:focus-within
+.group-message-actions {
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform:
+        translateY(-50%)
+        scale(1);
+}
+
+
+/* Incoming */
+.group-message:not(.group-message-own)
+.group-message-actions {
+    right: -67px;
+}
+
+
+/* Own */
+.group-message-own
+.group-message-actions {
+    left: -67px;
+}
+
+
+.group-message-actions button {
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 6px;
+
+    background: transparent;
+
+    color:
+        rgba(255, 255, 255, 0.45);
+
+    cursor: pointer;
+
+    transition:
+        background 150ms ease,
+        color 150ms ease;
+}
+
+
+.group-message-actions button:hover {
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    color: #ffffff;
+}
+
+
+.group-message-actions button:focus-visible {
+    outline: 2px solid
+        rgba(139, 92, 246, 0.70);
+
+    outline-offset: 1px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .group-message {
+        padding: 0 7px;
+    }
+
+
+    .group-message-content {
+        max-width: 78%;
+    }
+
+
+    .group-message-actions {
+        display: none;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+    .group-message {
+        margin-bottom: 8px;
+    }
+
+
+    .group-message-sender {
+        margin-left: 39px;
+
+        font-size: 8px;
+    }
+
+
+    .group-message-avatar-button,
+    .group-message-avatar {
+        width: 28px;
+        height: 28px;
+    }
+
+
+    .group-message-row {
+        gap: 6px;
+    }
+
+
+    .group-message-content {
+        max-width: 84%;
+    }
+
+
+    .group-message-bubble {
+        gap: 7px;
+
+        padding: 8px 9px;
+    }
+
+
+    .group-message-bubble p {
+        font-size: 10px;
+    }
+
+
+    .group-message-meta {
+        font-size: 6px;
+    }
+
+
+    .group-message-reply {
+        padding: 6px 8px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .group-message-content {
+        max-width: 88%;
+    }
+
+
+    .group-message-bubble {
+        gap: 5px;
+    }
+
+
+    .group-message-meta {
+        gap: 2px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .group-message-actions,
+    .group-message-reply,
+    .group-message-actions button {
+        transition: none;
+    }
+
+}

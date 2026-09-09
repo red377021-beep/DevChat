@@ -1,0 +1,750 @@
+/* =========================================================
+   DEVCHAT — PROFESSIONAL IMAGE VIEWER
+========================================================= */
+
+.image-viewer-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+    height: 100dvh;
+
+    background:
+        rgba(3, 6, 12, 0.985);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    z-index: 2147483647;
+
+    isolation: isolate;
+
+    opacity: 1;
+
+    animation:
+        imageViewerFadeIn
+        0.18s
+        ease-out;
+
+    cursor: default;
+
+    user-select: none;
+
+    -webkit-user-select: none;
+
+    touch-action: none;
+}
+
+
+/* =========================================================
+   OPEN
+========================================================= */
+
+@keyframes imageViewerFadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.image-viewer-topbar {
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 86px;
+
+    padding:
+        0 24px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.82),
+            rgba(0, 0, 0, 0.35),
+            transparent
+        );
+
+    z-index: 100;
+
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   COUNTER
+========================================================= */
+
+.image-viewer-counter {
+
+    min-width: 64px;
+
+    height: 38px;
+
+    padding:
+        0 14px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.13);
+
+    border-radius: 999px;
+
+    background:
+        rgba(255, 255, 255, 0.09);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 8px 30px
+        rgba(0, 0, 0, 0.28);
+}
+
+
+.image-viewer-counter strong {
+    color: #ffffff;
+}
+
+
+.image-viewer-counter span {
+    color:
+        rgba(255, 255, 255, 0.48);
+}
+
+
+/* =========================================================
+   TOOLS
+========================================================= */
+
+.image-viewer-tools {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+/* =========================================================
+   TOOL BUTTONS
+========================================================= */
+
+.image-viewer-tool,
+.image-viewer-close {
+
+    width: 46px;
+    height: 46px;
+
+    padding: 0;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.13);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+
+    background:
+        rgba(255, 255, 255, 0.09);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    cursor: pointer;
+
+    transition:
+        background 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.18s ease;
+
+    outline: none;
+}
+
+
+.image-viewer-tool:hover {
+
+    background:
+        rgba(255, 255, 255, 0.18);
+
+    border-color:
+        rgba(255, 255, 255, 0.24);
+
+    transform:
+        scale(1.07);
+}
+
+
+.image-viewer-close:hover {
+
+    background:
+        rgba(239, 68, 68, 0.82);
+
+    border-color:
+        rgba(255, 130, 130, 0.4);
+
+    transform:
+        scale(1.07);
+}
+
+
+.image-viewer-tool:active,
+.image-viewer-close:active {
+
+    transform:
+        scale(0.94);
+}
+
+
+/* =========================================================
+   MAIN STAGE
+========================================================= */
+
+.image-viewer-stage {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    padding:
+        86px
+        96px
+        104px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    z-index: 10;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   IMAGE CONTAINER
+========================================================= */
+
+.image-viewer-image-container {
+
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    pointer-events: auto;
+
+    min-width: 0;
+    min-height: 0;
+}
+
+
+/* =========================================================
+   MAIN IMAGE
+========================================================= */
+
+.image-viewer-image {
+
+    display: block;
+
+    width: auto;
+    height: auto;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    border-radius: 6px;
+
+    opacity: 1;
+
+    visibility: visible;
+
+    user-select: none;
+
+    -webkit-user-select: none;
+
+    -webkit-user-drag: none;
+
+    pointer-events: auto;
+
+    box-shadow:
+        0 25px 100px
+        rgba(0, 0, 0, 0.65);
+
+    /* IMPORTANT:
+       no hover animation
+       no opacity animation
+       no transform
+       no cursor dependency
+    */
+
+    transition: none;
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.image-viewer-nav {
+
+    position: absolute;
+
+    top: 50%;
+
+    width: 58px;
+    height: 58px;
+
+    padding: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.15);
+
+    border-radius: 50%;
+
+    background:
+        rgba(15, 18, 27, 0.78);
+
+    color: #ffffff;
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    cursor: pointer;
+
+    z-index: 50;
+
+    pointer-events: auto;
+
+    outline: none;
+
+    transition:
+        background 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.18s ease;
+}
+
+
+.image-viewer-prev {
+
+    left: 22px;
+
+    transform:
+        translateY(-50%);
+}
+
+
+.image-viewer-next {
+
+    right: 22px;
+
+    transform:
+        translateY(-50%);
+}
+
+
+.image-viewer-prev:hover {
+
+    background:
+        rgba(124, 58, 237, 0.9);
+
+    border-color:
+        rgba(255, 255, 255, 0.25);
+
+    transform:
+        translateY(-50%)
+        scale(1.07);
+}
+
+
+.image-viewer-next:hover {
+
+    background:
+        rgba(124, 58, 237, 0.9);
+
+    border-color:
+        rgba(255, 255, 255, 0.25);
+
+    transform:
+        translateY(-50%)
+        scale(1.07);
+}
+
+
+.image-viewer-prev:active,
+.image-viewer-next:active {
+
+    transform:
+        translateY(-50%)
+        scale(0.94);
+}
+
+
+/* =========================================================
+   THUMBNAILS
+========================================================= */
+
+.image-viewer-thumbnails {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 18px;
+
+    transform:
+        translateX(-50%);
+
+    max-width:
+        calc(100vw - 30px);
+
+    min-height: 72px;
+
+    padding:
+        8px 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
+    border-radius: 18px;
+
+    background:
+        rgba(15, 18, 27, 0.82);
+
+    backdrop-filter:
+        blur(22px);
+
+    -webkit-backdrop-filter:
+        blur(22px);
+
+    z-index: 100;
+
+    pointer-events: auto;
+
+    box-shadow:
+        0 15px 50px
+        rgba(0, 0, 0, 0.45);
+}
+
+
+.image-viewer-thumbnails::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================================================
+   THUMBNAIL
+========================================================= */
+
+.image-viewer-thumb {
+
+    flex:
+        0 0 58px;
+
+    width: 58px;
+    height: 58px;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    border:
+        2px solid transparent;
+
+    border-radius: 11px;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    opacity: 0.55;
+
+    cursor: pointer;
+
+    outline: none;
+
+    transition:
+        opacity 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.18s ease;
+}
+
+
+.image-viewer-thumb img {
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+}
+
+
+.image-viewer-thumb:hover {
+
+    opacity: 0.9;
+
+    transform:
+        translateY(-2px);
+}
+
+
+.image-viewer-thumb.active {
+
+    opacity: 1;
+
+    border-color:
+        #8b5cf6;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(139, 92, 246, 0.2);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .image-viewer-topbar {
+
+        height: 68px;
+
+        padding:
+            0 12px;
+    }
+
+
+    .image-viewer-stage {
+
+        padding:
+            68px
+            58px
+            92px;
+    }
+
+
+    .image-viewer-nav {
+
+        width: 46px;
+        height: 46px;
+    }
+
+
+    .image-viewer-prev {
+        left: 7px;
+    }
+
+
+    .image-viewer-next {
+        right: 7px;
+    }
+
+
+    .image-viewer-image {
+
+        max-width: 100%;
+        max-height: 100%;
+
+        border-radius: 4px;
+    }
+
+
+    .image-viewer-thumb {
+
+        flex-basis: 50px;
+
+        width: 50px;
+        height: 50px;
+    }
+
+
+    .image-viewer-thumbnails {
+
+        bottom: 10px;
+
+        min-height: 62px;
+
+        border-radius: 14px;
+    }
+
+
+    .image-viewer-tool,
+    .image-viewer-close {
+
+        width: 42px;
+        height: 42px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .image-viewer-stage {
+
+        padding:
+            68px
+            48px
+            84px;
+    }
+
+
+    .image-viewer-counter {
+
+        min-width: 54px;
+
+        height: 32px;
+
+        padding:
+            0 10px;
+    }
+
+
+    .image-viewer-nav {
+
+        width: 40px;
+        height: 40px;
+    }
+
+
+    .image-viewer-prev {
+        left: 5px;
+    }
+
+
+    .image-viewer-next {
+        right: 5px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .image-viewer-overlay {
+
+        animation: none;
+    }
+
+    .image-viewer-image {
+
+        transition: none;
+    }
+
+    .image-viewer-tool,
+    .image-viewer-close,
+    .image-viewer-nav,
+    .image-viewer-thumb {
+
+        transition: none;
+    }
+
+}

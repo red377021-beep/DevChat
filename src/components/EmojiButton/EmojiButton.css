@@ -1,0 +1,79 @@
+.emoji-button-wrapper{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.emoji-btn{
+
+    width:38px;
+
+    height:38px;
+
+    border:none;
+
+    background:transparent;
+
+    border-radius:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+
+    transition:.22s;
+
+}
+
+.emoji-btn:hover{
+
+    background:#2d2f36;
+
+}
+
+.emoji-btn.active{
+
+    background:#31343b;
+
+}
+
+.emoji-popup{
+
+    position:absolute;
+
+    bottom:55px;
+
+    right:0;
+
+    z-index:999999;
+
+    animation:emojiOpen .18s ease;
+
+}
+
+@keyframes emojiOpen{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(10px) scale(.96);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0) scale(1);
+
+    }
+
+}

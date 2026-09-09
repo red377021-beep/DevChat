@@ -1,0 +1,652 @@
+/* =========================================================
+   GROUP HEADER
+   ========================================================= */
+
+.group-header {
+    position: relative;
+
+    width: 100%;
+    min-height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 18px;
+
+    padding: 12px 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(20, 22, 32, 0.96),
+            rgba(12, 14, 22, 0.98)
+        );
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.18);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    z-index: 20;
+}
+
+
+/* =========================================================
+   LEFT
+   ========================================================= */
+
+.group-header__left {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    flex: 1;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.group-header__back {
+    width: 38px;
+    height: 38px;
+
+    flex: 0 0 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 11px;
+
+    background: rgba(255, 255, 255, 0.045);
+
+    color: rgba(255, 255, 255, 0.78);
+
+    cursor: pointer;
+
+    transition:
+        background 180ms ease,
+        border-color 180ms ease,
+        color 180ms ease,
+        transform 180ms ease;
+}
+
+.group-header__back:hover {
+    background: rgba(255, 255, 255, 0.09);
+
+    border-color: rgba(255, 255, 255, 0.14);
+
+    color: #ffffff;
+
+    transform: translateX(-2px);
+}
+
+.group-header__back:active {
+    transform: translateX(-2px) scale(0.95);
+}
+
+.group-header__back:focus-visible {
+    outline: 2px solid rgba(139, 92, 246, 0.85);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   AVATAR
+   ========================================================= */
+
+.group-header__avatar {
+    position: relative;
+
+    width: 46px;
+    height: 46px;
+
+    flex: 0 0 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(139, 92, 246, 0.28),
+            rgba(59, 130, 246, 0.18)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+
+    color: rgba(255, 255, 255, 0.72);
+
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+.group-header__avatar::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: inherit;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    pointer-events: none;
+}
+
+.group-header__avatar img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* =========================================================
+   GROUP INFO
+   ========================================================= */
+
+.group-header__info {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   TITLE ROW
+   ========================================================= */
+
+.group-header__title-row {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+}
+
+
+.group-header__name {
+    min-width: 0;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    line-height: 1.25;
+
+    color: #ffffff;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    letter-spacing: -0.01em;
+}
+
+
+/* =========================================================
+   PRIVACY BADGE
+   ========================================================= */
+
+.group-header__privacy {
+    flex: 0 0 auto;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 4px;
+
+    padding: 4px 7px;
+
+    border-radius: 7px;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    white-space: nowrap;
+}
+
+
+.group-header__privacy--public {
+    color: rgba(96, 165, 250, 0.95);
+
+    background: rgba(59, 130, 246, 0.10);
+
+    border: 1px solid rgba(59, 130, 246, 0.16);
+}
+
+
+.group-header__privacy--private {
+    color: rgba(192, 132, 252, 0.95);
+
+    background: rgba(168, 85, 247, 0.10);
+
+    border: 1px solid rgba(168, 85, 247, 0.17);
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.group-header__description {
+    max-width: 600px;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+
+    color: rgba(255, 255, 255, 0.48);
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   MEMBERS
+   ========================================================= */
+
+.group-header__members {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 1px;
+
+    font-size: 11px;
+
+    line-height: 1;
+
+    color: rgba(255, 255, 255, 0.42);
+}
+
+
+.group-header__member-item {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 5px;
+
+    min-width: 0;
+
+    white-space: nowrap;
+}
+
+
+.group-header__member-item svg {
+    flex: 0 0 auto;
+
+    color: rgba(255, 255, 255, 0.48);
+}
+
+
+.group-header__member-item--online {
+    color: rgba(74, 222, 128, 0.78);
+}
+
+
+.group-header__member-item--online svg {
+    color: currentColor;
+}
+
+
+.group-header__online-dot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 8px;
+    height: 8px;
+}
+
+
+.group-header__separator {
+    color: rgba(255, 255, 255, 0.20);
+
+    user-select: none;
+}
+
+
+/* =========================================================
+   RIGHT ACTIONS
+   ========================================================= */
+
+.group-header__actions {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+/* =========================================================
+   ACTION BUTTON
+   ========================================================= */
+
+.group-header__action {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 11px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    color: rgba(255, 255, 255, 0.68);
+
+    cursor: pointer;
+
+    transition:
+        background 180ms ease,
+        border-color 180ms ease,
+        color 180ms ease,
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+
+.group-header__action:hover {
+    background: rgba(255, 255, 255, 0.08);
+
+    border-color: rgba(255, 255, 255, 0.13);
+
+    color: #ffffff;
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.15);
+
+    transform: translateY(-1px);
+}
+
+
+.group-header__action:active {
+    transform: translateY(0) scale(0.95);
+}
+
+
+.group-header__action:focus-visible {
+    outline: 2px solid rgba(139, 92, 246, 0.85);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   SUBTLE TOP HIGHLIGHT
+   ========================================================= */
+
+.group-header::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(139, 92, 246, 0.28),
+            rgba(59, 130, 246, 0.18),
+            transparent
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .group-header {
+        min-height: 70px;
+
+        padding: 11px 14px;
+
+        gap: 12px;
+    }
+
+    .group-header__back {
+        width: 36px;
+        height: 36px;
+
+        flex-basis: 36px;
+    }
+
+    .group-header__avatar {
+        width: 43px;
+        height: 43px;
+
+        flex-basis: 43px;
+
+        border-radius: 13px;
+    }
+
+    .group-header__name {
+        font-size: 15px;
+    }
+
+    .group-header__description {
+        max-width: 400px;
+    }
+
+    .group-header__action {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+    .group-header {
+        min-height: 64px;
+
+        padding: 9px 11px;
+
+        gap: 8px;
+    }
+
+
+    .group-header__left {
+        gap: 8px;
+    }
+
+
+    .group-header__back {
+        width: 34px;
+        height: 34px;
+
+        flex-basis: 34px;
+
+        border-radius: 10px;
+    }
+
+
+    .group-header__avatar {
+        width: 40px;
+        height: 40px;
+
+        flex-basis: 40px;
+
+        border-radius: 12px;
+    }
+
+
+    .group-header__info {
+        gap: 2px;
+    }
+
+
+    .group-header__title-row {
+        gap: 6px;
+    }
+
+
+    .group-header__name {
+        max-width: 150px;
+
+        font-size: 14px;
+    }
+
+
+    .group-header__privacy {
+        padding: 3px 6px;
+
+        font-size: 9px;
+    }
+
+
+    .group-header__description {
+        display: none;
+    }
+
+
+    .group-header__members {
+        gap: 5px;
+
+        font-size: 10px;
+    }
+
+
+    .group-header__member-item {
+        gap: 4px;
+    }
+
+
+    .group-header__actions {
+        gap: 5px;
+    }
+
+
+    .group-header__action {
+        width: 34px;
+        height: 34px;
+
+        border-radius: 10px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .group-header {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+
+    .group-header__back {
+        width: 32px;
+        height: 32px;
+
+        flex-basis: 32px;
+    }
+
+
+    .group-header__avatar {
+        width: 38px;
+        height: 38px;
+
+        flex-basis: 38px;
+    }
+
+
+    .group-header__name {
+        max-width: 115px;
+    }
+
+
+    .group-header__privacy {
+        display: none;
+    }
+
+
+    .group-header__member-item:first-child {
+        display: none;
+    }
+
+
+    .group-header__separator {
+        display: none;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .group-header__back,
+    .group-header__action {
+        transition: none;
+    }
+
+    .group-header__back:hover,
+    .group-header__action:hover {
+        transform: none;
+    }
+
+}

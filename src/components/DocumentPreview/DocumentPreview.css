@@ -1,0 +1,259 @@
+.document-preview {
+
+    width: 100%;
+
+    min-width: 240px;
+
+    max-width: 360px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 12px;
+
+    border-radius: 14px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.06
+    );
+
+    border: 1px solid rgba(
+        255,
+        255,
+        255,
+        0.10
+    );
+
+    box-sizing: border-box;
+
+}
+
+
+/* =====================================================
+   ICON
+===================================================== */
+
+.document-preview-icon {
+
+    width: 44px;
+
+    height: 44px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.10
+    );
+
+    color: #ffffff;
+
+}
+
+
+/* =====================================================
+   INFO
+===================================================== */
+
+.document-preview-info {
+
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+}
+
+
+/* =====================================================
+   FILE NAME
+===================================================== */
+
+.document-preview-name {
+
+    width: 100%;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    line-height: 1.3;
+
+}
+
+
+/* =====================================================
+   META
+===================================================== */
+
+.document-preview-meta {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    overflow: hidden;
+
+    color: rgba(
+        255,
+        255,
+        255,
+        0.55
+    );
+
+    font-size: 11px;
+
+    line-height: 1.3;
+
+}
+
+
+.document-preview-meta span {
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+}
+
+
+/* =====================================================
+   DOWNLOAD BUTTON
+===================================================== */
+
+.document-preview-download {
+
+    width: 36px;
+
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.08
+    );
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.document-preview-download:hover {
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.15
+    );
+
+    transform: translateY(-1px);
+
+}
+
+
+.document-preview-download:active {
+
+    transform: scale(0.94);
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .document-preview {
+
+        min-width: 0;
+
+        max-width: 100%;
+
+        padding: 10px;
+
+        gap: 10px;
+
+    }
+
+
+    .document-preview-icon {
+
+        width: 40px;
+
+        height: 40px;
+
+        border-radius: 10px;
+
+    }
+
+
+    .document-preview-name {
+
+        font-size: 13px;
+
+    }
+
+
+    .document-preview-download {
+
+        width: 34px;
+
+        height: 34px;
+
+    }
+
+}

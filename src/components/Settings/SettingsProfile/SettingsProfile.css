@@ -1,0 +1,419 @@
+.settings-profile {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.settings-profile__hero {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 16px;
+
+    background:
+        radial-gradient(
+            circle at 15% 0%,
+            rgba(255, 255, 255, 0.055),
+            transparent 42%
+        ),
+        rgba(255, 255, 255, 0.025);
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =====================================================
+   AVATAR
+===================================================== */
+
+.settings-profile__avatar-wrapper {
+    position: relative;
+
+    flex-shrink: 0;
+}
+
+
+.settings-profile__avatar {
+    width: 76px;
+    height: 76px;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.12),
+            rgba(255, 255, 255, 0.035)
+        );
+
+    color: rgba(255, 255, 255, 0.85);
+
+    font-size: 26px;
+    font-weight: 750;
+}
+
+
+.settings-profile__avatar img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+.settings-profile__camera {
+    position: absolute;
+
+    right: -2px;
+    bottom: 0;
+
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #0a0a10;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    color: #fff;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.settings-profile__camera:hover {
+    background: rgba(255, 255, 255, 0.2);
+
+    transform: scale(1.06);
+}
+
+
+/* =====================================================
+   IDENTITY
+===================================================== */
+
+.settings-profile__identity {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.settings-profile__name-row {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+
+.settings-profile__name-row h2 {
+    margin: 0;
+
+    overflow: hidden;
+
+    color: rgba(255, 255, 255, 0.94);
+
+    font-size: 18px;
+    font-weight: 750;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.settings-profile__verified {
+    flex-shrink: 0;
+
+    color: rgba(255, 255, 255, 0.75);
+}
+
+
+.settings-profile__username {
+    overflow: hidden;
+
+    color: rgba(255, 255, 255, 0.35);
+
+    font-size: 11px;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.settings-profile__status {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    margin-top: 2px;
+
+    color: rgba(255, 255, 255, 0.42);
+
+    font-size: 10px;
+}
+
+
+.settings-profile__status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #7ee787;
+
+    box-shadow:
+        0 0 8px rgba(126, 231, 135, 0.45);
+}
+
+
+/* =====================================================
+   EDIT BUTTON
+===================================================== */
+
+.settings-profile__edit {
+    margin-left: auto;
+
+    flex-shrink: 0;
+
+    height: 34px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 0 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.045);
+
+    color: rgba(255, 255, 255, 0.65);
+
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 650;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.settings-profile__edit:hover {
+    background: rgba(255, 255, 255, 0.09);
+
+    border-color: rgba(255, 255, 255, 0.13);
+
+    color: #fff;
+}
+
+
+/* =====================================================
+   DETAILS
+===================================================== */
+
+.settings-profile__details {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+}
+
+
+.settings-profile__detail {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 13px;
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 13px;
+
+    background: rgba(255, 255, 255, 0.018);
+}
+
+
+.settings-profile__detail-icon {
+    width: 32px;
+    height: 32px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+.settings-profile__detail-content {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.settings-profile__label {
+    color: rgba(255, 255, 255, 0.3);
+
+    font-size: 8px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+.settings-profile__detail-content strong {
+    overflow: hidden;
+
+    color: rgba(255, 255, 255, 0.72);
+
+    font-size: 10px;
+    font-weight: 600;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 760px) {
+
+    .settings-profile__details {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 520px) {
+
+    .settings-profile__hero {
+        padding: 15px;
+
+        gap: 12px;
+    }
+
+
+    .settings-profile__avatar {
+        width: 62px;
+        height: 62px;
+
+        font-size: 21px;
+    }
+
+
+    .settings-profile__camera {
+        width: 24px;
+        height: 24px;
+    }
+
+
+    .settings-profile__name-row h2 {
+        font-size: 15px;
+    }
+
+
+    .settings-profile__username {
+        font-size: 9px;
+    }
+
+
+    .settings-profile__status {
+        font-size: 9px;
+    }
+
+
+    .settings-profile__edit {
+        width: 34px;
+
+        padding: 0;
+    }
+
+
+    .settings-profile__edit span {
+        display: none;
+    }
+
+
+    .settings-profile__details {
+        gap: 8px;
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .settings-profile__camera,
+    .settings-profile__edit {
+        transition: none;
+    }
+
+}

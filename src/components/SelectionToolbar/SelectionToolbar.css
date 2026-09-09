@@ -1,0 +1,119 @@
+.selection-toolbar{
+
+    height:70px;
+
+    width:100%;
+
+    padding:0 18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    background:var(--chat-header,#202c33);
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+
+    flex-shrink:0;
+
+    z-index:30;
+
+}
+
+/* =============================== */
+
+.selection-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+/* =============================== */
+
+.selection-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+/* =============================== */
+
+.selection-count{
+
+    font-size:16px;
+
+    font-weight:600;
+
+    color:#fff;
+
+    user-select:none;
+
+}
+
+/* =============================== */
+
+.toolbar-btn{
+
+    width:40px;
+
+    height:40px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:50%;
+
+    background:transparent;
+
+    color:#d1d7db;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+
+    transition:.20s;
+
+}
+
+/* =============================== */
+
+.toolbar-btn:hover{
+
+    background:rgba(255,255,255,.08);
+
+    color:#fff;
+
+}
+
+/* =============================== */
+
+.toolbar-btn.delete:hover{
+
+    background:#ff3b30;
+
+    color:#fff;
+
+}
+
+/* =============================== */
+
+.toolbar-btn svg{
+
+    pointer-events:none;
+
+}

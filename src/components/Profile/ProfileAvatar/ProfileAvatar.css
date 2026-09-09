@@ -1,0 +1,179 @@
+.profile-avatar-wrapper {
+    position: relative;
+
+    width: 132px;
+    height: 132px;
+
+    flex-shrink: 0;
+}
+
+
+.profile-avatar {
+    width: 132px;
+    height: 132px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    border: 5px solid #111116;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #a78bfa,
+            #6366f1
+        );
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.35),
+        0 0 35px rgba(139, 92, 246, 0.16);
+}
+
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+.profile-avatar-letter {
+    font-size: 42px;
+    font-weight: 800;
+
+    color: #ffffff;
+}
+
+
+.profile-avatar-online {
+    position: absolute;
+
+    right: 8px;
+    bottom: 9px;
+
+    width: 19px;
+    height: 19px;
+
+    border-radius: 50%;
+
+    background: #4ade80;
+
+    border: 4px solid #111116;
+
+    box-shadow:
+        0 0 12px rgba(74, 222, 128, 0.65);
+}
+
+
+.profile-avatar-verified {
+    position: absolute;
+
+    right: 3px;
+    top: 7px;
+
+    width: 22px;
+    height: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: #ffffff;
+
+    background: #7c3aed;
+
+    border: 3px solid #111116;
+}
+
+
+.profile-avatar-edit {
+    position: absolute;
+
+    left: 5px;
+    bottom: 4px;
+
+    width: 29px;
+    height: 29px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    border: 3px solid #111116;
+
+    background: #22222a;
+
+    color: #d4d4d8;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.profile-avatar-edit:hover {
+    background: #7c3aed;
+
+    color: #ffffff;
+
+    transform: scale(1.06);
+}
+
+
+@media (max-width: 650px) {
+
+    .profile-avatar-wrapper,
+    .profile-avatar {
+        width: 105px;
+        height: 105px;
+    }
+
+
+    .profile-avatar {
+        border-width: 4px;
+    }
+
+
+    .profile-avatar-letter {
+        font-size: 34px;
+    }
+
+
+    .profile-avatar-online {
+        right: 5px;
+        bottom: 6px;
+
+        width: 16px;
+        height: 16px;
+
+        border-width: 3px;
+    }
+
+
+    .profile-avatar-verified {
+        right: 0;
+        top: 4px;
+
+        width: 19px;
+        height: 19px;
+
+        border-width: 2px;
+    }
+
+}

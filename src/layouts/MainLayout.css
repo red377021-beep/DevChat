@@ -1,0 +1,192 @@
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.main-layout {
+    position: relative;
+
+    display: flex;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background: var(--bg-primary, #111);
+}
+
+
+/* =========================================================
+   LEFT SIDEBAR
+========================================================= */
+
+.main-layout > .sidebar {
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   CHAT LIST
+========================================================= */
+
+.main-layout > .chat-list {
+    flex-shrink: 0;
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   MIDDLE CHAT
+========================================================= */
+
+.main-layout > .chat {
+    flex: 1 1 auto;
+
+    min-width: 0;
+    width: auto;
+
+    height: 100%;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   RIGHT PANEL WRAPPER
+========================================================= */
+
+.right-panel-wrapper {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 360px;
+    height: 100%;
+
+    z-index: 1000;
+
+    transform: translateX(100%);
+
+    transition: transform 0.3s ease;
+
+    pointer-events: none;
+
+    visibility: hidden;
+}
+
+
+/* =========================================================
+   RIGHT PANEL OPEN
+========================================================= */
+
+.right-panel-wrapper.open {
+    transform: translateX(0);
+
+    pointer-events: auto;
+
+    visibility: visible;
+}
+
+
+/* =========================================================
+   RIGHT PANEL CONTENT
+========================================================= */
+
+.right-panel-wrapper > * {
+    width: 100%;
+    height: 100%;
+
+    background: var(--bg-primary, #111);
+
+    box-shadow:
+        -10px 0 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   MOBILE OVERLAY
+========================================================= */
+
+.right-panel-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 999;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    animation: overlayFade 0.25s ease;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   OVERLAY ANIMATION
+========================================================= */
+
+@keyframes overlayFade {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================================
+   MESSAGE INFO
+========================================================= */
+
+.main-layout > .message-info {
+    position: relative;
+
+    z-index: 1100;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    .right-panel-wrapper {
+        width: 340px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .right-panel-wrapper {
+        width: min(88vw, 360px);
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .right-panel-wrapper {
+        width: 92vw;
+    }
+
+}
