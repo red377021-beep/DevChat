@@ -1,6 +1,5 @@
 const API_BASE_URL =
-    "http://localhost:5000/api";
-
+    "https://devchat-production-dc1f.up.railway.app/api";
 
 // =====================================================
 // GET TOKEN

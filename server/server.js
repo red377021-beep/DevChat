@@ -53,7 +53,12 @@ const PORT =
 
 const CLIENT_URL =
     process.env.CLIENT_URL ||
-    "http://localhost:5173";
+    "https://dev-chat-0.netlify.app";
+
+const ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "https://dev-chat-0.netlify.app",
+];
 
 
 // ======================================================
@@ -74,13 +79,21 @@ const io = new Server(
     httpServer,
     {
 
-        cors: {
+       cors: {
 
-            origin: CLIENT_URL,
+    origin: (origin, callback) => {
 
-            credentials: true,
+        if (!origin || ALLOWED_ORIGINS.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
 
-        },
+    },
+
+    credentials: true,
+
+},
 
         transports: [
             "websocket",
@@ -109,7 +122,15 @@ app.use(
 
     cors({
 
-        origin: CLIENT_URL,
+        origin: (origin, callback) => {
+
+            if (!origin || ALLOWED_ORIGINS.includes(origin)) {
+                callback(null, true);
+            } else {
+                callback(new Error("Not allowed by CORS"));
+            }
+
+        },
 
         credentials: true,
 
