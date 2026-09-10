@@ -2,7 +2,7 @@
 // DEVCHAT SIDEBAR
 // ======================================================
 
-import "./Sidebar.css";
+import "./sidebar.css";
 
 import {
     User,
