@@ -1,4 +1,4 @@
-import "./Sidebar.css";
+import "./sidebar.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 function SidebarToggle({ expanded, onClick }) {

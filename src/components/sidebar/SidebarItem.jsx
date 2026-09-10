@@ -1,5 +1,4 @@
-import "./Sidebar.css";
-
+import "./sidebar.css";
 function SidebarItem({
   icon: Icon,
   label,
