@@ -94,7 +94,7 @@ function Signup() {
             // =================================================
 
             const response = await fetch(
-                "http://localhost:5000/api/auth/signup",
+               "https://devchat-production-184b.up.railway.app/api/auth/signup",
                 {
                     method: "POST",
 

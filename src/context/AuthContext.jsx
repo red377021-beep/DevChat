@@ -134,7 +134,7 @@ export function AuthProvider({ children }) {
 
                 const response =
                     await fetch(
-                        "http://localhost:5000/api/users/me",
+                        "https://devchat-production-184b.up.railway.app/api/users/me",
                         {
                             method: "GET",
 
