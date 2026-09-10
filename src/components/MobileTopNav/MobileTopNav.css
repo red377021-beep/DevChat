@@ -1,0 +1,379 @@
+/* =========================================================
+   MOBILE TOP NAVIGATION
+   Desktop = Hidden
+========================================================= */
+
+.mobile-top-nav {
+    display: none;
+}
+
+
+/* =========================================================
+   MOBILE + TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    /* =====================================================
+       MAKE ROOM FOR TOP + BOTTOM NAV
+    ===================================================== */
+
+    .main-layout {
+
+        padding-top: 58px;
+        padding-bottom: 64px;
+
+        box-sizing: border-box;
+    }
+
+
+    /* =====================================================
+       TOP BAR
+    ===================================================== */
+
+    .mobile-top-nav {
+
+        position: fixed;
+
+        top: 0;
+        left: 0;
+        right: 0;
+
+        z-index: 5000;
+
+        display: block;
+
+        width: 100%;
+
+        height: 58px;
+
+        box-sizing: border-box;
+
+        background:
+            rgba(17, 17, 17, 0.96);
+
+        border-bottom:
+            1px solid
+            rgba(255, 255, 255, 0.08);
+
+        backdrop-filter: blur(20px);
+
+        -webkit-backdrop-filter: blur(20px);
+    }
+
+
+    /* =====================================================
+       TOP INNER
+    ===================================================== */
+
+    .mobile-top-nav-inner {
+
+        position: relative;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        width: 100%;
+
+        height: 100%;
+
+        padding:
+            0
+            10px;
+
+        box-sizing: border-box;
+    }
+
+
+    /* =====================================================
+       TOP ACTION BUTTON
+    ===================================================== */
+
+    .mobile-top-action {
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        width: 42px;
+
+        height: 42px;
+
+        flex-shrink: 0;
+
+        padding: 0;
+
+        border: 0;
+
+        border-radius: 50%;
+
+        background: transparent;
+
+        color:
+            rgba(255, 255, 255, 0.70);
+
+        cursor: pointer;
+
+        transition:
+            background 0.2s ease,
+            color 0.2s ease,
+            transform 0.15s ease;
+
+        -webkit-tap-highlight-color: transparent;
+    }
+
+
+    /* =====================================================
+       ICON
+    ===================================================== */
+
+    .mobile-top-icon {
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        width: 32px;
+
+        height: 32px;
+    }
+
+
+    /* =====================================================
+       FRIENDS CENTER BUTTON
+    ===================================================== */
+
+    .mobile-top-friends {
+
+        position: absolute;
+
+        left: 50%;
+
+        top: 50%;
+
+        transform:
+            translate(-50%, -50%);
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        height: 40px;
+
+        padding:
+            0
+            18px;
+
+        border: 0;
+
+        border-radius: 20px;
+
+        background: transparent;
+
+        color:
+            rgba(255, 255, 255, 0.82);
+
+        cursor: pointer;
+
+        font-family: inherit;
+
+        transition:
+            background 0.2s ease,
+            color 0.2s ease,
+            transform 0.15s ease;
+
+        -webkit-tap-highlight-color: transparent;
+    }
+
+
+    .mobile-top-friends-text {
+
+        font-size: 16px;
+
+        font-weight: 600;
+
+        line-height: 1;
+
+        white-space: nowrap;
+    }
+
+
+    /* =====================================================
+       ACTIVE TOP ITEM
+    ===================================================== */
+
+    .mobile-top-action.active {
+
+        color:
+            var(--accent-primary, #ffffff);
+
+        background:
+            rgba(255, 255, 255, 0.09);
+    }
+
+
+    .mobile-top-friends.active {
+
+        color:
+            var(--accent-primary, #ffffff);
+
+        background:
+            rgba(255, 255, 255, 0.09);
+    }
+
+
+    /* =====================================================
+       PRESS EFFECT
+    ===================================================== */
+
+    .mobile-top-action:active {
+
+        transform:
+            scale(0.92);
+    }
+
+
+    .mobile-top-friends:active {
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.95);
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    .mobile-top-nav {
+
+        height: 62px;
+    }
+
+
+    .main-layout {
+
+        padding-top: 62px;
+        padding-bottom: 72px;
+    }
+
+
+    .mobile-top-nav-inner {
+
+        padding:
+            0
+            22px;
+    }
+
+
+    .mobile-top-action {
+
+        width: 44px;
+
+        height: 44px;
+    }
+
+
+    .mobile-top-friends-text {
+
+        font-size: 17px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .mobile-top-nav {
+
+        height: 56px;
+    }
+
+
+    .main-layout {
+
+        padding-top: 56px;
+
+        padding-bottom: 61px;
+    }
+
+
+    .mobile-top-nav-inner {
+
+        padding:
+            0
+            7px;
+    }
+
+
+    .mobile-top-action {
+
+        width: 40px;
+
+        height: 40px;
+    }
+
+
+    .mobile-top-icon {
+
+        width: 30px;
+
+        height: 30px;
+    }
+
+
+    .mobile-top-friends {
+
+        height: 38px;
+
+        padding:
+            0
+            15px;
+    }
+
+
+    .mobile-top-friends-text {
+
+        font-size: 15px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .mobile-top-friends-text {
+
+        font-size: 14px;
+    }
+
+
+    .mobile-top-action {
+
+        width: 38px;
+
+        height: 38px;
+    }
+
+}

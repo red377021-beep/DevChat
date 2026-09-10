@@ -104,7 +104,9 @@ export default function useWebRTC({
         }
 
 
-        const peer = new RTCPeerConnection(RTC_CONFIG);
+        const peer = new RTCPeerConnection(
+            RTC_CONFIG
+        );
 
 
         // =================================================
@@ -316,7 +318,8 @@ export default function useWebRTC({
         };
 
 
-        peerRef.current = peer;
+        peerRef.current =
+            peer;
 
 
         return peer;
@@ -326,6 +329,9 @@ export default function useWebRTC({
 
     // =====================================================
     // GET LOCAL MEDIA
+    //
+    // IMPORTANT:
+    // Media failure NEVER kills the call.
     // =====================================================
 
     const getLocalMedia = useCallback(
@@ -351,7 +357,7 @@ export default function useWebRTC({
 
 
             // =================================================
-            // REUSE EXISTING STREAM WHEN POSSIBLE
+            // REUSE EXISTING STREAM
             // =================================================
 
             const existingStream =
@@ -376,18 +382,21 @@ export default function useWebRTC({
                     videoTracks.length > 0;
 
 
-                // ---------------------------------------------
+                // -------------------------------------------------
                 // AUDIO CALL
-                // ---------------------------------------------
+                // -------------------------------------------------
 
                 if (!needsVideo && hasAudio) {
 
-                    // Do not send video during an audio call.
-
                     videoTracks.forEach(
                         (track) => {
+
                             track.stop();
-                            existingStream.removeTrack(track);
+
+                            existingStream.removeTrack(
+                                track
+                            );
+
                         }
                     );
 
@@ -406,9 +415,9 @@ export default function useWebRTC({
                 }
 
 
-                // ---------------------------------------------
+                // -------------------------------------------------
                 // VIDEO CALL
-                // ---------------------------------------------
+                // -------------------------------------------------
 
                 if (
                     needsVideo &&
@@ -441,13 +450,22 @@ export default function useWebRTC({
                 existingStream
                     .getTracks()
                     .forEach(
-                        (track) => track.stop()
+                        (track) => {
+
+                            try {
+                                track.stop();
+                            } catch {
+                                // ignore
+                            }
+
+                        }
                     );
 
             }
 
 
-            localStreamRef.current = null;
+            localStreamRef.current =
+                null;
 
 
             if (mountedRef.current) {
@@ -458,70 +476,7 @@ export default function useWebRTC({
 
 
             // =================================================
-            // AUDIO CALL
-            // =================================================
-
-            if (!needsVideo) {
-
-                try {
-
-                    const stream =
-                        await navigator.mediaDevices
-                            .getUserMedia({
-                                audio: true,
-                                video: false,
-                            });
-
-
-                    localStreamRef.current =
-                        stream;
-
-
-                    if (mountedRef.current) {
-
-                        setLocalStream(
-                            stream
-                        );
-
-                    }
-
-
-                    console.log(
-                        "✅ AUDIO MEDIA READY"
-                    );
-
-
-                    return stream;
-
-                } catch (error) {
-
-                    console.error(
-                        "❌ AUDIO getUserMedia FAILED:",
-                        error
-                    );
-
-
-                    if (mountedRef.current) {
-
-                        setConnectionState(
-                            "failed"
-                        );
-
-                    }
-
-
-                    throw error;
-
-                }
-
-            }
-
-
-            // =================================================
-            // VIDEO CALL
-            //
-            // First try:
-            // microphone + camera
+            // TRY TO GET MEDIA
             // =================================================
 
             try {
@@ -530,7 +485,7 @@ export default function useWebRTC({
                     await navigator.mediaDevices
                         .getUserMedia({
                             audio: true,
-                            video: true,
+                            video: needsVideo,
                         });
 
 
@@ -548,117 +503,55 @@ export default function useWebRTC({
 
 
                 console.log(
-                    "✅ CAMERA + MICROPHONE READY"
+                    needsVideo
+                        ? "✅ CAMERA + MICROPHONE READY"
+                        : "✅ MICROPHONE READY"
                 );
 
 
                 return stream;
 
-            } catch (videoError) {
+            } catch (error) {
 
                 console.warn(
-                    "⚠️ CAMERA NOT AVAILABLE:",
-                    videoError
+                    "⚠️ LOCAL MEDIA UNAVAILABLE:",
+                    error?.name,
+                    error?.message
                 );
 
 
                 // =================================================
-                // ONLY FALLBACK WHEN CAMERA IS THE PROBLEM
-                // =================================================
-
-                const cameraMissing =
-                    videoError?.name === "NotFoundError" ||
-                    videoError?.name === "DevicesNotFoundError" ||
-                    videoError?.name === "OverconstrainedError";
-
-
-                if (!cameraMissing) {
-
-                    console.error(
-                        "❌ VIDEO MEDIA FAILED:",
-                        videoError
-                    );
-
-
-                    if (mountedRef.current) {
-
-                        setConnectionState(
-                            "failed"
-                        );
-
-                    }
-
-
-                    throw videoError;
-
-                }
-
-
-                // =================================================
-                // CAMERA DOES NOT EXIST
+                // IMPORTANT
                 //
-                // CONTINUE WITH MICROPHONE ONLY
+                // DO NOT FAIL THE CALL.
+                //
+                // Return an empty MediaStream so WebRTC can
+                // continue using recvonly transceivers.
                 // =================================================
 
-                console.warn(
-                    "📷 No camera detected."
-                );
-
-                console.warn(
-                    "🎙️ Continuing video call as AUDIO + VIDEO-RECEIVE"
-                );
+                const emptyStream =
+                    new MediaStream();
 
 
-                try {
-
-                    const audioOnlyStream =
-                        await navigator.mediaDevices
-                            .getUserMedia({
-                                audio: true,
-                                video: false,
-                            });
+                localStreamRef.current =
+                    emptyStream;
 
 
-                    localStreamRef.current =
-                        audioOnlyStream;
+                if (mountedRef.current) {
 
-
-                    if (mountedRef.current) {
-
-                        setLocalStream(
-                            audioOnlyStream
-                        );
-
-                    }
-
-
-                    console.log(
-                        "✅ AUDIO-ONLY FALLBACK READY"
+                    setLocalStream(
+                        emptyStream
                     );
-
-
-                    return audioOnlyStream;
-
-                } catch (audioError) {
-
-                    console.error(
-                        "❌ AUDIO FALLBACK FAILED:",
-                        audioError
-                    );
-
-
-                    if (mountedRef.current) {
-
-                        setConnectionState(
-                            "failed"
-                        );
-
-                    }
-
-
-                    throw audioError;
 
                 }
+
+
+                console.warn(
+                    "📞 Continuing call without local microphone/camera"
+                );
+
+
+                return emptyStream;
 
             }
 
@@ -719,21 +612,90 @@ export default function useWebRTC({
 
 
     // =====================================================
-    // ENSURE VIDEO RECEIVE TRANSCEIVER
+    // ENSURE RECEIVE TRANSCEIVERS
+    //
+    // If local device has no mic/camera, we still create
+    // receive-only channels.
     // =====================================================
 
-    const ensureVideoReceiveTransceiver =
-        useCallback(
-            (peer) => {
+    const ensureReceiveTransceivers = useCallback(
+        (peer, requestedCallType, stream) => {
 
-                if (!peer) {
-                    return;
+            if (!peer) {
+                return;
+            }
+
+
+            const finalCallType =
+                requestedCallType === "video"
+                    ? "video"
+                    : "audio";
+
+
+            const hasAudio =
+                Boolean(
+                    stream?.getAudioTracks?.()
+                        .length
+                );
+
+
+            const hasVideo =
+                Boolean(
+                    stream?.getVideoTracks?.()
+                        .length
+                );
+
+
+            const transceivers =
+                peer.getTransceivers();
+
+
+            // =================================================
+            // AUDIO
+            // =================================================
+
+            const audioTransceiver =
+                transceivers.find(
+                    (transceiver) =>
+                        transceiver.receiver
+                            ?.track
+                            ?.kind === "audio"
+                );
+
+
+            if (!hasAudio && !audioTransceiver) {
+
+                console.log(
+                    "🎙️ Creating audio recvonly transceiver"
+                );
+
+
+                try {
+
+                    peer.addTransceiver(
+                        "audio",
+                        {
+                            direction: "recvonly",
+                        }
+                    );
+
+                } catch (error) {
+
+                    console.warn(
+                        "⚠️ Could not create audio transceiver:",
+                        error
+                    );
+
                 }
 
+            }
 
-                const transceivers =
-                    peer.getTransceivers();
 
+            // =================================================
+            // VIDEO
+            // =================================================
+
+            if (finalCallType === "video") {
 
                 const videoTransceiver =
                     transceivers.find(
@@ -744,37 +706,38 @@ export default function useWebRTC({
                     );
 
 
-                if (videoTransceiver) {
-                    return;
-                }
+                if (!hasVideo && !videoTransceiver) {
 
-
-                console.log(
-                    "🎥 Creating video recvonly transceiver"
-                );
-
-
-                try {
-
-                    peer.addTransceiver(
-                        "video",
-                        {
-                            direction: "recvonly",
-                        }
+                    console.log(
+                        "🎥 Creating video recvonly transceiver"
                     );
 
-                } catch (error) {
 
-                    console.warn(
-                        "⚠️ Could not create video transceiver:",
-                        error
-                    );
+                    try {
+
+                        peer.addTransceiver(
+                            "video",
+                            {
+                                direction: "recvonly",
+                            }
+                        );
+
+                    } catch (error) {
+
+                        console.warn(
+                            "⚠️ Could not create video transceiver:",
+                            error
+                        );
+
+                    }
 
                 }
 
-            },
-            []
-        );
+            }
+
+        },
+        []
+    );
 
 
     // =====================================================
@@ -913,7 +876,7 @@ export default function useWebRTC({
 
 
             // =================================================
-            // SET REFS BEFORE MEDIA / SIGNALING
+            // SET REFS FIRST
             // =================================================
 
             activeTargetUserIdRef.current =
@@ -944,10 +907,9 @@ export default function useWebRTC({
 
             try {
 
-                // ---------------------------------------------
-                // GET MICROPHONE
-                // + CAMERA IF AVAILABLE
-                // ---------------------------------------------
+                // -------------------------------------------------
+                // MEDIA IS OPTIONAL
+                // -------------------------------------------------
 
                 const stream =
                     await getLocalMedia(
@@ -955,26 +917,17 @@ export default function useWebRTC({
                     );
 
 
-                if (!stream) {
-
-                    throw new Error(
-                        "Local media stream unavailable"
-                    );
-
-                }
-
-
-                // ---------------------------------------------
+                // -------------------------------------------------
                 // CREATE PEER
-                // ---------------------------------------------
+                // -------------------------------------------------
 
                 const peer =
                     createPeerConnection();
 
 
-                // ---------------------------------------------
-                // ADD AUDIO / VIDEO TRACKS
-                // ---------------------------------------------
+                // -------------------------------------------------
+                // ADD AVAILABLE LOCAL TRACKS
+                // -------------------------------------------------
 
                 addLocalTracks(
                     peer,
@@ -982,40 +935,23 @@ export default function useWebRTC({
                 );
 
 
-                // ---------------------------------------------
-                // IF THIS IS A VIDEO CALL BUT WE HAVE
-                // NO CAMERA, WE STILL WANT TO RECEIVE
-                // REMOTE VIDEO.
-                // ---------------------------------------------
+                // -------------------------------------------------
+                // ADD RECEIVE CHANNELS FOR MISSING DEVICES
+                // -------------------------------------------------
 
-                const hasLocalVideo =
+                ensureReceiveTransceivers(
+                    peer,
+                    finalCallType,
                     stream
-                        .getVideoTracks()
-                        .length > 0;
+                );
 
 
-                if (
-                    finalCallType === "video" &&
-                    !hasLocalVideo
-                ) {
-
-                    ensureVideoReceiveTransceiver(
-                        peer
-                    );
-
-                }
-
-
-                // ---------------------------------------------
+                // -------------------------------------------------
                 // CREATE OFFER
-                // ---------------------------------------------
+                // -------------------------------------------------
 
                 const offer =
-                    await peer.createOffer({
-                        offerToReceiveAudio: true,
-                        offerToReceiveVideo:
-                            finalCallType === "video",
-                    });
+                    await peer.createOffer();
 
 
                 await peer.setLocalDescription(
@@ -1023,15 +959,28 @@ export default function useWebRTC({
                 );
 
 
-                // ---------------------------------------------
+                // -------------------------------------------------
                 // SEND OFFER
-                // ---------------------------------------------
+                // -------------------------------------------------
+
+                const hasLocalAudio =
+                    stream
+                        .getAudioTracks()
+                        .length > 0;
+
+
+                const hasLocalVideo =
+                    stream
+                        .getVideoTracks()
+                        .length > 0;
+
 
                 console.log(
                     "📤 Sending CALL OFFER:",
                     {
                         to: target,
                         type: finalCallType,
+                        hasLocalAudio,
                         hasLocalVideo,
                     }
                 );
@@ -1080,7 +1029,7 @@ export default function useWebRTC({
             getLocalMedia,
             createPeerConnection,
             addLocalTracks,
-            ensureVideoReceiveTransceiver,
+            ensureReceiveTransceivers,
         ]
     );
 
@@ -1193,10 +1142,9 @@ export default function useWebRTC({
 
             try {
 
-                // ---------------------------------------------
-                // GET LOCAL MEDIA
-                // CAMERA IS OPTIONAL
-                // ---------------------------------------------
+                // -------------------------------------------------
+                // MEDIA IS OPTIONAL
+                // -------------------------------------------------
 
                 const stream =
                     await getLocalMedia(
@@ -1204,26 +1152,17 @@ export default function useWebRTC({
                     );
 
 
-                if (!stream) {
-
-                    throw new Error(
-                        "Local media stream unavailable"
-                    );
-
-                }
-
-
-                // ---------------------------------------------
+                // -------------------------------------------------
                 // CREATE PEER
-                // ---------------------------------------------
+                // -------------------------------------------------
 
                 const peer =
                     createPeerConnection();
 
 
-                // ---------------------------------------------
-                // ADD LOCAL TRACKS
-                // ---------------------------------------------
+                // -------------------------------------------------
+                // ADD AVAILABLE LOCAL TRACKS
+                // -------------------------------------------------
 
                 addLocalTracks(
                     peer,
@@ -1231,36 +1170,9 @@ export default function useWebRTC({
                 );
 
 
-                // ---------------------------------------------
-                // CHECK LOCAL CAMERA
-                // ---------------------------------------------
-
-                const hasLocalVideo =
-                    stream
-                        .getVideoTracks()
-                        .length > 0;
-
-
-                // ---------------------------------------------
-                // IF WE DON'T HAVE CAMERA,
-                // STILL RECEIVE CALLER VIDEO
-                // ---------------------------------------------
-
-                if (
-                    finalCallType === "video" &&
-                    !hasLocalVideo
-                ) {
-
-                    ensureVideoReceiveTransceiver(
-                        peer
-                    );
-
-                }
-
-
-                // ---------------------------------------------
-                // SET REMOTE OFFER
-                // ---------------------------------------------
+                // -------------------------------------------------
+                // SET REMOTE OFFER FIRST
+                // -------------------------------------------------
 
                 await peer.setRemoteDescription(
                     new RTCSessionDescription(
@@ -1269,23 +1181,30 @@ export default function useWebRTC({
                 );
 
 
-                // ---------------------------------------------
+                // -------------------------------------------------
+                // ADD RECEIVE TRANSCEIVERS ONLY IF NEEDED
+                // -------------------------------------------------
+
+                ensureReceiveTransceivers(
+                    peer,
+                    finalCallType,
+                    stream
+                );
+
+
+                // -------------------------------------------------
                 // FLUSH ICE
-                // ---------------------------------------------
+                // -------------------------------------------------
 
                 await flushPendingCandidates();
 
 
-                // ---------------------------------------------
+                // -------------------------------------------------
                 // CREATE ANSWER
-                // ---------------------------------------------
+                // -------------------------------------------------
 
                 const answer =
-                    await peer.createAnswer({
-                        offerToReceiveAudio: true,
-                        offerToReceiveVideo:
-                            finalCallType === "video",
-                    });
+                    await peer.createAnswer();
 
 
                 await peer.setLocalDescription(
@@ -1293,15 +1212,28 @@ export default function useWebRTC({
                 );
 
 
-                // ---------------------------------------------
+                // -------------------------------------------------
                 // SEND ANSWER
-                // ---------------------------------------------
+                // -------------------------------------------------
+
+                const hasLocalAudio =
+                    stream
+                        .getAudioTracks()
+                        .length > 0;
+
+
+                const hasLocalVideo =
+                    stream
+                        .getVideoTracks()
+                        .length > 0;
+
 
                 console.log(
                     "📤 Sending CALL ANSWER:",
                     {
                         to: callerId,
                         type: finalCallType,
+                        hasLocalAudio,
                         hasLocalVideo,
                     }
                 );
@@ -1346,7 +1278,7 @@ export default function useWebRTC({
             getLocalMedia,
             createPeerConnection,
             addLocalTracks,
-            ensureVideoReceiveTransceiver,
+            ensureReceiveTransceivers,
             flushPendingCandidates,
         ]
     );
@@ -1496,7 +1428,6 @@ export default function useWebRTC({
                         "🧊 ICE queued — peer not ready"
                     );
 
-
                     return;
 
                 }
@@ -1516,7 +1447,6 @@ export default function useWebRTC({
                     console.log(
                         "🧊 ICE queued — remote description missing"
                     );
-
 
                     return;
 
@@ -1570,7 +1500,13 @@ export default function useWebRTC({
 
 
                 if (!audioTracks.length) {
+
+                    console.warn(
+                        "🎙️ Microphone unavailable"
+                    );
+
                     return false;
+
                 }
 
 
@@ -1580,8 +1516,10 @@ export default function useWebRTC({
 
                 audioTracks.forEach(
                     (track) => {
+
                         track.enabled =
                             nextEnabled;
+
                     }
                 );
 
@@ -1628,14 +1566,10 @@ export default function useWebRTC({
                     stream.getVideoTracks();
 
 
-                // =================================================
-                // NO CAMERA
-                // =================================================
-
                 if (!videoTracks.length) {
 
                     console.warn(
-                        "📷 Camera unavailable on this device"
+                        "📷 Camera unavailable"
                     );
 
                     return false;
@@ -1819,8 +1753,6 @@ export default function useWebRTC({
 
     // =====================================================
     // SOCKET LISTENERS
-    //
-    // These stay active independently from UI state.
     // =====================================================
 
     useEffect(() => {
@@ -1925,9 +1857,6 @@ export default function useWebRTC({
                 false;
 
 
-            // Do not call state setters
-            // after unmount.
-
             if (
                 localStreamRef.current
             ) {
@@ -1935,8 +1864,15 @@ export default function useWebRTC({
                 localStreamRef.current
                     .getTracks()
                     .forEach(
-                        (track) =>
-                            track.stop()
+                        (track) => {
+
+                            try {
+                                track.stop();
+                            } catch {
+                                // ignore
+                            }
+
+                        }
                     );
 
             }
@@ -1949,8 +1885,15 @@ export default function useWebRTC({
                 remoteStreamRef.current
                     .getTracks()
                     .forEach(
-                        (track) =>
-                            track.stop()
+                        (track) => {
+
+                            try {
+                                track.stop();
+                            } catch {
+                                // ignore
+                            }
+
+                        }
                     );
 
             }
@@ -1963,7 +1906,7 @@ export default function useWebRTC({
                     peerRef.current.close();
 
                 } catch {
-                    // ignore cleanup errors
+                    // ignore
                 }
 
             }

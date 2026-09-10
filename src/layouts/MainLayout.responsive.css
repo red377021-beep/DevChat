@@ -1,0 +1,170 @@
+/* =========================================================
+   DEVCHAT RESPONSIVE LAYOUT
+   Mobile + Tablet
+   Desktop styles remain in MainLayout.css
+========================================================= */
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    .main-layout {
+        width: 100%;
+        height: 100dvh;
+        overflow: hidden;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* ---------------------------------------------
+       MAIN APP
+    --------------------------------------------- */
+
+    .main-layout {
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+        height: 100dvh;
+
+        overflow: hidden;
+    }
+
+
+    /* ---------------------------------------------
+       DESKTOP SIDEBAR
+       Hidden completely on mobile
+    --------------------------------------------- */
+
+    .main-layout > .sidebar {
+        display: none !important;
+    }
+
+
+    /* ---------------------------------------------
+       CHAT LIST
+       Mobile becomes the first/full screen section
+    --------------------------------------------- */
+
+    .main-layout > .chat-list {
+        flex: 0 0 100%;
+
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+
+        height: 100%;
+
+        overflow: hidden;
+    }
+
+
+    /* ---------------------------------------------
+       CHAT
+       Temporarily placed after ChatList.
+       Mobile navigation will control visibility
+       in the next step.
+    --------------------------------------------- */
+
+    .main-layout > .chat {
+        flex: 0 0 100%;
+
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+
+        height: 100%;
+
+        overflow: hidden;
+    }
+
+
+    /* ---------------------------------------------
+       RIGHT PANEL
+       Desktop floating panel stays hidden on mobile.
+       Later we will make it a proper mobile drawer.
+    --------------------------------------------- */
+
+    .right-panel-wrapper {
+        width: 100%;
+        max-width: 100%;
+
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+
+    /* ---------------------------------------------
+       RIGHT PANEL OVERLAY
+    --------------------------------------------- */
+
+    .right-panel-overlay {
+        z-index: 999;
+    }
+
+
+    /* ---------------------------------------------
+       MESSAGE INFO
+    --------------------------------------------- */
+
+    .main-layout > .message-info {
+        max-width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .main-layout {
+        height: 100dvh;
+    }
+
+
+    .main-layout > .chat-list {
+        width: 100%;
+        max-width: 100%;
+    }
+
+
+    .main-layout > .chat {
+        width: 100%;
+        max-width: 100%;
+    }
+
+
+    .right-panel-wrapper {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .main-layout > .chat-list,
+    .main-layout > .chat {
+        width: 100%;
+        min-width: 0;
+    }
+
+}

@@ -1,4 +1,5 @@
 import "./MainLayout.css";
+import "./MainLayout.responsive.css";
 
 import Sidebar from "../components/sidebar/Sidebar";
 import ChatList from "../components/chat-list/ChatList";
@@ -20,6 +21,9 @@ import Friends from "../components/Friends/Friends";
 
 import { useChat } from "../context/ChatContext";
 import { useLayout } from "../context/LayoutContext";
+
+import MobileTopNav from "../components/MobileTopNav/MobileTopNav";
+import MobileBottomNav from "../components/MobileBottomNav/MobileBottomNav";
 
 
 function MainLayout() {
@@ -56,7 +60,15 @@ function MainLayout() {
 
 
             {/* =================================================
-                SIDEBAR
+                MOBILE / TABLET TOP NAV
+                Profile | Friends | Notifications
+            ================================================= */}
+
+            <MobileTopNav />
+
+
+            {/* =================================================
+                DESKTOP SIDEBAR
             ================================================= */}
 
             <Sidebar />
@@ -127,10 +139,14 @@ function MainLayout() {
             {!isSpecialView && (
                 <div
                     className={`right-panel-wrapper ${
-                        rightPanelOpen ? "open" : ""
+                        rightPanelOpen
+                            ? "open"
+                            : ""
                     }`}
                 >
+
                     <RightPanel />
+
                 </div>
             )}
 
@@ -158,6 +174,14 @@ function MainLayout() {
             {!isSpecialView && (
                 <MessageInfo />
             )}
+
+
+            {/* =================================================
+                MOBILE BOTTOM NAV
+                Chats | Reels | Stories | Groups | AI
+            ================================================= */}
+
+            <MobileBottomNav />
 
         </div>
     );
