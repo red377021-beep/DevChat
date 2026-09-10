@@ -1,5 +1,5 @@
 const API_BASE_URL =
-    "https://devchat-production-dc1f.up.railway.app/api";
+    "https://devchat-production-184b.up.railway.app/api";
 
 // =====================================================
 // GET TOKEN
