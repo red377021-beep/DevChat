@@ -31,13 +31,14 @@ import Friends from "../components/Friends/Friends";
 import { useChat } from "../context/ChatContext";
 import { useLayout } from "../context/LayoutContext";
 
-
 function MainLayout() {
 
-    const {
-        rightPanelOpen,
-        closeRightPanel,
-    } = useChat();
+const {
+    selectedChat,
+    clearSelectedChat,
+    rightPanelOpen,
+    closeRightPanel,
+} = useChat();
 
 
     const {
@@ -47,7 +48,7 @@ function MainLayout() {
 
 
     // =====================================================
-    // SPECIAL FULL-SCREEN VIEWS
+    // SPECIAL VIEWS
     // =====================================================
 
     const isSpecialView =
@@ -67,37 +68,57 @@ function MainLayout() {
     // MOBILE NAVIGATION
     // =====================================================
 
-    const handleMobileNavigation = (view) => {
+const handleMobileNavigation = (view) => {
 
-        setActiveView(view);
+    // Chats button should ONLY show the chat list.
+    // It must not reopen the previously selected DM.
+    if (view === "chats") {
+        clearSelectedChat();
+    }
 
-    };
+    setActiveView(view);
+
+};
+
+
+
+    // =====================================================
+    // CHAT VIEW
+    //
+    // IMPORTANT:
+    // "chats" means ONLY the chat list.
+    //
+    // The actual DM opens only after the user selects
+    // a conversation from ChatList.
+    // =====================================================
+
+    const showChatList =
+        activeView === "chats";
+
+
+    const showChat =
+        activeView === "chats" &&
+        Boolean(selectedChat);
 
 
     return (
         <div className="main-layout">
 
-
-            {/* =================================================
-                DESKTOP SIDEBAR
-            ================================================= */}
-
             <Sidebar />
 
 
-            {/* =================================================
-                CHAT LIST
-                Only shown on Chats screen.
-            ================================================= */}
+            {/* ================================================= */}
+            {/* CHAT LIST */}
+            {/* ================================================= */}
 
-            {activeView === "chats" && (
+            {showChatList && (
                 <ChatList />
             )}
 
 
-            {/* =================================================
-                MAIN CONTENT
-            ================================================= */}
+            {/* ================================================= */}
+            {/* SPECIAL PAGES */}
+            {/* ================================================= */}
 
             {activeView === "friends" ? (
 
@@ -139,23 +160,19 @@ function MainLayout() {
 
                 <Camera />
 
-            ) : (
+            ) : showChat ? (
 
-                /*
-                 * Chat is intentionally kept here for the
-                 * desktop / selected conversation flow.
-                 */
                 <Chat />
 
-            )}
+            ) : null}
 
 
-            {/* =================================================
-                RIGHT PANEL
-                Only available in actual chat mode.
-            ================================================= */}
+            {/* ================================================= */}
+            {/* RIGHT PANEL */}
+            {/* Only when an actual DM is open */}
+            {/* ================================================= */}
 
-            {!isSpecialView && (
+            {showChat && (
                 <div
                     className={`right-panel-wrapper ${
                         rightPanelOpen ? "open" : ""
@@ -166,41 +183,36 @@ function MainLayout() {
             )}
 
 
-            {/* =================================================
-                RIGHT PANEL OVERLAY
-            ================================================= */}
+            {/* ================================================= */}
+            {/* RIGHT PANEL OVERLAY */}
+            {/* ================================================= */}
 
-            {!isSpecialView &&
-                rightPanelOpen && (
-                    <div
-                        className="right-panel-overlay"
-                        onClick={closeRightPanel}
-                        aria-hidden="true"
-                    />
-                )
-            }
+            {showChat && rightPanelOpen && (
+                <div
+                    className="right-panel-overlay"
+                    onClick={closeRightPanel}
+                    aria-hidden="true"
+                />
+            )}
 
 
-            {/* =================================================
-                MESSAGE INFO
-            ================================================= */}
+            {/* ================================================= */}
+            {/* MESSAGE INFO */}
+            {/* Only inside actual DM */}
+            {/* ================================================= */}
 
-            {!isSpecialView && (
+            {showChat && (
                 <MessageInfo />
             )}
 
 
-            {/* =================================================
-                MOBILE BOTTOM NAVIGATION
-                Persistent on every mobile screen.
-            ================================================= */}
+            {/* ================================================= */}
+            {/* MOBILE APP NAVIGATION */}
+            {/* ================================================= */}
 
             <nav className="mobile-app-navigation">
 
-
-                {/* =================================================
-                    CHATS
-                ================================================= */}
+                {/* CHATS */}
 
                 <button
                     type="button"
@@ -215,16 +227,11 @@ function MainLayout() {
                     aria-label="Chats"
                 >
                     <MessageCircle size={17} />
-
-                    <span>
-                        Chats
-                    </span>
+                    <span>Chats</span>
                 </button>
 
 
-                {/* =================================================
-                    REELS
-                ================================================= */}
+                {/* REELS */}
 
                 <button
                     type="button"
@@ -239,16 +246,11 @@ function MainLayout() {
                     aria-label="Reels"
                 >
                     <Film size={17} />
-
-                    <span>
-                        Reels
-                    </span>
+                    <span>Reels</span>
                 </button>
 
 
-                {/* =================================================
-                    CAMERA
-                ================================================= */}
+                {/* CAMERA */}
 
                 <button
                     type="button"
@@ -263,16 +265,11 @@ function MainLayout() {
                     aria-label="Camera"
                 >
                     <CameraIcon size={17} />
-
-                    <span>
-                        Camera
-                    </span>
+                    <span>Camera</span>
                 </button>
 
 
-                {/* =================================================
-                    STORIES
-                ================================================= */}
+                {/* STORIES */}
 
                 <button
                     type="button"
@@ -287,16 +284,11 @@ function MainLayout() {
                     aria-label="Stories"
                 >
                     <CirclePlay size={17} />
-
-                    <span>
-                        Stories
-                    </span>
+                    <span>Stories</span>
                 </button>
 
 
-                {/* =================================================
-                    AI
-                ================================================= */}
+                {/* AI */}
 
                 <button
                     type="button"
@@ -311,10 +303,7 @@ function MainLayout() {
                     aria-label="AI"
                 >
                     <Sparkles size={17} />
-
-                    <span>
-                        AI
-                    </span>
+                    <span>AI</span>
                 </button>
 
             </nav>
@@ -323,5 +312,5 @@ function MainLayout() {
     );
 }
 
-
 export default MainLayout;
+

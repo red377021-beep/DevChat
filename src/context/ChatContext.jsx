@@ -1200,24 +1200,34 @@ export function ChatProvider({
 
     function selectChat(chat) {
 
-        if (!chat) {
-            return;
-        }
-
-
-        setSelectedChat(chat);
-
-        clearSelection();
-
-        closeContextMenu();
-
-        closeDeleteModal();
-
-        closeTranslate();
-
-        clearAllAttachments();
-
+    if (!chat) {
+        return;
     }
+
+    setSelectedChat(chat);
+
+    clearSelection();
+    closeContextMenu();
+    closeDeleteModal();
+    closeTranslate();
+    clearAllAttachments();
+
+}
+
+
+function clearSelectedChat() {
+
+    setSelectedChat(null);
+
+    clearSelection();
+    closeContextMenu();
+    closeDeleteModal();
+    closeMessageInfo();
+    closeTranslate();
+    clearAllAttachments();
+
+}
+
 
 
     // ======================================================
@@ -4325,9 +4335,12 @@ export function ChatProvider({
                 // CHAT
                 // ==========================================
 
-                selectedChat,
 
-                selectChat,
+selectedChat,
+
+selectChat,
+
+clearSelectedChat,
 
 
                 // ==========================================
