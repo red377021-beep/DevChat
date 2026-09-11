@@ -16,6 +16,7 @@ import {
 
 import { useChat } from "../../context/ChatContext";
 import { useCall } from "../../context/CallContext";
+import { useLayout } from "../../context/LayoutContext";
 
 import ChatMenu from "../ChatMenu/ChatMenu";
 import ChatSearch from "../ChatSearch/ChatSearch";
@@ -36,6 +37,7 @@ import IncomingAudioCall from "../IncomingAudioCall/IncomingAudioCall";
 // =====================================================
 
 function getChatUserId(chat) {
+
     if (!chat) {
         console.log("❌ NO SELECTED CHAT");
         return null;
@@ -57,7 +59,10 @@ function getChatUserId(chat) {
         chat.profile?.id ??
         chat.profile?.userId;
 
-    console.log("🎯 RESOLVED CALL TARGET USER ID:", userId);
+    console.log(
+        "🎯 RESOLVED CALL TARGET USER ID:",
+        userId
+    );
 
     return userId ? String(userId) : null;
 }
@@ -69,7 +74,6 @@ function getChatUserId(chat) {
 
 function ChatHeader() {
 
-
     // =================================================
     // CHAT CONTEXT
     // =================================================
@@ -77,8 +81,16 @@ function ChatHeader() {
     const {
         selectedChat,
         toggleRightPanel
-
     } = useChat();
+
+
+    // =================================================
+    // LAYOUT CONTEXT
+    // =================================================
+
+    const {
+        setActiveView
+    } = useLayout();
 
 
     // =================================================
@@ -157,22 +169,17 @@ function ChatHeader() {
     const [menuOpen, setMenuOpen] =
         useState(false);
 
-
     const [searchOpen, setSearchOpen] =
         useState(false);
-
 
     const [pinnedOpen, setPinnedOpen] =
         useState(false);
 
-
     const [starredOpen, setStarredOpen] =
         useState(false);
 
-
     const [bookmarkOpen, setBookmarkOpen] =
         useState(false);
-
 
     const [mediaOpen, setMediaOpen] =
         useState(false);
@@ -185,14 +192,11 @@ function ChatHeader() {
     const [muteNotifications, setMuteNotifications] =
         useState(false);
 
-
     const [muteDuration, setMuteDuration] =
         useState(null);
 
-
     const [muteUntil, setMuteUntil] =
         useState(null);
-
 
     const [muteTime, setMuteTime] =
         useState("");
@@ -224,7 +228,6 @@ function ChatHeader() {
 
         setMediaOpen(false);
 
-
         setMuteNotifications(false);
 
         setMuteDuration(null);
@@ -249,7 +252,6 @@ function ChatHeader() {
             setMuteTime("");
 
             return;
-
         }
 
 
@@ -258,7 +260,6 @@ function ChatHeader() {
             setMuteTime("Muted");
 
             return;
-
         }
 
 
@@ -269,7 +270,6 @@ function ChatHeader() {
                 setMuteTime("Muted");
 
                 return;
-
             }
 
 
@@ -288,7 +288,6 @@ function ChatHeader() {
                 setMuteTime("");
 
                 return;
-
             }
 
 
@@ -306,7 +305,6 @@ function ChatHeader() {
                 );
 
                 return;
-
             }
 
 
@@ -323,7 +321,6 @@ function ChatHeader() {
                 );
 
                 return;
-
             }
 
 
@@ -336,7 +333,6 @@ function ChatHeader() {
             setMuteTime(
                 `${days}d`
             );
-
         }
 
 
@@ -385,7 +381,6 @@ function ChatHeader() {
             setMuteTime("Muted");
 
             return;
-
         }
 
 
@@ -397,9 +392,7 @@ function ChatHeader() {
             !Number.isFinite(minutes) ||
             minutes <= 0
         ) {
-
             return;
-
         }
 
 
@@ -413,7 +406,6 @@ function ChatHeader() {
         setMuteDuration("custom");
 
         setMuteUntil(until);
-
     }
 
 
@@ -430,7 +422,6 @@ function ChatHeader() {
         setMuteUntil(null);
 
         setMuteTime("");
-
     }
 
 
@@ -450,9 +441,7 @@ function ChatHeader() {
             ) {
 
                 setMenuOpen(false);
-
             }
-
         }
 
 
@@ -482,9 +471,7 @@ function ChatHeader() {
 
         function handleEscape(event) {
 
-            if (
-                event.key !== "Escape"
-            ) {
+            if (event.key !== "Escape") {
                 return;
             }
 
@@ -500,7 +487,6 @@ function ChatHeader() {
             setBookmarkOpen(false);
 
             setMediaOpen(false);
-
         }
 
 
@@ -520,6 +506,17 @@ function ChatHeader() {
         };
 
     }, []);
+
+
+    // =================================================
+    // MOBILE BACK TO CHAT LIST
+    // =================================================
+
+    function handleMobileBack() {
+
+        setActiveView("chats");
+
+    }
 
 
     // =================================================
@@ -665,41 +662,55 @@ function ChatHeader() {
     // =================================================
 
     function getCurrentCallTarget() {
-    if (!selectedChat) {
-        console.error("❌ CALL TARGET: selectedChat is null");
-        return null;
+
+        if (!selectedChat) {
+
+            console.error(
+                "❌ CALL TARGET: selectedChat is null"
+            );
+
+            return null;
+        }
+
+
+        const userId =
+            getChatUserId(selectedChat);
+
+
+        if (!userId) {
+
+            console.error(
+                "❌ CALL TARGET USER ID MISSING:",
+                selectedChat
+            );
+
+            return null;
+        }
+
+
+        return {
+
+            userId,
+
+            name:
+                selectedChat.name ||
+                selectedChat.username ||
+                selectedChat.fullName ||
+                selectedChat.user?.name ||
+                selectedChat.user?.username ||
+                "DevChat User",
+
+            avatar:
+                selectedChat.avatar ||
+                selectedChat.avatar_url ||
+                selectedChat.profilePicture ||
+                selectedChat.profile_picture ||
+                selectedChat.user?.avatar ||
+                selectedChat.user?.avatar_url ||
+                "D"
+        };
     }
 
-    const userId = getChatUserId(selectedChat);
-
-    if (!userId) {
-        console.error(
-            "❌ CALL TARGET USER ID MISSING:",
-            selectedChat
-        );
-        return null;
-    }
-
-    return {
-        userId,
-        name:
-            selectedChat.name ||
-            selectedChat.username ||
-            selectedChat.fullName ||
-            selectedChat.user?.name ||
-            selectedChat.user?.username ||
-            "DevChat User",
-
-        avatar:
-            selectedChat.avatar ||
-            selectedChat.avatar_url ||
-            selectedChat.profilePicture ||
-            selectedChat.profile_picture ||
-            selectedChat.user?.avatar ||
-            selectedChat.user?.avatar_url ||
-            "D"
-    };
-}
 
     // =================================================
     // START AUDIO CALL
@@ -715,9 +726,7 @@ function ChatHeader() {
 
 
         if (!target) {
-
             return;
-
         }
 
 
@@ -748,7 +757,6 @@ function ChatHeader() {
             );
 
         }
-
     }
 
 
@@ -766,9 +774,7 @@ function ChatHeader() {
 
 
         if (!target) {
-
             return;
-
         }
 
 
@@ -799,7 +805,6 @@ function ChatHeader() {
             );
 
         }
-
     }
 
 
@@ -826,7 +831,6 @@ function ChatHeader() {
             );
 
         }
-
     }
 
 
@@ -853,7 +857,6 @@ function ChatHeader() {
             );
 
         }
-
     }
 
 
@@ -880,7 +883,6 @@ function ChatHeader() {
             );
 
         }
-
     }
 
 
@@ -907,7 +909,6 @@ function ChatHeader() {
             );
 
         }
-
     }
 
 
@@ -934,7 +935,6 @@ function ChatHeader() {
             );
 
         }
-
     }
 
 
@@ -986,6 +986,20 @@ function ChatHeader() {
 
             <header className="chat-header">
 
+                {/* =================================================
+                    MOBILE BACK BUTTON
+                ================================================= */}
+
+                <button
+                    type="button"
+                    className="mobile-chat-back"
+                    onClick={handleMobileBack}
+                    aria-label="Back to chats"
+                    title="Back to chats"
+                >
+                    ←
+                </button>
+
 
                 {/* =================================================
                     LEFT
@@ -1029,8 +1043,7 @@ function ChatHeader() {
                                 <span
                                     className="chat-muted-status"
                                     title={
-                                        muteDuration ===
-                                        "always"
+                                        muteDuration === "always"
                                             ? "Notifications muted"
                                             : `Notifications muted for ${muteTime}`
                                     }
@@ -1064,7 +1077,6 @@ function ChatHeader() {
                     ref={menuRef}
                 >
 
-
                     {/* SEARCH */}
 
                     <button
@@ -1090,14 +1102,10 @@ function ChatHeader() {
                         onClick={startAudioCall}
                         disabled={
                             Boolean(
-                                callState !==
-                                "idle" &&
-                                callState !==
-                                "ended" &&
-                                callState !==
-                                "declined" &&
-                                callState !==
-                                "failed"
+                                callState !== "idle" &&
+                                callState !== "ended" &&
+                                callState !== "declined" &&
+                                callState !== "failed"
                             )
                         }
                     >
@@ -1117,14 +1125,10 @@ function ChatHeader() {
                         onClick={startVideoCall}
                         disabled={
                             Boolean(
-                                callState !==
-                                "idle" &&
-                                callState !==
-                                "ended" &&
-                                callState !==
-                                "declined" &&
-                                callState !==
-                                "failed"
+                                callState !== "idle" &&
+                                callState !== "ended" &&
+                                callState !== "declined" &&
+                                callState !== "failed"
                             )
                         }
                     >
@@ -1470,7 +1474,6 @@ function ChatHeader() {
         </>
 
     );
-
 }
 
 

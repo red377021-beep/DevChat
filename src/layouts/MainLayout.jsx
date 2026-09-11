@@ -1,6 +1,14 @@
 import "./MainLayout.css";
 import "./MainLayout.responsive.css";
 
+import {
+    MessageCircle,
+    Film,
+    Camera as CameraIcon,
+    CirclePlay,
+    Sparkles,
+} from "lucide-react";
+
 import Sidebar from "../components/sidebar/Sidebar";
 import ChatList from "../components/chat-list/ChatList";
 import Chat from "../components/chat/Chat";
@@ -16,26 +24,25 @@ import AI from "../pages/AI/AI";
 import Notifications from "../pages/Notifications/Notifications";
 import Settings from "../pages/Settings/Settings";
 import Profile from "../pages/Profile/Profile";
+import Camera from "../pages/Camera/Camera";
 
 import Friends from "../components/Friends/Friends";
 
 import { useChat } from "../context/ChatContext";
 import { useLayout } from "../context/LayoutContext";
 
-import MobileTopNav from "../components/MobileTopNav/MobileTopNav";
-import MobileBottomNav from "../components/MobileBottomNav/MobileBottomNav";
-
 
 function MainLayout() {
 
     const {
         rightPanelOpen,
-        closeRightPanel
+        closeRightPanel,
     } = useChat();
 
 
     const {
-        activeView
+        activeView,
+        setActiveView,
     } = useLayout();
 
 
@@ -52,19 +59,23 @@ function MainLayout() {
         activeView === "ai" ||
         activeView === "notifications" ||
         activeView === "settings" ||
-        activeView === "profile";
+        activeView === "profile" ||
+        activeView === "camera";
+
+
+    // =====================================================
+    // MOBILE NAVIGATION
+    // =====================================================
+
+    const handleMobileNavigation = (view) => {
+
+        setActiveView(view);
+
+    };
 
 
     return (
         <div className="main-layout">
-
-
-            {/* =================================================
-                MOBILE / TABLET TOP NAV
-                Profile | Friends | Notifications
-            ================================================= */}
-
-            <MobileTopNav />
 
 
             {/* =================================================
@@ -76,10 +87,10 @@ function MainLayout() {
 
             {/* =================================================
                 CHAT LIST
-                Hidden on special views
+                Only shown on Chats screen.
             ================================================= */}
 
-            {!isSpecialView && (
+            {activeView === "chats" && (
                 <ChatList />
             )}
 
@@ -124,8 +135,16 @@ function MainLayout() {
 
                 <Profile />
 
+            ) : activeView === "camera" ? (
+
+                <Camera />
+
             ) : (
 
+                /*
+                 * Chat is intentionally kept here for the
+                 * desktop / selected conversation flow.
+                 */
                 <Chat />
 
             )}
@@ -133,20 +152,16 @@ function MainLayout() {
 
             {/* =================================================
                 RIGHT PANEL
-                Hidden on special views
+                Only available in actual chat mode.
             ================================================= */}
 
             {!isSpecialView && (
                 <div
                     className={`right-panel-wrapper ${
-                        rightPanelOpen
-                            ? "open"
-                            : ""
+                        rightPanelOpen ? "open" : ""
                     }`}
                 >
-
                     <RightPanel />
-
                 </div>
             )}
 
@@ -168,7 +183,6 @@ function MainLayout() {
 
             {/* =================================================
                 MESSAGE INFO
-                Hidden on special views
             ================================================= */}
 
             {!isSpecialView && (
@@ -177,11 +191,133 @@ function MainLayout() {
 
 
             {/* =================================================
-                MOBILE BOTTOM NAV
-                Chats | Reels | Stories | Groups | AI
+                MOBILE BOTTOM NAVIGATION
+                Persistent on every mobile screen.
             ================================================= */}
 
-            <MobileBottomNav />
+            <nav className="mobile-app-navigation">
+
+
+                {/* =================================================
+                    CHATS
+                ================================================= */}
+
+                <button
+                    type="button"
+                    className={`mobile-app-nav-item ${
+                        activeView === "chats"
+                            ? "active"
+                            : ""
+                    }`}
+                    onClick={() =>
+                        handleMobileNavigation("chats")
+                    }
+                    aria-label="Chats"
+                >
+                    <MessageCircle size={17} />
+
+                    <span>
+                        Chats
+                    </span>
+                </button>
+
+
+                {/* =================================================
+                    REELS
+                ================================================= */}
+
+                <button
+                    type="button"
+                    className={`mobile-app-nav-item ${
+                        activeView === "reels"
+                            ? "active"
+                            : ""
+                    }`}
+                    onClick={() =>
+                        handleMobileNavigation("reels")
+                    }
+                    aria-label="Reels"
+                >
+                    <Film size={17} />
+
+                    <span>
+                        Reels
+                    </span>
+                </button>
+
+
+                {/* =================================================
+                    CAMERA
+                ================================================= */}
+
+                <button
+                    type="button"
+                    className={`mobile-app-nav-item ${
+                        activeView === "camera"
+                            ? "active"
+                            : ""
+                    }`}
+                    onClick={() =>
+                        handleMobileNavigation("camera")
+                    }
+                    aria-label="Camera"
+                >
+                    <CameraIcon size={17} />
+
+                    <span>
+                        Camera
+                    </span>
+                </button>
+
+
+                {/* =================================================
+                    STORIES
+                ================================================= */}
+
+                <button
+                    type="button"
+                    className={`mobile-app-nav-item ${
+                        activeView === "stories"
+                            ? "active"
+                            : ""
+                    }`}
+                    onClick={() =>
+                        handleMobileNavigation("stories")
+                    }
+                    aria-label="Stories"
+                >
+                    <CirclePlay size={17} />
+
+                    <span>
+                        Stories
+                    </span>
+                </button>
+
+
+                {/* =================================================
+                    AI
+                ================================================= */}
+
+                <button
+                    type="button"
+                    className={`mobile-app-nav-item ${
+                        activeView === "ai"
+                            ? "active"
+                            : ""
+                    }`}
+                    onClick={() =>
+                        handleMobileNavigation("ai")
+                    }
+                    aria-label="AI"
+                >
+                    <Sparkles size={17} />
+
+                    <span>
+                        AI
+                    </span>
+                </button>
+
+            </nav>
 
         </div>
     );

@@ -15,7 +15,6 @@
     flex-direction: column;
 
     box-sizing: border-box;
-
     overflow: hidden;
 
     background: #101826;
@@ -27,7 +26,7 @@
 
 
 /* =========================================================
-   HEADER
+   DESKTOP HEADER
    ========================================================= */
 
 .chat-list-header {
@@ -41,11 +40,9 @@
     box-sizing: border-box;
 }
 
-
 .chat-list-title {
     min-width: 0;
 }
-
 
 .chat-list-title span {
     display: block;
@@ -60,7 +57,6 @@
     letter-spacing: 0.3px;
 }
 
-
 .chat-list-title h2 {
     margin: 0;
 
@@ -70,6 +66,220 @@
     font-weight: 700;
 
     color: #ffffff;
+}
+
+
+/* =========================================================
+   MOBILE TOP BAR
+   Hidden on desktop
+   ========================================================= */
+
+.mobile-chat-topbar {
+    display: none;
+}
+
+.mobile-topbar-button {
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #aab6ca;
+
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    padding: 0;
+
+    border-radius: 10px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.15s ease;
+}
+
+.mobile-topbar-button:hover {
+    background: rgba(255, 255, 255, 0.07);
+
+    color: #ffffff;
+}
+
+.mobile-topbar-button:active {
+    transform: scale(0.93);
+}
+
+.mobile-topbar-button.active {
+    background: rgba(79, 124, 255, 0.16);
+
+    color: #ffffff;
+}
+
+.mobile-topbar-title {
+    flex: 1 1 auto;
+
+    min-width: 0;
+
+    height: 36px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    border: none;
+    outline: none;
+
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.mobile-topbar-title:hover {
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.mobile-topbar-title svg {
+    color: #789aff;
+
+    flex: 0 0 auto;
+}
+
+
+/* =========================================================
+   MOBILE MORE MENU
+   ========================================================= */
+
+.mobile-more-menu {
+    position: absolute;
+
+    top: 58px;
+    right: 10px;
+
+    z-index: 100;
+
+    width: 220px;
+
+    padding: 7px;
+
+    box-sizing: border-box;
+
+    border-radius: 15px;
+
+    background: #172131;
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.40),
+        0 5px 18px rgba(0, 0, 0, 0.25);
+
+    animation: mobile-menu-in 0.16s ease;
+}
+
+@keyframes mobile-menu-in {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-5px)
+            scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+.mobile-more-menu button {
+    width: 100%;
+
+    min-height: 40px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 0 11px;
+
+    border: none;
+    outline: none;
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #cbd5e5;
+
+    font-family: inherit;
+
+    font-size: 12px;
+    font-weight: 550;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background 0.18s ease,
+        color 0.18s ease;
+}
+
+.mobile-more-menu button:hover {
+    background: rgba(255, 255, 255, 0.06);
+
+    color: #ffffff;
+}
+
+.mobile-more-menu button svg {
+    flex: 0 0 auto;
+
+    color: #829cff;
+}
+
+.mobile-more-menu button span:last-child {
+    min-width: 0;
+}
+
+.more-menu-dot {
+    width: 17px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #829cff;
+}
+
+
+/* =========================================================
+   MOBILE APP NAVIGATION
+   Hidden on desktop
+   ========================================================= */
+
+.mobile-app-navigation {
+    display: none;
 }
 
 
@@ -86,7 +296,6 @@
     height: 48px;
 
     margin: 14px 16px 12px;
-
     padding: 0 15px;
 
     display: flex;
@@ -108,13 +317,11 @@
         box-shadow 0.2s ease;
 }
 
-
 .chat-search:hover {
     background: rgba(255, 255, 255, 0.06);
 
     border-color: rgba(79, 124, 255, 0.35);
 }
-
 
 .chat-search:focus-within {
     background: rgba(255, 255, 255, 0.065);
@@ -125,18 +332,15 @@
         0 0 0 3px rgba(79, 124, 255, 0.10);
 }
 
-
 .chat-search-icon {
     flex: 0 0 auto;
 
     color: #71809a;
 }
 
-
 .chat-search:focus-within .chat-search-icon {
     color: #6f96ff;
 }
-
 
 .chat-search input {
     width: 100%;
@@ -159,9 +363,149 @@
     font-weight: 500;
 }
 
-
 .chat-search input::placeholder {
     color: #68758c;
+}
+
+.chat-search-loader {
+    flex: 0 0 auto;
+
+    color: #6f96ff;
+
+    animation:
+        chat-search-spin 0.9s linear infinite;
+}
+
+@keyframes chat-search-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   FILTER TABS
+   ========================================================= */
+
+.chat-filter-tabs {
+    flex: 0 0 auto;
+
+    width: calc(100% - 28px);
+
+    margin: 0 14px 10px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 4px;
+
+    padding: 4px;
+
+    box-sizing: border-box;
+
+    border-radius: 13px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.chat-filter-tabs button {
+    min-width: 0;
+
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 4px;
+
+    padding: 0 5px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #71809a;
+
+    font-family: inherit;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.15s ease;
+}
+
+.chat-filter-tabs button:hover {
+    background: rgba(255, 255, 255, 0.045);
+
+    color: #dce3ef;
+}
+
+.chat-filter-tabs button:active {
+    transform: scale(0.97);
+}
+
+.chat-filter-tabs button.active {
+    background: rgba(79, 124, 255, 0.18);
+
+    color: #ffffff;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(79, 124, 255, 0.16);
+}
+
+.chat-filter-tabs button svg {
+    flex: 0 0 auto;
+}
+
+.chat-filter-tabs .small {
+    opacity: 0.75;
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.filter-dot {
+    width: 6px;
+    height: 6px;
+
+    flex: 0 0 auto;
+
+    border-radius: 50%;
+
+    background: #71809a;
+}
+
+.seen-dot {
+    background: #4f7cff;
+}
+
+.unseen-dot {
+    background: #7fa1ff;
+
+    box-shadow:
+        0 0 0 3px rgba(79, 124, 255, 0.10);
+}
+
+.chat-filter-tabs button.active .filter-dot {
+    background: #ffffff;
 }
 
 
@@ -190,23 +534,19 @@
         transparent;
 }
 
-
 .chat-list-body::-webkit-scrollbar {
     width: 5px;
 }
 
-
 .chat-list-body::-webkit-scrollbar-track {
     background: transparent;
 }
-
 
 .chat-list-body::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.12);
 
     border-radius: 10px;
 }
-
 
 .chat-list-body::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.20);
@@ -219,6 +559,7 @@
 
 .chat-card {
     width: 100%;
+
     min-width: 0;
 
     display: flex;
@@ -252,13 +593,11 @@
         transform 0.2s ease;
 }
 
-
 .chat-card:hover {
     background: rgba(255, 255, 255, 0.045);
 
     border-color: rgba(255, 255, 255, 0.05);
 }
-
 
 .chat-card:active {
     transform: scale(0.992);
@@ -281,7 +620,6 @@
         rgba(79, 124, 255, 0.25);
 }
 
-
 .chat-card.active-chat:hover {
     background:
         linear-gradient(
@@ -289,6 +627,34 @@
             rgba(79, 124, 255, 0.26),
             rgba(79, 124, 255, 0.12)
         );
+}
+
+
+/* =========================================================
+   UNREAD CHAT
+   ========================================================= */
+
+.chat-card.unread-chat {
+    background:
+        rgba(79, 124, 255, 0.035);
+}
+
+.chat-card.unread-chat .chat-top h4 {
+    color: #ffffff;
+
+    font-weight: 700;
+}
+
+.chat-card.unread-chat .chat-last-message {
+    color: #aebbd0;
+
+    font-weight: 500;
+}
+
+.chat-card.unread-chat .chat-top span {
+    color: #8ba7ff;
+
+    font-weight: 600;
 }
 
 
@@ -322,7 +688,6 @@
     margin-bottom: 5px;
 }
 
-
 .chat-top h4 {
     min-width: 0;
 
@@ -341,7 +706,6 @@
     font-weight: 650;
 }
 
-
 .chat-top span {
     flex: 0 0 auto;
 
@@ -351,7 +715,6 @@
 
     white-space: nowrap;
 }
-
 
 .active-chat .chat-top h4,
 .active-chat .chat-top span {
@@ -394,13 +757,11 @@
     font-size: 13px;
 }
 
-
 .chat-last-message svg {
     flex: 0 0 auto;
 
     color: #6d7a91;
 }
-
 
 .chat-last-message span {
     min-width: 0;
@@ -412,14 +773,14 @@
     text-overflow: ellipsis;
 }
 
-
 .active-chat .chat-last-message {
-    color: rgba(255, 255, 255, 0.82);
+    color:
+        rgba(255, 255, 255, 0.82);
 }
 
-
 .active-chat .chat-last-message svg {
-    color: rgba(255, 255, 255, 0.82);
+    color:
+        rgba(255, 255, 255, 0.82);
 }
 
 
@@ -436,16 +797,15 @@
     gap: 7px;
 }
 
-
 .chat-pin {
     color: #7f8ca3;
 
     flex-shrink: 0;
 }
 
-
 .active-chat .chat-pin {
-    color: rgba(255, 255, 255, 0.85);
+    color:
+        rgba(255, 255, 255, 0.85);
 }
 
 
@@ -455,12 +815,15 @@
 
 .chat-unread {
     min-width: 21px;
+
     height: 21px;
 
     padding: 0 6px;
 
     display: inline-flex;
+
     align-items: center;
+
     justify-content: center;
 
     box-sizing: border-box;
@@ -472,16 +835,21 @@
     color: #ffffff;
 
     font-size: 10px;
+
     font-weight: 700;
 
     line-height: 1;
-}
 
+    box-shadow:
+        0 4px 12px rgba(79, 124, 255, 0.20);
+}
 
 .active-chat .chat-unread {
     background: #ffffff;
 
     color: #4f7cff;
+
+    box-shadow: none;
 }
 
 
@@ -492,16 +860,18 @@
 .chat-empty {
     width: 100%;
 
-    min-height: 220px;
+    min-height: 260px;
 
     padding: 35px 20px;
 
     box-sizing: border-box;
 
     display: flex;
+
     flex-direction: column;
 
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
@@ -509,40 +879,166 @@
     color: #71809a;
 }
 
-
 .chat-empty-icon {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
 
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    border-radius: 14px;
+    border-radius: 16px;
 
-    background: rgba(255, 255, 255, 0.045);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(79, 124, 255, 0.14),
+            rgba(79, 124, 255, 0.05)
+        );
 
-    color: #63718a;
+    border:
+        1px solid rgba(79, 124, 255, 0.14);
+
+    color: #6f96ff;
 }
 
-
 .chat-empty h3 {
-    margin: 0 0 6px;
+    margin: 0 0 7px;
 
     color: #dce3ef;
 
-    font-size: 14px;
+    font-size: 15px;
+
+    font-weight: 700;
 }
 
-
 .chat-empty p {
+    max-width: 260px;
+
     margin: 0;
 
     color: #68758c;
 
     font-size: 12px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   FIND FRIENDS BUTTON
+   ========================================================= */
+
+.chat-empty-friends {
+    margin-top: 18px;
+}
+
+.find-friends-button {
+    min-height: 38px;
+
+    padding: 0 17px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    border:
+        1px solid rgba(79, 124, 255, 0.30);
+
+    border-radius: 11px;
+
+    background:
+        rgba(79, 124, 255, 0.14);
+
+    color: #8cabff;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 650;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.15s ease;
+}
+
+.find-friends-button:hover {
+    background:
+        rgba(79, 124, 255, 0.22);
+
+    border-color:
+        rgba(79, 124, 255, 0.48);
+
+    color: #ffffff;
+}
+
+.find-friends-button:active {
+    transform: scale(0.97);
+}
+
+.find-friends-button svg {
+    flex: 0 0 auto;
+}
+
+
+/* =========================================================
+   SEARCH RESULTS / ERRORS
+   ========================================================= */
+
+.chat-search-results {
+    width: 100%;
+}
+
+.chat-search-error,
+.chat-list-error {
+    margin: 14px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255, 80, 80, 0.07);
+
+    border:
+        1px solid rgba(255, 80, 80, 0.12);
+
+    color: #ff9c9c;
+
+    font-size: 12px;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.chat-card:focus-visible,
+.chat-filter-tabs button:focus-visible,
+.find-friends-button:focus-visible,
+.mobile-topbar-button:focus-visible,
+.mobile-topbar-title:focus-visible,
+.mobile-app-nav-item:focus-visible,
+.mobile-more-menu button:focus-visible {
+    outline:
+        2px solid rgba(111, 150, 255, 0.75);
+
+    outline-offset: 2px;
 }
 
 
@@ -554,7 +1050,9 @@
 
     .chat-list {
         width: 320px;
+
         min-width: 320px;
+
         max-width: 320px;
 
         flex-basis: 320px;
@@ -562,9 +1060,11 @@
 
     .chat-search {
         width: calc(100% - 28px);
+
         max-width: calc(100% - 28px);
 
         margin-left: 14px;
+
         margin-right: 14px;
     }
 
@@ -572,25 +1072,286 @@
 
 
 /* =========================================================
-   MOBILE
+   MOBILE ONLY
    ========================================================= */
 
 @media (max-width: 768px) {
 
     .chat-list {
         width: 100%;
+
         min-width: 0;
+
         max-width: none;
 
         flex: 1 1 auto;
+
+        border-right: none;
+
+        background: #101826;
     }
 
-    .chat-search {
-        width: calc(100% - 28px);
-        max-width: calc(100% - 28px);
 
-        margin-left: 14px;
-        margin-right: 14px;
+    /* -----------------------------------------
+       HIDE DESKTOP HEADER
+       ----------------------------------------- */
+
+    .desktop-chat-header {
+        display: none;
+    }
+
+
+    /* -----------------------------------------
+       MOBILE TOP HEADER
+       ----------------------------------------- */
+
+    .mobile-chat-topbar {
+        position: relative;
+
+        width: 100%;
+
+        min-height: 58px;
+
+        flex: 0 0 58px;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 3px;
+
+        padding: 0 8px;
+
+        box-sizing: border-box;
+
+        background: #101826;
+
+        border-bottom:
+            1px solid rgba(255, 255, 255, 0.055);
+    }
+
+
+    /* -----------------------------------------
+       MOBILE APP NAV
+       FIXED AT BOTTOM
+       ----------------------------------------- */
+
+    .mobile-app-navigation {
+        position: fixed;
+
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        z-index: 500;
+
+        width: 100%;
+
+        height: 62px;
+
+        min-height: 62px;
+
+        flex: 0 0 62px;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(5, minmax(0, 1fr));
+
+        align-items: stretch;
+
+        padding: 5px 7px;
+
+        box-sizing: border-box;
+
+        background: #101826;
+
+        border-top:
+            1px solid rgba(255, 255, 255, 0.07);
+
+        border-bottom: none;
+
+        box-shadow:
+            0 -8px 25px rgba(0, 0, 0, 0.20);
+    }
+
+    .mobile-app-nav-item {
+        min-width: 0;
+
+        position: relative;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 3px;
+
+        padding: 3px;
+
+        border: none;
+
+        outline: none;
+
+        border-radius: 10px;
+
+        background: transparent;
+
+        color: #68758c;
+
+        font-family: inherit;
+
+        font-size: 10px;
+
+        font-weight: 650;
+
+        cursor: pointer;
+
+        transition:
+            background 0.2s ease,
+            color 0.2s ease;
+    }
+
+    .mobile-app-nav-item:hover {
+        background:
+            rgba(255, 255, 255, 0.045);
+
+        color: #dce3ef;
+    }
+
+    .mobile-app-nav-item.active {
+        background:
+            rgba(79, 124, 255, 0.13);
+
+        color: #ffffff;
+    }
+
+    .mobile-app-nav-item.active::after {
+        content: "";
+
+        position: absolute;
+
+        left: 30%;
+        right: 30%;
+
+        top: 3px;
+
+        height: 2px;
+
+        border-radius: 999px;
+
+        background: #5f88ff;
+    }
+
+    .mobile-app-nav-item svg {
+        flex: 0 0 auto;
+
+        color: inherit;
+    }
+
+
+    /* -----------------------------------------
+       SEARCH
+       ----------------------------------------- */
+
+    .chat-search {
+        width: calc(100% - 24px);
+
+        max-width: calc(100% - 24px);
+
+        height: 44px;
+
+        margin:
+            10px
+            12px
+            9px;
+
+        padding: 0 13px;
+
+        border-radius: 13px;
+    }
+
+
+    /* -----------------------------------------
+       FILTERS
+       ----------------------------------------- */
+
+    .chat-filter-tabs {
+        width: calc(100% - 24px);
+
+        margin:
+            0
+            12px
+            9px;
+
+        gap: 3px;
+
+        padding: 3px;
+
+        border-radius: 12px;
+    }
+
+    .chat-filter-tabs button {
+        height: 35px;
+
+        font-size: 10px;
+    }
+
+
+    /* -----------------------------------------
+       CHAT BODY
+       ----------------------------------------- */
+
+    .chat-list-body {
+        padding:
+            3px
+            8px
+            76px;
+    }
+
+
+    /* -----------------------------------------
+       CHAT CARD
+       ----------------------------------------- */
+
+    .chat-card {
+        min-height: 66px;
+
+        gap: 11px;
+
+        margin: 2px 0;
+
+        padding: 10px 8px;
+
+        border-radius: 13px;
+    }
+
+    .chat-top h4 {
+        font-size: 14px;
+    }
+
+    .chat-last-message {
+        font-size: 12px;
+    }
+
+    .chat-top span {
+        font-size: 10px;
+    }
+
+
+    /* -----------------------------------------
+       MORE MENU
+       ----------------------------------------- */
+
+    .mobile-more-menu {
+        top: 54px;
+
+        right: 7px;
+
+        width: 215px;
     }
 
 }
@@ -602,27 +1363,209 @@
 
 @media (max-width: 480px) {
 
-    .chat-list-header {
-        padding-left: 14px;
-        padding-right: 14px;
+    .mobile-chat-topbar {
+        min-height: 55px;
+
+        flex-basis: 55px;
+
+        padding:
+            0
+            6px;
     }
 
-    .chat-list-title h2 {
-        font-size: 22px;
+    .mobile-topbar-button {
+        width: 32px;
+
+        height: 32px;
     }
+
+    .mobile-topbar-title {
+        font-size: 17px;
+    }
+
+
+    /* -----------------------------------------
+       BOTTOM NAV
+       ----------------------------------------- */
+
+    .mobile-app-navigation {
+        height: 60px;
+
+        min-height: 60px;
+
+        flex-basis: 60px;
+
+        padding:
+            5px
+            5px;
+    }
+
+    .mobile-app-nav-item {
+        gap: 3px;
+
+        font-size: 9px;
+    }
+
+    .mobile-app-nav-item svg {
+        width: 15px;
+
+        height: 15px;
+    }
+
+
+    /* -----------------------------------------
+       SEARCH
+       ----------------------------------------- */
 
     .chat-search {
-        width: calc(100% - 24px);
-        max-width: calc(100% - 24px);
+        width: calc(100% - 20px);
 
-        margin-left: 12px;
-        margin-right: 12px;
+        max-width: calc(100% - 20px);
 
-        height: 46px;
+        margin:
+            9px
+            10px
+            8px;
+
+        height: 43px;
     }
 
+
+    /* -----------------------------------------
+       FILTERS
+       ----------------------------------------- */
+
+    .chat-filter-tabs {
+        width: calc(100% - 20px);
+
+        margin:
+            0
+            10px
+            8px;
+    }
+
+    .chat-filter-tabs button {
+        height: 33px;
+
+        padding:
+            0
+            3px;
+
+        gap: 3px;
+
+        font-size: 9px;
+    }
+
+
+    /* -----------------------------------------
+       CHAT CARD
+       ----------------------------------------- */
+
     .chat-card {
-        padding: 11px 8px;
+        padding:
+            10px
+            7px;
+    }
+
+
+    /* -----------------------------------------
+       MORE MENU
+       ----------------------------------------- */
+
+    .mobile-more-menu {
+        width: 205px;
+
+        right: 6px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .mobile-topbar-button {
+        width: 30px;
+
+        height: 30px;
+    }
+
+    .mobile-topbar-button svg {
+        width: 18px;
+
+        height: 18px;
+    }
+
+    .mobile-topbar-title {
+        font-size: 16px;
+
+        gap: 4px;
+    }
+
+    .mobile-topbar-title svg {
+        width: 15px;
+
+        height: 15px;
+    }
+
+
+    /* -----------------------------------------
+       BOTTOM NAV
+       ----------------------------------------- */
+
+    .mobile-app-navigation {
+        height: 58px;
+
+        min-height: 58px;
+
+        flex-basis: 58px;
+
+        padding:
+            4px
+            3px;
+    }
+
+    .mobile-app-nav-item {
+        gap: 2px;
+
+        font-size: 8px;
+    }
+
+    .mobile-app-nav-item svg {
+        width: 14px;
+
+        height: 14px;
+    }
+
+
+    /* -----------------------------------------
+       FILTERS
+       ----------------------------------------- */
+
+    .chat-filter-tabs .small {
+        display: none;
+    }
+
+    .chat-filter-tabs button {
+        font-size: 9px;
+    }
+
+    .chat-filter-tabs button svg {
+        width: 12px;
+
+        height: 12px;
+    }
+
+
+    /* -----------------------------------------
+       MORE MENU
+       ----------------------------------------- */
+
+    .mobile-more-menu {
+        width: 195px;
     }
 
 }

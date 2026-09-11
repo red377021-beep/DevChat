@@ -12,13 +12,21 @@ import {
     Video,
     File,
     LoaderCircle,
+    Users,
+    MessageCircle,
+    Bell,
+    UserCircle,
+    MoreVertical,
+    Film,
+    Camera,
+    CirclePlay,
+    Sparkles,
 } from "lucide-react";
 
 import { useChat } from "../../context/ChatContext";
+import { useLayout } from "../../context/LayoutContext";
 
 import Avatar from "../common/Avatar/Avatar";
-
-import chats from "../../data/chats";
 
 import {
     userAPI,
@@ -30,10 +38,25 @@ import "./ChatList.css";
 
 function ChatList() {
 
+    // =====================================================
+    // CHAT CONTEXT
+    // =====================================================
+
     const {
         selectedChat,
         selectChat,
     } = useChat();
+
+
+    // =====================================================
+    // LAYOUT CONTEXT
+    // Same navigation system used by Sidebar
+    // =====================================================
+
+    const {
+        activeView,
+        setActiveView,
+    } = useLayout();
 
 
     // =====================================================
@@ -45,104 +68,110 @@ function ChatList() {
         setSearch,
     ] = useState("");
 
-
     const [
         searchResults,
         setSearchResults,
     ] = useState([]);
-
 
     const [
         conversations,
         setConversations,
     ] = useState([]);
 
-
     const [
         loadingConversations,
         setLoadingConversations,
     ] = useState(true);
-
 
     const [
         searchLoading,
         setSearchLoading,
     ] = useState(false);
 
-
     const [
         searchError,
         setSearchError,
     ] = useState("");
-
 
     const [
         conversationsError,
         setConversationsError,
     ] = useState("");
 
+    const [
+        chatFilter,
+        setChatFilter,
+    ] = useState("all");
+
+    const [
+        mobileMoreOpen,
+        setMobileMoreOpen,
+    ] = useState(false);
+
+
+    // =====================================================
+    // MOBILE / SIDEBAR NAVIGATION
+    // Uses the exact same activeView system as Sidebar
+    // =====================================================
+
+    const handleMobileNavigation = (view) => {
+
+        setMobileMoreOpen(false);
+
+        setActiveView(view);
+
+    };
+
 
     // =====================================================
     // LOAD REAL CONVERSATIONS
     // =====================================================
 
-    const loadConversations =
-        async () => {
+    const loadConversations = async () => {
 
-            try {
+        try {
 
-                setLoadingConversations(
-                    true
-                );
+            setLoadingConversations(true);
 
-                setConversationsError(
-                    ""
-                );
+            setConversationsError("");
 
+            const data =
+                await conversationAPI
+                    .getMyConversations();
 
-                const data =
-                    await conversationAPI
-                        .getMyConversations();
+            setConversations(
+                Array.isArray(
+                    data?.conversations
+                )
+                    ? data.conversations
+                    : []
+            );
 
+        } catch (error) {
 
-                setConversations(
+            console.error(
+                "Load conversations failed:",
+                error
+            );
 
-                    Array.isArray(
-                        data?.conversations
-                    )
-                        ? data.conversations
-                        : []
+            setConversations([]);
 
-                );
+            setConversationsError(
+                error.message ||
+                "Failed to load conversations"
+            );
 
-            } catch (error) {
+        } finally {
 
-                console.error(
-                    "Load conversations failed:",
-                    error
-                );
+            setLoadingConversations(false);
 
+        }
 
-                setConversations([]);
-
-                setConversationsError(
-                    error.message ||
-                    "Failed to load conversations"
-                );
-
-            } finally {
-
-                setLoadingConversations(
-                    false
-                );
-
-            }
-
-        };
+    };
 
 
     // =====================================================
-    // INITIAL CONVERSATIONS LOAD
+    // INITIAL LOAD
     // =====================================================
 
     useEffect(() => {
@@ -165,9 +194,7 @@ function ChatList() {
         if (!keyword) {
 
             setSearchResults([]);
-
             setSearchError("");
-
             setSearchLoading(false);
 
             return;
@@ -178,9 +205,7 @@ function ChatList() {
         if (keyword.length < 2) {
 
             setSearchResults([]);
-
             setSearchError("");
-
             setSearchLoading(false);
 
             return;
@@ -194,12 +219,8 @@ function ChatList() {
 
                     try {
 
-                        setSearchLoading(
-                            true
-                        );
-
+                        setSearchLoading(true);
                         setSearchError("");
-
 
                         const data =
                             await userAPI
@@ -207,15 +228,12 @@ function ChatList() {
                                     keyword
                                 );
 
-
                         setSearchResults(
-
                             Array.isArray(
                                 data?.users
                             )
                                 ? data.users
                                 : []
-
                         );
 
                     } catch (error) {
@@ -224,7 +242,6 @@ function ChatList() {
                             "User search failed:",
                             error
                         );
-
 
                         setSearchResults([]);
 
@@ -235,9 +252,7 @@ function ChatList() {
 
                     } finally {
 
-                        setSearchLoading(
-                            false
-                        );
+                        setSearchLoading(false);
 
                     }
 
@@ -268,54 +283,103 @@ function ChatList() {
                     .toLowerCase();
 
 
-            if (!keyword) {
+            let result =
+                Array.isArray(conversations)
+                    ? conversations
+                    : [];
 
-                return conversations;
+
+            if (chatFilter === "seen") {
+
+                result =
+                    result.filter(
+                        (chat) =>
+                            Number(
+                                chat?.unread
+                            ) <= 0
+                    );
 
             }
 
 
-            return conversations.filter(
+            if (chatFilter === "unseen") {
+
+                result =
+                    result.filter(
+                        (chat) =>
+                            Number(
+                                chat?.unread
+                            ) > 0
+                    );
+
+            }
+
+
+            if (chatFilter === "groups") {
+
+                result =
+                    result.filter(
+                        (chat) => {
+
+                            const type =
+                                String(
+                                    chat?.type ||
+                                    ""
+                                ).toLowerCase();
+
+                            const conversationType =
+                                String(
+                                    chat?.conversation_type ||
+                                    ""
+                                ).toLowerCase();
+
+                            const chatType =
+                                String(
+                                    chat?.chatType ||
+                                    ""
+                                ).toLowerCase();
+
+                            return (
+                                type === "group" ||
+                                conversationType === "group" ||
+                                chatType === "group"
+                            );
+
+                        }
+                    );
+
+            }
+
+
+            if (!keyword) {
+
+                return result;
+
+            }
+
+
+            return result.filter(
                 (chat) => {
 
                     const name =
-                        typeof chat?.name ===
-                        "string"
-                            ? chat.name
-                                .toLowerCase()
+                        typeof chat?.name === "string"
+                            ? chat.name.toLowerCase()
                             : "";
-
 
                     const username =
-                        typeof chat?.username ===
-                        "string"
-                            ? chat.username
-                                .toLowerCase()
+                        typeof chat?.username === "string"
+                            ? chat.username.toLowerCase()
                             : "";
-
 
                     const lastMessage =
-                        typeof chat?.lastMessage ===
-                        "string"
-                            ? chat.lastMessage
-                                .toLowerCase()
+                        typeof chat?.lastMessage === "string"
+                            ? chat.lastMessage.toLowerCase()
                             : "";
 
-
                     return (
-
-                        name.includes(
-                            keyword
-                        ) ||
-
-                        username.includes(
-                            keyword
-                        ) ||
-
-                        lastMessage.includes(
-                            keyword
-                        )
-
+                        name.includes(keyword) ||
+                        username.includes(keyword) ||
+                        lastMessage.includes(keyword)
                     );
 
                 }
@@ -324,54 +388,96 @@ function ChatList() {
         }, [
             conversations,
             search,
+            chatFilter,
         ]);
 
 
     // =====================================================
-    // LAST MESSAGE ICON
+    // FILTER COUNTS
     // =====================================================
 
-    function getMessageIcon(
-        type
-    ) {
+    const allCount =
+        conversations.length;
+
+    const unseenCount =
+        conversations.filter(
+            (chat) =>
+                Number(
+                    chat?.unread
+                ) > 0
+        ).length;
+
+    const seenCount =
+        conversations.filter(
+            (chat) =>
+                Number(
+                    chat?.unread
+                ) <= 0
+        ).length;
+
+    const groupsCount =
+        conversations.filter(
+            (chat) => {
+
+                const type =
+                    String(
+                        chat?.type ||
+                        ""
+                    ).toLowerCase();
+
+                const conversationType =
+                    String(
+                        chat?.conversation_type ||
+                        ""
+                    ).toLowerCase();
+
+                const chatType =
+                    String(
+                        chat?.chatType ||
+                        ""
+                    ).toLowerCase();
+
+                return (
+                    type === "group" ||
+                    conversationType === "group" ||
+                    chatType === "group"
+                );
+
+            }
+        ).length;
+
+
+    // =====================================================
+    // MESSAGE ICON
+    // =====================================================
+
+    function getMessageIcon(type) {
 
         switch (type) {
 
             case "voice":
 
                 return (
-                    <Mic
-                        size={14}
-                    />
+                    <Mic size={14} />
                 );
-
 
             case "image":
 
                 return (
-                    <Image
-                        size={14}
-                    />
+                    <Image size={14} />
                 );
-
 
             case "video":
 
                 return (
-                    <Video
-                        size={14}
-                    />
+                    <Video size={14} />
                 );
-
 
             case "file":
 
                 return (
-                    <File
-                        size={14}
-                    />
+                    <File size={14} />
                 );
-
 
             default:
 
@@ -383,19 +489,14 @@ function ChatList() {
 
 
     // =====================================================
-    // SELECT CHAT SAFELY
+    // SELECT CHAT
     // =====================================================
 
-    function handleSelectChat(
-        chat
-    ) {
+    function handleSelectChat(chat) {
 
         if (!chat) {
-
             return;
-
         }
-
 
         if (
             typeof selectChat ===
@@ -410,17 +511,152 @@ function ChatList() {
 
 
     // =====================================================
+    // LEGACY / SECONDARY NAVIGATION
+    // Used only for routes that do not currently have
+    // Sidebar activeView functionality.
+    // =====================================================
+
+    function navigateTo(path) {
+
+        setMobileMoreOpen(false);
+
+        window.location.href = path;
+
+    }
+
+
+    // =====================================================
+    // FRIENDS
+    // Connected to Sidebar activeView
+    // =====================================================
+
+    function handleFindFriends() {
+
+        handleMobileNavigation(
+            "friends"
+        );
+
+    }
+
+
+    // =====================================================
+    // PROFILE
+    // Connected to Sidebar activeView
+    // =====================================================
+
+    function handleProfile() {
+
+        handleMobileNavigation(
+            "profile"
+        );
+
+    }
+
+
+    // =====================================================
+    // NOTIFICATIONS
+    // Connected to Sidebar activeView
+    // =====================================================
+
+    function handleNotifications() {
+
+        handleMobileNavigation(
+            "notifications"
+        );
+
+    }
+
+
+    // =====================================================
+    // APP NAVIGATION
+    // Connected to Sidebar activeView
+    // =====================================================
+
+    function handleAppNavigation(view) {
+
+        handleMobileNavigation(view);
+
+    }
+
+
+    // =====================================================
+    // MORE MENU ACTIONS
+    // =====================================================
+
+    function handleMoreAction(action) {
+
+        setMobileMoreOpen(false);
+
+
+        switch (action) {
+
+            case "new-chat":
+
+                setSearch("");
+
+                break;
+
+
+            case "create-group":
+
+                navigateTo(
+                    "/groups/create"
+                );
+
+                break;
+
+
+            case "archived":
+
+                navigateTo(
+                    "/chats/archived"
+                );
+
+                break;
+
+
+            case "starred":
+
+                navigateTo(
+                    "/starred"
+                );
+
+                break;
+
+
+            case "pinned":
+
+                setChatFilter("all");
+
+                break;
+
+
+            case "settings":
+
+                handleMobileNavigation(
+                    "settings"
+                );
+
+                break;
+
+
+            default:
+
+                break;
+
+        }
+
+    }
+
+
+    // =====================================================
     // CONVERT SEARCH USER → CHAT
     // =====================================================
 
-    async function handleSelectUser(
-        user
-    ) {
+    async function handleSelectUser(user) {
 
         if (!user) {
-
             return;
-
         }
 
 
@@ -431,7 +667,6 @@ function ChatList() {
                     .getOrCreate(
                         user.id
                     );
-
 
             const conversation =
                 response?.conversation;
@@ -552,10 +787,6 @@ function ChatList() {
             };
 
 
-            // Add conversation locally
-            // so it immediately appears
-            // in ChatList.
-
             setConversations(
                 (previous) => {
 
@@ -566,13 +797,11 @@ function ChatList() {
                                 userChat.id
                         );
 
-
                     if (exists) {
 
                         return previous;
 
                     }
-
 
                     return [
                         userChat,
@@ -597,7 +826,6 @@ function ChatList() {
                 error
             );
 
-
             setSearchError(
                 error.message ||
                 "Failed to open chat"
@@ -618,10 +846,10 @@ function ChatList() {
 
 
             {/* ================================================= */}
-            {/* HEADER */}
+            {/* DESKTOP HEADER */}
             {/* ================================================= */}
 
-            <div className="chat-list-header">
+            <div className="chat-list-header desktop-chat-header">
 
                 <div className="chat-list-title">
 
@@ -634,6 +862,395 @@ function ChatList() {
                     </h2>
 
                 </div>
+
+            </div>
+
+
+            {/* ================================================= */}
+            {/* MOBILE TOP BAR */}
+            {/* ================================================= */}
+
+            <div className="mobile-chat-topbar">
+
+
+                {/* PROFILE */}
+
+                <button
+                    type="button"
+                    className="mobile-topbar-button"
+                    onClick={handleProfile}
+                    aria-label="Profile"
+                    title="Profile"
+                >
+
+                    <UserCircle
+                        size={21}
+                    />
+
+                </button>
+
+
+                {/* SEARCH */}
+
+                <button
+                    type="button"
+                    className="mobile-topbar-button"
+                    onClick={() => {
+
+                        const input =
+                            document.querySelector(
+                                ".chat-search input"
+                            );
+
+                        input?.focus();
+
+                    }}
+                    aria-label="Search chats"
+                    title="Search chats"
+                >
+
+                    <Search
+                        size={20}
+                    />
+
+                </button>
+
+
+                {/* CHATS */}
+
+                <button
+                    type="button"
+                    className="mobile-topbar-title"
+                    onClick={() =>
+                        handleAppNavigation(
+                            "chats"
+                        )
+                    }
+                >
+
+                    <MessageCircle
+                        size={17}
+                    />
+
+                    <span>
+                        Chats
+                    </span>
+
+                </button>
+
+
+                {/* NOTIFICATIONS */}
+
+                <button
+                    type="button"
+                    className="mobile-topbar-button"
+                    onClick={handleNotifications}
+                    aria-label="Notifications"
+                    title="Notifications"
+                >
+
+                    <Bell
+                        size={20}
+                    />
+
+                </button>
+
+
+                {/* FRIENDS */}
+
+                <button
+                    type="button"
+                    className="mobile-topbar-button"
+                    onClick={handleFindFriends}
+                    aria-label="Friends"
+                    title="Friends"
+                >
+
+                    <Users
+                        size={20}
+                    />
+
+                </button>
+
+
+                {/* MORE */}
+
+                <button
+                    type="button"
+                    className={`mobile-topbar-button ${
+                        mobileMoreOpen
+                            ? "active"
+                            : ""
+                    }`}
+                    onClick={() =>
+                        setMobileMoreOpen(
+                            (value) => !value
+                        )
+                    }
+                    aria-label="More chat options"
+                    title="More"
+                >
+
+                    <MoreVertical
+                        size={21}
+                    />
+
+                </button>
+
+
+                {/* MORE MENU */}
+
+                {mobileMoreOpen && (
+
+                    <div className="mobile-more-menu">
+
+
+                        <button
+                            type="button"
+                            onClick={() =>
+                                handleMoreAction(
+                                    "new-chat"
+                                )
+                            }
+                        >
+
+                            <MessageCircle
+                                size={17}
+                            />
+
+                            <span>
+                                New Chat
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            onClick={() =>
+                                handleMoreAction(
+                                    "create-group"
+                                )
+                            }
+                        >
+
+                            <Users
+                                size={17}
+                            />
+
+                            <span>
+                                Create Group
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            onClick={() =>
+                                handleMoreAction(
+                                    "archived"
+                                )
+                            }
+                        >
+
+                            <File
+                                size={17}
+                            />
+
+                            <span>
+                                Archived Chats
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            onClick={() =>
+                                handleMoreAction(
+                                    "starred"
+                                )
+                            }
+                        >
+
+                            <Pin
+                                size={17}
+                            />
+
+                            <span>
+                                Starred Messages
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            onClick={() =>
+                                handleMoreAction(
+                                    "settings"
+                                )
+                            }
+                        >
+
+                            <span className="more-menu-dot">
+                                ⚙
+                            </span>
+
+                            <span>
+                                Chat Settings
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                )}
+
+            </div>
+
+
+            {/* ================================================= */}
+            {/* MOBILE APP NAVIGATION */}
+            {/* ================================================= */}
+
+            <div className="mobile-app-navigation">
+
+
+                {/* CHATS */}
+
+                <button
+                    type="button"
+                    className={`mobile-app-nav-item ${
+                        activeView === "chats"
+                            ? "active"
+                            : ""
+                    }`}
+                    onClick={() =>
+                        handleAppNavigation(
+                            "chats"
+                        )
+                    }
+                >
+
+                    <MessageCircle
+                        size={17}
+                    />
+
+                    <span>
+                        Chats
+                    </span>
+
+                </button>
+
+
+                {/* REELS */}
+
+                <button
+                    type="button"
+                    className={`mobile-app-nav-item ${
+                        activeView === "reels"
+                            ? "active"
+                            : ""
+                    }`}
+                    onClick={() =>
+                        handleAppNavigation(
+                            "reels"
+                        )
+                    }
+                >
+
+                    <Film
+                        size={17}
+                    />
+
+                    <span>
+                        Reels
+                    </span>
+
+                </button>
+
+
+                {/* CAMERA */}
+
+                <button
+                    type="button"
+                    className={`mobile-app-nav-item ${
+                        activeView === "camera"
+                            ? "active"
+                            : ""
+                    }`}
+                    onClick={() =>
+                        handleAppNavigation(
+                            "camera"
+                        )
+                    }
+                >
+
+                    <Camera
+                        size={17}
+                    />
+
+                    <span>
+                        Camera
+                    </span>
+
+                </button>
+
+
+                {/* STORIES */}
+
+                <button
+                    type="button"
+                    className={`mobile-app-nav-item ${
+                        activeView === "stories"
+                            ? "active"
+                            : ""
+                    }`}
+                    onClick={() =>
+                        handleAppNavigation(
+                            "stories"
+                        )
+                    }
+                >
+
+                    <CirclePlay
+                        size={17}
+                    />
+
+                    <span>
+                        Stories
+                    </span>
+
+                </button>
+
+
+                {/* AI */}
+
+                <button
+                    type="button"
+                    className={`mobile-app-nav-item ${
+                        activeView === "ai"
+                            ? "active"
+                            : ""
+                    }`}
+                    onClick={() =>
+                        handleAppNavigation(
+                            "ai"
+                        )
+                    }
+                >
+
+                    <Sparkles
+                        size={17}
+                    />
+
+                    <span>
+                        AI
+                    </span>
+
+                </button>
 
             </div>
 
@@ -655,15 +1272,11 @@ function ChatList() {
                     value={search}
                     placeholder="Search chats..."
                     aria-label="Search chats"
-                    onChange={(
-                        event
-                    ) => {
-
+                    onChange={(event) =>
                         setSearch(
                             event.target.value
-                        );
-
-                    }}
+                        )
+                    }
                 />
 
 
@@ -677,6 +1290,130 @@ function ChatList() {
                 )}
 
             </div>
+
+
+            {/* ================================================= */}
+            {/* CHAT FILTER TABS */}
+            {/* ================================================= */}
+
+            {!search.trim() && (
+
+                <div
+                    className="chat-filter-tabs"
+                    role="tablist"
+                    aria-label="Chat filters"
+                >
+
+                    <button
+                        type="button"
+                        className={
+                            chatFilter === "all"
+                                ? "active"
+                                : ""
+                        }
+                        onClick={() =>
+                            setChatFilter("all")
+                        }
+                    >
+
+                        <MessageCircle
+                            size={15}
+                        />
+
+                        <span>
+                            All
+                        </span>
+
+                        <small>
+                            {allCount}
+                        </small>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        className={
+                            chatFilter === "seen"
+                                ? "active"
+                                : ""
+                        }
+                        onClick={() =>
+                            setChatFilter("seen")
+                        }
+                    >
+
+                        <span className="filter-dot seen-dot">
+                            ●
+                        </span>
+
+                        <span>
+                            Seen
+                        </span>
+
+                        <small>
+                            {seenCount}
+                        </small>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        className={
+                            chatFilter === "unseen"
+                                ? "active"
+                                : ""
+                        }
+                        onClick={() =>
+                            setChatFilter("unseen")
+                        }
+                    >
+
+                        <span className="filter-dot unseen-dot">
+                            ●
+                        </span>
+
+                        <span>
+                            Unseen
+                        </span>
+
+                        <small>
+                            {unseenCount}
+                        </small>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        className={
+                            chatFilter === "groups"
+                                ? "active"
+                                : ""
+                        }
+                        onClick={() =>
+                            setChatFilter("groups")
+                        }
+                    >
+
+                        <Users
+                            size={15}
+                        />
+
+                        <span>
+                            Groups
+                        </span>
+
+                        <small>
+                            {groupsCount}
+                        </small>
+
+                    </button>
+
+                </div>
+
+            )}
 
 
             {/* ================================================= */}
@@ -738,8 +1475,7 @@ function ChatList() {
 
                             </div>
 
-                        ) : searchResults.length >
-                          0 ? (
+                        ) : searchResults.length > 0 ? (
 
                             searchResults.map(
                                 (user) => {
@@ -754,18 +1490,13 @@ function ChatList() {
                                     return (
 
                                         <button
-                                            key={
-                                                user.id
-                                            }
+                                            key={user.id}
                                             type="button"
-                                            className={`
-                                                chat-card
-                                                ${
-                                                    isActive
-                                                        ? "active-chat"
-                                                        : ""
-                                                }
-                                            `}
+                                            className={`chat-card ${
+                                                isActive
+                                                    ? "active-chat"
+                                                    : ""
+                                            }`}
                                             onClick={() =>
                                                 handleSelectUser(
                                                     user
@@ -793,22 +1524,18 @@ function ChatList() {
                                                 <div className="chat-top">
 
                                                     <h4>
-
                                                         {
                                                             user.full_name ||
                                                             user.username ||
                                                             "Unknown User"
                                                         }
-
                                                     </h4>
 
                                                     <span>
-
                                                         @
                                                         {
                                                             user.username
                                                         }
-
                                                     </span>
 
                                                 </div>
@@ -819,12 +1546,10 @@ function ChatList() {
                                                     <div className="chat-last-message">
 
                                                         <span>
-
                                                             {
                                                                 user.status ||
                                                                 "Available on DevChat"
                                                             }
-
                                                         </span>
 
                                                     </div>
@@ -931,26 +1656,71 @@ function ChatList() {
 
                         </div>
 
-                    ) : filteredConversations.length ===
-                      0 ? (
+                    ) : filteredConversations.length === 0 ? (
 
-                        <div className="chat-empty">
+                        <div className="chat-empty chat-empty-friends">
 
                             <div className="chat-empty-icon">
 
-                                <Search
-                                    size={24}
+                                <Users
+                                    size={28}
                                 />
 
                             </div>
 
+
                             <h3>
-                                No chats yet
+
+                                {chatFilter === "groups"
+                                    ? "No groups yet"
+                                    : chatFilter === "unseen"
+                                        ? "All caught up"
+                                        : chatFilter === "seen"
+                                            ? "No seen chats"
+                                            : "Find your friends"
+                                }
+
                             </h3>
 
+
                             <p>
-                                Add a friend and start chatting.
+
+                                {chatFilter === "groups"
+                                    ? "Create or join a group to start chatting with more people."
+                                    : chatFilter === "unseen"
+                                        ? "You don't have any unread conversations."
+                                        : chatFilter === "seen"
+                                            ? "Chats you've already seen will appear here."
+                                            : "Connect with people on DevChat and start your first conversation."
+                                }
+
                             </p>
+
+
+                            {(
+                                chatFilter === "all" ||
+                                chatFilter === "groups"
+                            ) && (
+
+                                <button
+                                    type="button"
+                                    className="find-friends-button"
+                                    onClick={
+                                        handleFindFriends
+                                    }
+                                >
+
+                                    <Search
+                                        size={17}
+                                    />
+
+                                    <span>
+                                        Find friends
+                                    </span>
+
+                                </button>
+
+                            )}
 
                         </div>
 
@@ -963,32 +1733,32 @@ function ChatList() {
                                     selectedChat?.id ===
                                     chat?.id;
 
+                                const unread =
+                                    Number(
+                                        chat?.unread
+                                    ) || 0;
+
 
                                 return (
 
                                     <button
-                                        key={
-                                            chat.id
-                                        }
+                                        key={chat.id}
                                         type="button"
-                                        className={`
-                                            chat-card
-                                            ${
-                                                isActive
-                                                    ? "active-chat"
-                                                    : ""
-                                            }
-                                        `}
+                                        className={`chat-card ${
+                                            isActive
+                                                ? "active-chat"
+                                                : ""
+                                        } ${
+                                            unread > 0
+                                                ? "unread-chat"
+                                                : ""
+                                        }`}
                                         onClick={() =>
                                             handleSelectChat(
                                                 chat
                                             )
                                         }
                                     >
-
-                                        {/* ================================= */}
-                                        {/* AVATAR */}
-                                        {/* ================================= */}
 
                                         <Avatar
                                             name={
@@ -1003,10 +1773,6 @@ function ChatList() {
                                             size="md"
                                         />
 
-
-                                        {/* ================================= */}
-                                        {/* CHAT INFORMATION */}
-                                        {/* ================================= */}
 
                                         <div className="chat-info">
 
@@ -1062,14 +1828,12 @@ function ChatList() {
                                                     )}
 
 
-                                                    {Number(
-                                                        chat.unread
-                                                    ) > 0 && (
+                                                    {unread > 0 && (
 
                                                         <span className="chat-unread">
 
                                                             {
-                                                                chat.unread
+                                                                unread
                                                             }
 
                                                         </span>
